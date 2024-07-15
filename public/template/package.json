@@ -1,0 +1,54 @@
+{
+  "name": "xhibiter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode=development --open && tailwindcss -i ./src/css/style.css -o ./dist/css/style.css --watch",
+    "build": "webpack --config webpack-prod.config.js",
+    "build:tailwind": "tailwindcss -i ./src/css/style.css -o ./dist/css/style.css --minify",
+    "build:tailwind-unminified": "tailwindcss -i ./src/css/style.css -o ./dist/css/style.css",
+    "rtlcss": "rtlcss ./dist/css/style.css ./dist/css/style-rtl.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.3",
+    "cssnano": "^5.1.11",
+    "mini-css-extract-plugin": "^2.7.2",
+    "postcss": "^8.4.20",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^7.7.1",
+    "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "rtlcss": "^4.0.0",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.2.4",
+    "tailwindcss-custom-groups": "^1.1.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.9.2"
+  },
+  "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
+    "@popperjs/core": "^2.11.5",
+    "@tailwindcss/forms": "^0.5.2",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^3.8.0",
+    "countdown-updated": "^2.7.0",
+    "cryptocurrency-icons": "^0.18.1",
+    "matchmedia-polyfill": "^0.3.2",
+  "swiper": "^7.4.1",
+    "tippy.js": "^6.3.7"
+  },
+  "browserslist": [
+    "defaults",
+    "> 1%",
+    "ios_saf 12"
+  ]
+}
