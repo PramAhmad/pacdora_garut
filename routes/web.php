@@ -26,6 +26,11 @@ Route::get('/register',[RegisterController::class, 'index'])->name('register');
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/category/{mockupNameKey}',[HomeController::class, 'category'])->name('category');
+Route::get('/subcategory/{subcategoryKey}', [HomeController::class, 'subcategory'])->name('subcategory');
 Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail');
 
 Route::get("/register",[RegisterController::class, 'index'])->name('register');
+
+
+// ajax controller
+Route::get('/ajax/category',[HomeController::class, 'ajaxCategory'])->name('ajax.filter.category');

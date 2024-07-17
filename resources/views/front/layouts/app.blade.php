@@ -3,7 +3,7 @@
   <!DOCTYPE html>
 <html lang="en" dir="ltr" data-scheme="light">
   <head>
-    <title>Xhibiter | NFT Marketplace HTML Template</title>
+    <title>Pacdora garut</title>
 
     <meta charset="utf-8" />
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
@@ -55,8 +55,7 @@
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
         <a href="index.html" class="shrink-0">
-          <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace">
-          <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace">
+          Pecdora Garut
         </a>
 
         <!-- Search -->
@@ -104,7 +103,7 @@
           <nav class="navbar w-full">
             <ul class="flex flex-col lg:flex-row">
               <li class="js-nav-dropdown group relative">
-                <a href="#" class="dropdown-toggle flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5 show" id="navDropdown-1" aria-expanded="true" role="button" data-bs-toggle="dropdown">Home
+                <a href="{{route('home')}}" class=" flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5 show" >Home
                   <i class="lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 dark:fill-white">
                       <path fill="none" d="M0 0h24v24H0z"></path>
@@ -328,8 +327,8 @@
             </div>
            @else
               <div class="flex">
-                <a href="{{ route('login') }}" class="flex items-center justify-center h-10 px-5 font-display text-sm text-white bg-accent rounded-xl transition-colors hover:bg-accent-dark focus:bg-accent-dark">Login</a>
-                <a href="{{ route('register') }}" class="flex items-center justify-center h-10 px-5 ml-2 font-display text-sm text-accent bg-white rounded-xl transition-colors hover:bg-accent-dark focus:bg-accent-dark">Register</a>
+                <a href="{{ route('login') }}" class="flex items-center justify-center h-10 px-5 font-display text-sm text-white bg-accent rounded-xl  hover:scale-105 transition duration-500">Login</a>
+                <a href="{{ route('register') }}" class="flex items-center justify-center h-10 px-5 ml-2 font-display text-sm text-accent bg-white rounded-xl  border border-accent hover:scale-105 transition duration-500 ">Register</a>
               </div>
            @endif
         
@@ -1125,16 +1124,11 @@
   <script src="/js/base.js"></script>
   <script src="https://cdn.pacdora.com/Pacdora-v1.1.1.js"></script>
   <script>
-    const userId = localStorage.getItem("username");
-    let externalId = localStorage.getItem("externalId");
-    if (!externalId) {
-      externalId = Math.random().toFixed(16).substring(1).toString(16);
-      localStorage.setItem("externalId", externalId);
-    }
+   
     setTimeout(async () => {
       await Pacdora.init({
-        userId: userId ?? externalId,
-        appId: "app_id123",
+        userId: "10",
+        appId: "71ee73045e3480fe",
         isDelay: true,
       });
     }, 1000);

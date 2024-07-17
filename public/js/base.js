@@ -167,7 +167,7 @@ function onSign() {
   //         <div class="form-item" id="login-input">
   //           <i class="iconfont icon-zhanghao"></i>
   //           <input class="login-input" placeholder="Your email"></input>
-  //         </div>
+  //         </div>use
   //         <div class="login-valid-error"></div>
   //         <div class="btn mt40" onclick="onSign()">Sign in</div>
   //       </div>

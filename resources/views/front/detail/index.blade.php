@@ -1,15 +1,10 @@
 @extends('front.layouts.app')
 @section("content")
 @push("css")
-<link rel="stylesheet" href="css/detail.css" />
+
 <style>
-    .body {
-  padding-top: 30px !important;
-}
-.body-content {
-  width: 1320px;
-  margin: auto;
-}
+ 
+
 .box-info {
   display: flex;
   align-items: flex-start;
@@ -285,10 +280,11 @@
 
 </style>
 @endpush
-<div class="body-content">
+
+<div class="pt-28 container">
           <div
             class="crumb-box"
-            data-ui-tip="create-project"
+            
             data-position="bottom"
           >
             <a class="crumb-item">All products</a>
@@ -303,7 +299,7 @@
                   <!-- 3D box expansion and collapse control component start -->
                   <div
                     class="collapse-control"
-                    data-ui-tip="collapse"
+                    
                     data-position="bottom"
                   >
                     <div onclick="openPacdora(0)">Open</div>
@@ -341,7 +337,7 @@
               </div>
 
               <!-- Slide Switch Component -->
-              <div class="d3-and-d2-switch" data-ui-tip="switch">
+              <div class="d3-and-d2-switch" >
                 <div class="switch-item active" onclick="onSwitch2DAnd3D('3d')">
                   3D
                 </div>
@@ -356,7 +352,7 @@
               <div class="pac-loading crop-parent"></div>
             </div>
             <div class="right">
-              <div class="sub-title" data-ui-tip="dimension">Dimension</div>
+              <div class="sub-title" >Dimension</div>
               <div class="selector-box">
                 <select onchange="onChangeDimension(this)" id="dimension">
                   <option value="">Choose the dimension</option>
@@ -366,7 +362,7 @@
                   <option value="customize">Customize</option>
                 </select>
               </div>
-              <div class="sub-title mt30" data-ui-tip="material">Material</div>
+              <div class="sub-title mt30" >Material</div>
               <div class="selector-box">
                 <select onchange="onChangeMaterial(this)" id="material">
                   <option value="">Choose the material</option>
@@ -375,7 +371,7 @@
                   <option value="Kraft paper">Dark kraft paper</option>
                 </select>
               </div>
-              <div class="sub-title mt30" data-ui-tip="thickness">
+              <div class="sub-title mt30" >
                 Thickness
               </div>
               <div class="selector-box">
@@ -435,11 +431,7 @@
                   </div>
                 </div>
 
-                <div class="price-box mt30" id="price-box">
-                  <!-- <span class="price-unit">$1.22 / unit</span> -->
-                  <!-- <span class="price-text">Total:</span> -->
-                  <!-- <span class="price-total">$200</span> -->
-                </div>
+                
               </div>
               <div class="btn-group">
                 <!-- <div class="btn btn-buy" onclick="onBuyClick()">
@@ -451,7 +443,7 @@
                   data-pacdora-ui="design-btn"
                   data-save-screenshot="false"
                   data-screenshot-width="800"
-                  data-ui-tip="editor"
+                 
                 >
                   <div class="pac-loading small"></div>
                   Design online
@@ -460,36 +452,29 @@
               <div
                 class="download-text"
                 data-pacdora-ui="download"
-                data-app-key="Your app key"
+                data-app-key="a3e831ccfa3ffd84"
                 data-pacdora-id="download"
-                data-ui-tip="download"
+             
               >
                 Download the Dieline
               </div>
             </div>
           </div>
           <div class="description-box">
-            <h2>Description of the product</h2>
+            <h2>Deskripsi products</h2>
             <div
               class="description-info mt30"
               data-pacdora-ui="info-description"
             ></div>
-            <div
-              class="description-info mt30"
-              data-pacdora-ui="info-description"
-            ></div>
-            <div
-              class="description-info mt30"
-              data-pacdora-ui="info-description"
-            ></div>
+            
           </div>
         </div>
-    
-  <script src="js/detail.js"></script>
-  <script src="js/quotation.js"></script>
-  <script src="js/tips.js"></script>
+ 
+<script src="{{asset('js/quotation.js')}}"></script>
+  <script src="{{asset('js/tips.js')}}"></script>
   <script src="https://cdn.pacdora.com/Pacdora-v1.1.1.js"></script>
-  <script src="js/base.js"></script>
+  <script src="{{asset('js/base.js')}}"></script>
+  <script src="{{asset('js/detail.js')}}"></script>
   <script>
     (async () => {
       const userId = localStorage.getItem("username");
@@ -498,39 +483,10 @@
         externalId = Math.random().toFixed(16).substring(1).toString(16);
         localStorage.setItem("externalId", externalId);
       }
-      // remove quotation for mockups
-      if (!allowMakeQuotation()) {
-        const node = document.querySelector("#quotation-selects");
-        if (node) {
-          node.remove();
-        }
-        const option = document.querySelector(
-          "#dimension option[value='customize']"
-        );
-        if (option) {
-          option.remove();
-        }
-
-        // disable dimenssion
-        const dimenssion = document.querySelector("#dimension");
-        if (dimenssion) {
-          dimenssion.disabled = true;
-        }
-        const material = document.querySelector("#material");
-        if (material) {
-          material.disabled = true;
-        }
-
-        const thickness = document.querySelector("#thickness");
-        if (thickness) {
-          thickness.disabled = true;
-        }
-      }
-
-
+      
       await Pacdora.init({
-        userId: userId ?? externalId,
-        appId: window.appId,
+        userId: "10",
+        appId: "71ee73045e3480fe",
         isDelay: true,
         theme: "#dc2626",
         doneBtn: "Save",
@@ -539,14 +495,13 @@
         },
       });
 
-      const modelId = getQueryValue("modelId");
+      const modelId = "{{$modelid}}";
       const id = getQueryValue("id");
       const templateId = getQueryValue("templateId");
       // Create a project
       await Pacdora.createScene({
-        id: id,
+     
         modelId: modelId,
-        templateId,
         isShowLoading: false,
         doneBtn: "Save",
       });
