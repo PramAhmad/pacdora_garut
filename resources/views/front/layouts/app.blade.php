@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/go.min.js"></script>
- 
+    @livewireStyles
   </head>
 
   <body
@@ -55,7 +55,8 @@
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
         <a href="index.html" class="shrink-0">
-          Pecdora Garut
+          <img src="{{asset('assets/img/logo.png')}}" class="logo-lg h-14 align-middle inline-block" alt="">
+          <span class="text-lg text-jacarta-900 font-semibold">Myopia</span>
         </a>
 
         <!-- Search -->
@@ -328,7 +329,7 @@
            @else
               <div class="flex">
                 <a href="{{ route('login') }}" class="flex items-center justify-center h-10 px-5 font-display text-sm text-white bg-accent rounded-xl  hover:scale-105 transition duration-500">Login</a>
-                <a href="{{ route('register') }}" class="flex items-center justify-center h-10 px-5 ml-2 font-display text-sm text-accent bg-white rounded-xl  border border-accent hover:scale-105 transition duration-500 ">Register</a>
+                <a href="{{ route('register') }}" class="flex items-center justify-center h-10 px-5 ml-2 font-display text-sm text-accent bg-transparent rounded-xl  border border-accent hover:scale-105 transition duration-500 ">Register</a>
               </div>
            @endif
         
@@ -1133,5 +1134,6 @@
       });
     }, 1000);
   </script>
+     @livewireScripts
   </body>
 </html>

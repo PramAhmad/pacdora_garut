@@ -1,4 +1,65 @@
-<div class="grid grid-cols-1 gap-[1.875rem] md:grid-cols-2 lg:grid-cols-3 pb-10" >
+@extends("front.layouts.app")
+@section("content")
+<main class="py-[135px]">
+    
+  <!-- <div class="py-[100px]"></div> -->
+  <div class="xl:px-24 ">
+
+    <div class="flex flex-col">
+      <div class="relative w-full py-[20px]">
+        <div class=" z-1">
+
+          <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-10 mb-4 ">
+          <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-3 sticky top-4">
+    <div class="bg-white dark:bg-gray-800/40 backdrop-blur-2xl rounded-2xl shadow-lg w-full relative p-4 mb-4">
+        <h3 class="text-accent text-left text-xl font-semibold">Category</h3>
+    </div>
+    <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 mb-4">
+        <div class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-12 xl:col-span-12">
+            <div class="bg-white dark:bg-gray-800/40 backdrop-blur-2xl rounded-2xl shadow-lg w-full relative p-4">
+                <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4">
+                    <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 xl:col-span-2">
+                        <img src="{{ $category->image }}" alt="" class="max-w-30px h-auto rounded-xl">
+                    </div>
+                    <div class="col-span-12 sm:col-span-8 md:col-span-6 lg:col-span-8 xl:col-span-10">
+                        <div class="h-full flex flex-col p-3">
+                            <a href="/category/{{ $category->key }}" class="text-base font-semibold text-gray-600 dark:text-slate-200 block leading-5 truncate hover:underline hover:underline-offset-[4px] {{ request()->is('category/'.$category->key) ? 'text-accent' : '' }}" id="all-categories-link">
+                                Semua Kategori
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @forelse ($category->subcategory as $sub)
+        <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 mb-4">
+            <div class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-12 xl:col-span-12">
+                <div class="bg-white dark:bg-gray-800/40 backdrop-blur-2xl rounded-2xl shadow-lg w-full relative p-4">
+                    <div class="grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4">
+                        <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 xl:col-span-2">
+                            <img src="{{ $sub->image }}" alt="" class="max-w-30px h-auto rounded-xl">
+                        </div>
+                        <div class="col-span-12 sm:col-span-8 md:col-span-6 lg:col-span-8 xl:col-span-10">
+                            <div class="h-full flex flex-col p-3">
+                                <a href="#" class="text-base font-semibold text-gray-600 dark:text-slate-200 block leading-5 truncate hover:underline hover:underline-offset-[4px] subcategory-link" data-key="{{ $sub->key }}">
+                                    {{ $sub->name }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @empty
+        <p>No subcategories available.</p>
+    @endforelse
+</div>
+
+
+
+            <div class="col-span-9" id="category-items">
+            <div class="grid grid-cols-1 gap-[1.875rem] md:grid-cols-2 lg:grid-cols-3" >
 @forelse ($items as $m)
     <article>
         <div class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700">
@@ -67,3 +128,17 @@
     <p>No items available.</p>
 @endforelse
 </div>
+
+                <div class="pagination-links">
+                {{ $items->links() }}
+            </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+
+
+@endsection

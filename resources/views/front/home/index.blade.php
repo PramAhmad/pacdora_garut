@@ -64,7 +64,7 @@
                   </defs>
                   <g clip-path="url(#clipping)">
                     <!-- Bg image -->
-                    <image href="template/dist/img/hero/hero.jpg" width="200" height="200" clip-path="url(#clipping)" />
+                    <image href="{{asset('assets/img/logo.png')}}" width="300" height="300" class="object-center object-cover" clip-path="url(#clipping)" />
                   </g>
                 </svg>
                 <img src="template/dist/img/hero/3D_elements.png" alt="" class="absolute top-0 animate-fly md:-right-[10%]" />

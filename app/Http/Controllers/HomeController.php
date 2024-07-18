@@ -19,22 +19,37 @@ class HomeController extends Controller
      
         return view('front.home.index',$data);
     }
-    public function category( $mockupNameKey)
+    public function category($mockupNameKey)
     {
-        $data["category"] = CategoryModel::where("key", $mockupNameKey)->with("subcategory")->first();
-        $data["model"] = Models::inRandomOrder()->paginate(20);
-        
-        return view('front.category.index', $data);
+        $category = CategoryModel::where("key", $mockupNameKey)->with("subcategory")->first();
+        $items = Models::inRandomOrder()->paginate(9);
+    
+        if (request()->ajax()) {
+            return response()->json([
+                'html' => view('front.category.items_with_pagination', compact('items'))->render(),
+            ]);
+        }
+    
+        return view('front.category.index', compact('category', 'items'));
     }
+    
     public function subcategory($subcategoryKey)
     {
         $subcategory = SubCategoryModel::where("key", $subcategoryKey)->first();
-        $items = Models::where('sub_category', $subcategory->id)->inRandomOrder()->paginate(20);
-
-        return response()->json([
-            'items' => view('front.category.items', compact('items'))->render()
-        ]);
+        $category = $subcategory->categoryname;
+        $items = Models::where('sub_category', $subcategory->id)->paginate(9);
+    
+        if (request()->ajax()) {
+            return response()->json([
+                'html' => view('front.category.items_with_pagination', compact('items'))->render(),
+            ]);
+        }
+      
+    
+        return view('front.subcategory.index', compact('category', 'subcategory', 'items'));
     }
+    
+
     public function detail($modelId)
     {
         $data["detail"] = $this->get('https://api.pacdora.com/open/v1/models/'.$modelId);
