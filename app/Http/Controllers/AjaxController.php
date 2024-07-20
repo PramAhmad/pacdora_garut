@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use App\Models\Kota;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,16 @@ class AjaxController extends Controller
                                 ->orWhere('nama_provinsi', 'LIKE', '%' . $request->term . '%')
                                 ->simplePaginate($resultCount);
 
+        $wilayah = Kelurahan::select('kelurahan.id as id','nama_kelurahan', 'nama_kecamatan', 'nama_kota', 'nama_provinsi')
+                                ->join('kecamatan', 'kecamatan.id', 'kelurahan.kecamatan_id')
+                                ->join('kota', 'kota.id', 'kecamatan.kota_id')
+                                ->join('provinsi', 'provinsi.id', 'kota.provinsi_id')
+                                ->where('nama_kelurahan', 'LIKE', '%' . $request->term . '%')
+                                ->orWhere('nama_kecamatan', 'LIKE', '%' . $request->term . '%')
+                                ->orWhere('nama_kota', 'LIKE', '%' . $request->term . '%')
+                                ->orWhere('nama_provinsi', 'LIKE', '%' . $request->term . '%')
+                                ->simplePaginate($resultCount);
+        
         $morePages = true;
 
         if (empty($wilayah->nextPageUrl())) {

@@ -757,7 +757,7 @@
 
           <!-- Filter -->
           <div class="mb-8 flex flex-wrap items-center justify-between">
-            <form action="{{route('ajax.filter.category')}}" id="filtercategory">
+            <form action="" id="filtercategory">
             <ul class="flex flex-wrap items-center">
               <li class="my-1 mr-2.5">
                 <a

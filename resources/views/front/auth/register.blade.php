@@ -92,35 +92,54 @@
 
             <!-- is garut using radio -->
             <div class="mb-6">
-              <label for="is_garut" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                Apakah Usaha Berada di Garut?<span class="text-red">*</span>
-              </label>
-              <div class="flex items center space-x-4 ">
-                <div class="flex items-center space-x-2 mt-5">
-                  <input
-                    type="radio"
-                    id="is_garut_yes"
-                    name="is_garut"
-                    value="1"
-                    class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700"
-                  />
-                  <label for="is_garut_yes" class="text-sm dark:text-jacarta-200">Ya</label>
-                </div>
-                <div class="flex items
-                center space-x-2 mt-5">
-                  <input
-                    type="radio"
-                    id="is_garut_no"
-                    name="is_garut"
-                    value="0"
-                    class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700"
-                  />
-                  <label for="is_garut_no" class="text-sm dark:text-jacarta-200">Tidak</label>
+  <label for="is_garut" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+    Apakah Usaha Berada di Garut?<span class="text-red">*</span>
+  </label>
+  <div class="flex items-center space-x-4">
+    <div class="flex items-center space-x-2 ">
+      <input
+        type="radio"
+        id="is_garut_yes"
+        name="is_garut"
+        value="1"
+        class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700"
+      />
+      <label for="is_garut_yes" class="text-sm dark:text-jacarta-200">Ya</label>
+    </div>
+    <div class="flex items-center space-x-2 ">
+      <input
+        type="radio"
+        id="is_garut_no"
+        name="is_garut"
+        value="0"
+        class="h-4 w-4 text-accent  border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700"
+      />
+      <label for="is_garut_no" class="text-sm dark:text-jacarta-200" id="label_is_garut_no">Tidak</label>
+      <div id="domisili_input"  style="display: none;">
 
-                  </div>
-                  </div>
-                  </div>
+        <input
+      type="text"
+      id="domisili"
+      name="domisili"
+      placeholder="masukan domisili"
+      class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300"
+    />
+</div>
+    </div>
+  </div>
+</div>
 
+
+
+
+
+            </div>
+            <div class="mb-6">
+            <label for="wilayah" class="mb-3 block
+                font-display text-sm text-jacarta-700 dark:text-white">Wilayah
+             <span class="text-red">*</span>
+            </label>
+                <select name="wilayah" id="wilayah" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white wilayah dark:placeholder:text-jacarta-300"></select>
             </div>
             <!-- alamat usaha -->
             <div class="mb-6">
@@ -139,41 +158,7 @@
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
               @enderror
             </div>
-            <div class="mt-6">
-              <label for="file_ktp" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                Dokumen KTP<span class="text-red">*</span>
-              </label>
-              <input
-                    type="file"
-                    class="block w-full text-sm text-slate-500  border border-jacarta-100 py-1 px-1 rounded-lg 
-                        file:mr-4 file:py-3 file:px-4 file:rounded-md
-                        file:border-0 file:text-sm file:font-semibold
-                        file:bg-accent-50 file:text-accent-700 
-                        hover:file:bg-jacarta-100  dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300"
-                        name="file_ktp"
-                  />
-              @error('file_ktp')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-              @enderror
-            </div>
-            <!-- file nib -->
-            <div class="my-6">
-              <label for="file_nib" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                Dokumen NIB<span class="text-red">*</span>
-              </label>
-              <input
-                    type="file"
-                    class="block w-full text-sm text-slate-500  border border-jacarta-100 py-1 px-1 rounded-lg 
-                        file:mr-4 file:py-3 file:px-4 file:rounded-md
-                        file:border-0 file:text-sm file:font-semibold
-                        file:bg-accent-50 file:text-accent-700
-                        hover:file:bg-jacarta-100  dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300"
-                        name="file_nib"
-                  />
-              @error('file_nib')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-              @enderror
-            </div>
+           
             <!-- email password 1/2 1/2 -->
             <div class="flex space-x-7 mt-5">
               <div class="mb-6 w-1/2">
@@ -208,6 +193,23 @@
                 @enderror
               </div>
             </div>
+            <!-- refresnsi -->
+            <div class="mb-6">
+              <label for="referensi" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                Referensi<span class="text-red">*</span>
+              </label>
+             <select name="referensi" id=""
+             class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300">
+                <option value="">Pilih Referensi</option>
+                <option value="0">Dinas Koperasi dan UKM Kab. Garut</option>
+                <option value="1">Website</option>
+                <option value="2">Social Media</option>
+                <option value="3">Lainya</option>
+            </select>
+              @error('referensi')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+              @enderror
+              </div>
 
             <div class="mb-6 mt-5 flex items-center space-x-2">
               <input
@@ -303,6 +305,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- jqeury -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  
 
 <script>
   $(document).ready(function() {
@@ -386,5 +391,55 @@
     });
   });
 </script>
+<script>
+   $(".select2").select2({
+           
+                placeholder: "Pilih Wilayah",
+                allowClear: true
+            });
+
+            $('.wilayah').select2({
+                
+                placeholder: "Cari Kecamatan, Kota atau Provinsi",
+                minimumInputLength: 1,
+                ajax: {
+                    url: `{{ route('ajax.wilayah.search') }}`,
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: $.map(data.data, function(item) {
+                                return {
+                                    text: `${item.nama_provinsi}, ${item.nama_kota}, ${item.nama_kecamatan}, ${item.nama_kelurahan}`,
+                                    id: item.id,
+                                }
+                            }),
+                            pagination: {
+                                more: data.more_pagination
+                            }
+                        }
+                    },
+                    cache: true
+                }
+            })
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('input[name="is_garut"]').on('change', function() {
+      if ($('input[name="is_garut"]:checked').val() == '0') {
+        $('#domisili_input').show();
+        $('#is_garut_no').hide();
+        $('#label_is_garut_no').hide();
+      } else {
+        $('#domisili_input').hide();
+        $('#domisili').val('');
+        $('#is_garut_no').show();
+        $('#label_is_garut_no').show();
+      }
+    });
+  });
+</script>
+  
 
 @endsection

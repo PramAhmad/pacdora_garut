@@ -10,15 +10,21 @@ class Umkm extends Model
     use HasFactory;
     protected $table = 'umkm';
     protected $fillable = [
+        'nama',
         'user_id',
-        'noktp',
+        'nik',
+        'provinsi_id',
+        'kota_id',
+        'kecamatan_id',
+        'kelurahan_id', 
         'nama_pemilik',
         'nama_usaha',
         'alamat_usaha',
-        'no_nib',
-        'file_ktp',
-        'file_nib',
         'nohp',
         'approved',
     ];
+
+    public function user()  {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

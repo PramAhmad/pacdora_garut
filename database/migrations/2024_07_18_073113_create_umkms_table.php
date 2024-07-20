@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('nama_usaha');
             $table->string('alamat_usaha');
             $table->enum('disabilitas', ['ya', 'tidak'])->default('tidak');
-            $table->integer('nohp');
+            $table->bigInteger('nohp');
             $table->boolean('approved')->default(false);
         });
     }

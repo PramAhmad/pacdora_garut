@@ -21,14 +21,14 @@
                         <a href="#">
                             <img src="{{ $m->flute }}" alt="creator" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent" data-tippy-content="Creator: Sussygirl" />
                         </a>
-                        <a href="#">
+                        <a href="">
                             <img src="{{ $m->white_board }}" alt="owner" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent" data-tippy-content="Owner: Sussygirl" />
                         </a>
                     </div>
                 </div>
             </figure>
             <div class="mt-7 flex items-center justify-between">
-                <a href="item.html">
+                <a href="/detail/{{$m->model}}">
                     <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white">{{ $m->title }}</span>
                 </a>
                 <div class="dropup rounded-full hover:bg-jacarta-100 dark:hover:bg-jacarta-600">
