@@ -102,8 +102,8 @@
 @endsection
 
 @push('js')
-<script src="admin/package/dist/libs/jquery/dist/jquery.min.js"></script>
-<script src="admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('admin/package/dist/libs/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
@@ -138,7 +138,9 @@
         // Edit subcategory
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
-            $.get('/subcategory/' + id + '/edit', function(data) {
+            console.log(id);
+        $.get('/admin'+'/subcategory/' + id + '/edit', function(data) {
+                console.log(data)
                 $('#edit-id').val(data.id);
                 $('#edit-name').val(data.name);
                 $('#edit-key').val(data.key);
@@ -154,7 +156,7 @@
             var id = $('#edit-id').val();
             $.ajax({
                 type: 'PUT',
-                url: '/subcategory/' + id,
+                url: '/admin/subcategory/' + id,
                 data: $(this).serialize(),
                 success: function(response) {
                     $('#edit-modal').modal('hide');

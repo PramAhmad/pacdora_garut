@@ -44,10 +44,10 @@ class UmkmDataTable extends DataTable
                         Actions
                       </button>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/umkm/show/'.$umkm->id.'">Detail</a></li>
-                        <li><a class="dropdown-item" href="/umkm/edit/'.$umkm->id.'">Edit</a></li>
+                        <li><a class="dropdown-item" href="/admin/umkm/show/'.$umkm->id.'">Detail</a></li>
+                        <li><a class="dropdown-item" href="/admin/umkm/edit/'.$umkm->id.'">Edit</a></li>
                         <li>
-                          <form action="/umkm/delete/'.$umkm->id.'" method="POST" style="display:inline;">
+                          <form action="/admin/umkm/delete/'.$umkm->id.'" method="POST" style="display:inline;">
                             '.csrf_field().'
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="dropdown-item">Delete</button>

@@ -47,16 +47,26 @@ Route::group(['middleware' => ['auth','role:user']], function () {
 });
 
 // 
-Route::group(['middleware' => ['auth','role:admin']], function () {
-    Route::get('/dashboard',[DashboardControler::class, 'index'])->name('dashboard');
-    Route::resource('umkm', UmkmController::class);
-    Route::get("/umkm/show/{id}",[UmkmController::class,'show']);
-    Route::get('/approved',[ApprovalController::class, 'index'])->name('approved.index');
-    Route::put('/approved/{id}',[ApprovalController::class, 'update'])->name('approved');
-    Route::put("/unapprov/{id}",[ApprovalController::class,'inactive'])->name('unapprov');
-    Route::resource('/category', CategoryController::class);
-    Route::delete('/category/delete/{id}',[CategoryController::class,"destroy"]);
-    Route::resource('/subcategory', SubCategoryController::class);
-    Route::delete('/subcategory/delete/{id}',[SubCategoryController::class,"destroy"]);
+// group route url to admin
 
+Route::group(['middleware' => ['auth','role:admin']], function () {
+    // prefix admin
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/dashboard',[DashboardControler::class, 'index'])->name('dashboard');
+        
+        Route::resource('umkm', UmkmController::class);
+        Route::get("/umkm/show/{id}",[UmkmController::class,'show']);
+    
+        Route::get('/approved',[ApprovalController::class, 'index'])->name('approved.index');
+        Route::put('/approved/{id}',[ApprovalController::class, 'update'])->name('approved');
+        Route::put("/unapprov/{id}",[ApprovalController::class,'inactive'])->name('unapprov');
+        Route::resource('/category', CategoryController::class);
+        Route::get('/category/edit/{id}',[CategoryController::class,"edit"]);
+        Route::delete('/category/delete/{id}',[CategoryController::class,"destroy"]);
+        Route::get('/subcategory/edit/{id}',[SubCategoryController::class,"edit"]);
+        Route::delete('/subcategory/delete/{id}',[SubCategoryController::class,"destroy"]);
+        
+        Route::resource('/subcategory', SubCategoryController::class);
+    });
+ 
 });
