@@ -2,63 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\SubCategoryDataTable;
+use App\Models\CategoryModel;
+use App\Models\SubCategoryModel;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // SubCategoryController.php
+
+    public function index(SubCategoryDataTable $dataTable)
     {
-        //
+        $categories = CategoryModel::all();
+        return $dataTable->render('back.subcategory.index',compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'key' => 'required',
+            'image' => 'required',
+            'category_id' => 'required|exists:category,id',
+        ]);
+
+        $subcategory = SubCategoryModel::create($validated);
+        return response()->json(['message' => $subcategory->name . " created"], 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $subcategory = SubCategoryModel::findOrFail($id);
+        return response()->json($subcategory);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'key' => 'required',
+            'image' => 'required',
+            'category_id' => 'required|exists:category,id',
+        ]);
+
+        $subcategory = SubCategoryModel::findOrFail($id);
+        $subcategory->update($validated);
+
+        return response()->json(['message' => $subcategory->name . " updated"], 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        SubCategoryModel::destroy($id);
+        return redirect()-back()->with('succes','berhasil delete data');
     }
 }

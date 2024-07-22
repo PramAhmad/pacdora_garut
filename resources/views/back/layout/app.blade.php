@@ -13,27 +13,147 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="admin/package/dist/images/logos/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="{{asset('admin/package/dist/images/logos/favicon.ico')}}" />
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="admin/package/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="admin/package/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{{asset('/admin/package/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/admin/package/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
     <style>
       .dataTables_length{
         display: none;
       }
     </style>
+        <style>
+      
+      .select2.select2-container {
+        width: 100% !important;
+      }
+      
+      .select2.select2-container .select2-selection {
+        border: 1px solid rgb(231 232 236);
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+        height:40px;
+        margin-bottom: 15px;
+        outline: none !important;
+        transition: all .15s ease-in-out;
+      }
+      
+      .select2.select2-container .select2-selection .select2-selection__rendered {
+        color: #333;
+        line-height: 40px;
+        padding-right: 33px;
+      }
+      
+      .select2.select2-container .select2-selection .select2-selection__arrow {
+        background: #f8f8f8;
+        border-left: 1px solid rgb(231 232 236);
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 7px 7px 0;
+        height: 40px;
+        width: 33px;
+      }
+      
+      .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
+        background: #f8f8f8;
+      }
+      
+      .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
+        -webkit-border-radius: 0 3px 0 0;
+        -moz-border-radius: 0 3px 0 0;
+        border-radius: 0 3px 0 0;
+      }
+      
+      .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
+        border: 1px solid #34495e;
+      }
+      
+      .select2.select2-container .select2-selection--multiple {
+        height: auto;
+        min-height: 34px;
+      }
+      
+      .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
+        margin-top: 0;
+        height: 30px;
+      }
+      
+      .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+        display: block;
+        padding: 0 4px;
+        line-height: 29px;
+      }
+      
+      .select2.select2-container .select2-selection--multiple .select2-selection__choice {
+        background-color: #f8f8f8;
+        border: 1px solid rgb(231 232 236);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 9px;
+        margin: 4px 4px 0 0;
+        padding: 0 6px 0 22px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        position: relative;
+      }
+      
+      .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 46px;
+        width: 46px;
+        margin: 0;
+        text-align: center;
+        color: #e74c3c;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      
+      .select2-container .select2-dropdown {
+        background: transparent;
+        border: none;
+        margin-top: -5px;
+      }
+      
+      .select2-container .select2-dropdown .select2-search {
+        padding: 0;
+      }
+      
+      .select2-container .select2-dropdown .select2-search input {
+        outline: none !important;
+        border: 1px solid #34495e !important;
+        border-bottom: none !important;
+        padding: 8px 12px !important;
+      }
+      
+      .select2-container .select2-dropdown .select2-results {
+        padding: 0;
+      }
+      
+      .select2-container .select2-dropdown .select2-results ul {
+        background: #fff;
+        border: 1px solid #34495e;
+      }
+      
+      .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+        background-color: #3498db;
+      }
+            </style> 
 
     <!-- Core Css -->
-    <link  id="themeColors"  rel="stylesheet" href="admin/package/dist/css/style.min.css" />
+    <link  id="themeColors"  rel="stylesheet" href="{{asset('admin/package/dist/css/style.min.css')}}" />
   </head>
   <body>
     <!-- Preloader -->
     <div class="preloader">
-      <img src="admin/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
+      <img src="{{asset('admin/package/dist/images/logos/favicon.ico')}}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-      <img src="admin/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
+      <img src="{{asset('admin/package/dist/images/logos/favicon.ico')}}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -60,7 +180,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('dashboard')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-aperture"></i>
+                    <i class="ti ti-dashboard"></i>
                   </span>
                   <span class="hide-menu">Dashboard</span>
                 </a>
@@ -68,7 +188,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                   <span class="d-flex">
-                    <i class="ti ti-file-text"></i>
+                    <i class="ti ti-database"></i>
                   </span>
                   <span class="hide-menu">Master Data</span>
                 </a>
@@ -129,7 +249,7 @@
           <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">
               <div class="john-img">
-                <img src="admin/package/dist/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="">
+                <img src="{{asset('admin/package/dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="40" height="40" alt="">
               </div>
               <div class="john-title">
                 <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
@@ -373,7 +493,7 @@
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
                           <span class="me-3">
-                            <img src="admin/package/dist/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48" height="48" />
+                            <img src="{{asset('admin/package/dist/images/profile/user-1.jpg')}}" alt="user" class="rounded-circle" width="48" height="48" />
                           </span>
                           <div class="w-75 d-inline-block v-middle">
                             <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
@@ -418,7 +538,7 @@
                         </a>
                         <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
                           <span class="me-3">
-                            <img src="admin/package/dist/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48" height="48" />
+                            <img src="{{asset('admin/package/dist/images/profile/user-1.jpg')}}" alt="user" class="rounded-circle" width="48" height="48" />
                           </span>
                           <div class="w-75 d-inline-block v-middle">
                             <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
@@ -435,7 +555,7 @@
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                       <div class="d-flex align-items-center">
                         <div class="user-profile-img">
-                          <img src="admin/package/dist/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
+                          <img src="{{asset('admin/package/dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="35" height="35" alt="" />
                         </div>
                       </div>
                     </a>
@@ -445,7 +565,7 @@
                           <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                         </div>
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                          <img src="admin/package/dist/images/profile/user-1.jpg" class="rounded-circle" width="80" height="80" alt="" />
+                          <img src="{{asset('admin/package/dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
                             <h5 class="mb-1 fs-3">Mathew Anderson</h5>
                             <span class="mb-1 d-block text-dark">Designer</span>
@@ -497,7 +617,8 @@
                               </div>
                             </div>
                           </div>
-                          <a href="./authentication-login.html" class="btn btn-outline-primary">Log Out</a>
+                          <a href="#" class="btn btn-outline-primary" id="logoutButton">Log Out</a>
+
                         </div>
                       </div>
                     </div>
@@ -524,7 +645,7 @@
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
       <nav class="sidebar-nav scroll-sidebar">
         <div class="offcanvas-header justify-content-between">
-          <img src="admin/package/dist/images/logos/favicon.ico" alt="" class="img-fluid">
+          <img src="{{asset('admin/package/dist/images/logos/favicon.ico')}}" alt="" class="img-fluid">
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar=""  data-simplebar>
@@ -802,22 +923,67 @@
   <!--  Customizer -->
     <!--  Import Js Files -->
       @stack('js')
-    <script src="admin/package/dist/libs/jquery/dist/jquery.min.js"></script>
-    <script src="admin/package/dist/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="admin/package/dist/js/datatable/datatable-basic.init.js"></script>
+      
+    <script src="{{asset('/admin/package/dist/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/libs/simplebar/dist/simplebar.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/datatable/datatable-basic.init.js')}}"></script>
 
-    <script src="admin/package/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="{{asset('/admin/package/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!--  core files -->
-    <script src="admin/package/dist/js/app.min.js"></script>
-    <script src="admin/package/dist/js/app.init.js"></script>
-    <script src="admin/package/dist/js/app-style-switcher.js"></script>
-    <script src="admin/package/dist/js/sidebarmenu.js"></script>
-    <script src="admin/package/dist/js/custom.js"></script>
+    <script src="{{asset('/admin/package/dist/js/app.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/app.init.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/app-style-switcher.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/sidebarmenu.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/custom.js')}}"></script>
     <!--  current page js files -->
-    <script src="admin/package/dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="admin/package/dist/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="admin/package/dist/js/dashboard.js"></script>
+    <script src="{{asset('/admin/package/dist/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
+    <script src="{{asset('/admin/package/dist/js/dashboard.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#logoutButton').on('click', function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You are about to log out.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, log out!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: `{{ route('logout') }}`,
+                            type: 'POST',
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                Swal.fire(
+                                    'Logged Out!',
+                                    'You have been logged out successfully.',
+                                    'success'
+                                ).then(() => {
+                                    window.location.href = '/';
+                                });
+                            },
+                            error: function(xhr) {
+                                Swal.fire(
+                                    'Error!',
+                                    'There was an error logging you out.',
+                                    'error'
+                                );
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
   </body>
 </html>

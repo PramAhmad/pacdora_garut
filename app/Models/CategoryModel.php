@@ -10,9 +10,9 @@ class CategoryModel extends Model
     use HasFactory;
     protected $table ="category";
     protected $fillable =[
-        "id",
         "name",
-        "key"
+        "key",
+        'image'
     ];
 
     // hashmany

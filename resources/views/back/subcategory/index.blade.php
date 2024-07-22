@@ -12,9 +12,9 @@
 <div class="card">
     <div class="card-body">
         <div class="mb-2">
-            <h5 class="mb-0">Data Master Category</h5>
+            <h5 class="mb-0">Data Master Subcategory</h5>
         </div>
-        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#create-modal">Create Category</button>
+        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#create-modal">Create Subcategory</button>
         <div style="width: 100%;">
             {{ $dataTable->table() }}
         </div>
@@ -26,11 +26,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Create Category</h5>
+                <h5 class="modal-title" id="createModalLabel">Create Subcategory</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="create-category-form">
+                <form id="create-subcategory-form">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -39,6 +39,14 @@
                     <div class="mb-3">
                         <label for="key" class="form-label">Key</label>
                         <input type="text" class="form-control" id="key" name="key" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Category</label>
+                        <select class="form-select" id="category_id" name="category_id" required>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image URL</label>
@@ -56,11 +64,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Category</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit Subcategory</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="edit-category-form">
+                <form id="edit-subcategory-form">
                     @csrf
                     @method('PUT')
                     <input type="hidden" id="edit-id" name="id">
@@ -71,6 +79,14 @@
                     <div class="mb-3">
                         <label for="edit-key" class="form-label">Key</label>
                         <input type="text" class="form-control" id="edit-key" name="key" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-category_id" class="form-label">Category</label>
+                        <select class="form-select" id="edit-category_id" name="category_id" required>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="edit-image" class="form-label">Image URL</label>
@@ -93,70 +109,67 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // Create category 
-        $('#create-category-form').on('submit', function(e) {
+        // Create subcategory
+        $('#create-subcategory-form').on('submit', function(e) {
             e.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: `{{ route('category.store') }}`,
+                url: `{{ route('subcategory.store') }}`,
                 data: $(this).serialize(),
                 success: function(response) {
-                    console.log(response)
                     $('#create-modal').modal('hide');
-                    $('#category-table').DataTable().ajax.reload();
+                    $('#subcategory-table').DataTable().ajax.reload();
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'Category created successfully!',
+                        text: 'Subcategory created successfully!',
                     });
                 },
                 error: function(response) {
-                    console.log(response)
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Error creating category!',
+                        text: 'Error creating subcategory!',
                     });
                 }
             });
         });
 
-        // Edit category
+        // Edit subcategory
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
-            $.get('/category/' + id + '/edit', function(data) {
-                console.log(data)
+            $.get('/subcategory/' + id + '/edit', function(data) {
                 $('#edit-id').val(data.id);
                 $('#edit-name').val(data.name);
                 $('#edit-key').val(data.key);
+                $('#edit-category_id').val(data.category_id);
                 $('#edit-image').val(data.image);
                 $('#edit-modal').modal('show');
             });
-        })
+        });
 
-
-        // Update category AJAX
-        $('#edit-category-form').on('submit', function(e) {
+        // Update subcategory AJAX
+        $('#edit-subcategory-form').on('submit', function(e) {
             e.preventDefault();
             var id = $('#edit-id').val();
             $.ajax({
                 type: 'PUT',
-                url: '/category/' + id,
+                url: '/subcategory/' + id,
                 data: $(this).serialize(),
                 success: function(response) {
                     $('#edit-modal').modal('hide');
-                    $('#category-table').DataTable().ajax.reload();
+                    $('#subcategory-table').DataTable().ajax.reload();
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'Category updated successfully!',
+                        text: 'Subcategory updated successfully!',
                     });
                 },
                 error: function(response) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Error updating category!',
+                        text: 'Error updating subcategory!',
                     });
                 }
             });

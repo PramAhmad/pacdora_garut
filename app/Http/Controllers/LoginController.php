@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -10,32 +12,48 @@ class LoginController extends Controller
     {
         return view('front.auth.login');
     }
-    public function store(){
-        $credentials = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'approved' => 'in:1'
-        ],[
-            'email.required' => 'Email harus diisi',
-            'email.email' => 'Email tidak valid',
-            'password.required' => 'Password harus diisi',
-            'approved.in' => 'Akun anda belum di verifikasi oleh admin'
-        ]);
-       if(auth()->attempt($credentials)){
-           if(auth()->user()->role == 'admin'){
-            //    return succes data
+    public function store(Request $request)
+{
+    // Validate the input data
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ], [
+        'email.required' => 'Email harus diisi',
+        'email.email' => 'Email tidak valid',
+        'password.required' => 'Password harus diisi',
+    ]);
+
+    // Attempt to authenticate the user
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        // Check the user's role and approval status
+        if ($user->role == 'admin') {
             return response()->json(['success' => 'Selamat datang admin']);
-           }
-          else if(auth()->user()->role == 'user' && auth()->user()->approved == 1){
-              return redirect()->route('home');
+        } elseif ($user->role == 'user') {
+            if ($user->umkm->approved == 1) {
+                return response()->json(['success' => 'Selamat datang di beranda'], 200);
+            } else {
+                Auth::logout();
+                return response()->json(['message' => 'Akun anda belum di verifikasi oleh admin'], 403);
+            }
+        } else {
+            Auth::logout();
+            return response()->json(['message' => 'Peran pengguna tidak valid'], 403);
+        }
+    } else {
+        throw ValidationException   ::withMessages([
+            'email' => ['Email atau Password salah'],
+        ]);
+    }
+}
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-           }
-              else{
-                return response()->json(['message' => 'Akun anda belum di verifikasi oleh admin']);
-              }
-         }
-         
-
-        return back()->with('status','Email atau Password salah');
+        return redirect('/');
     }
 }

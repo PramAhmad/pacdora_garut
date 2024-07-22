@@ -30,8 +30,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'key' => 'required',
+            'image' => 'required',
+            'icon'=> 'nullable'
+        ]);
+        $category = CategoryModel::create($validated);
+        return response()->json(['message' => $category->name . " created"], 200);
     }
+    
 
     /**
      * Display the specified resource.
@@ -56,14 +64,32 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $validated = $request->validate([
+            'name' => 'required',
+            'key' => 'required',
+            'image' => 'required'
+        ]);
+    
+        $category = CategoryModel::findOrFail($id);
+        $category->update($validated);
+        return response()->json(['message' => $category->name . ' updated successfully.']);
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $category = CategoryModel::findOrFail($id);
+            $category->delete();
+            return redirect()->back()->with("succes","berhasil delete category");
+        } catch (\Exception $e) {
+
+            return response()->json(['error' => 'Category not found or could not be deleted.'], 404);
+        }
     }
+    
 }

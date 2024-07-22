@@ -21,6 +21,13 @@ class ApprovalController extends Controller
         $umkm = Umkm::find($id);
         $umkm->approved = 1;
         $umkm->save();
-        return redirect()->route('umkm.index')->with('success', 'UMKM berhasil di approve');
+        return response()->json(['message' => 'Data berhasil diapproved'], 200);
+    }
+
+    public function inactive($id){
+        $umkm = Umkm::findOrFail($id);
+        $umkm->approved = 0;
+        $umkm->save();
+        return response()->json(['message' => 'Data berhasil di nonaaktifkan'], 200);
     }
 }

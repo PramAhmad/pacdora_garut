@@ -3,7 +3,7 @@
     <article>
         <div class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700">
             <figure class="relative">
-                <a href="item.html">
+                <a href="/detail/{{$m->model}}">
                     <img src="{{ $m->image }}" alt="item 5" class="w-full h-[300px] rounded-[0.625rem]" loading="lazy" />
                 </a>
                 @if ($m->subimageone)
@@ -18,12 +18,18 @@
                 @endif
                 <div class="absolute left-3 -bottom-3">
                     <div class="flex -space-x-2">
+                        @if ($m->flute)
+                            
                         <a href="#">
-                            <img src="{{ $m->flute }}" alt="creator" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent" data-tippy-content="Creator: Sussygirl" />
+                            <img src="{{ $m->flute }}" alt="creator" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
                         </a>
+                        @endif
+                        @if ($m->white_board)
+                            
                         <a href="">
-                            <img src="{{ $m->white_board }}" alt="owner" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent" data-tippy-content="Owner: Sussygirl" />
+                            <img src="{{ $m->white_board }}" alt="owner" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
                         </a>
+                        @endif
                     </div>
                 </div>
             </figure>

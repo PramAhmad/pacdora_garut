@@ -446,7 +446,7 @@
                  
                 >
                   <div class="pac-loading small"></div>
-                  Design online
+                  Design online {{Auth::user()->id}}
                 </div>
               </div>
               <div
@@ -475,15 +475,28 @@
   <script src="https://cdn.pacdora.com/Pacdora-v1.1.1.js"></script>
   <script src="{{asset('js/base.js')}}"></script>
   <script src="{{asset('js/detail.js')}}"></script>
+  @push('js')
+  <script>
+  
+  console.log("{{Auth::user()->id}}")
+  setTimeout(async () => {
+      await Pacdora.init({
+        userId: "10",
+        appId: "71ee73045e3480fe",
+        isDelay: true,
+      });
+    }, 1000);
+</script>
+  @endpush
   <script>
     (async () => {
-      const userId = localStorage.getItem("username");
-      let externalId = localStorage.getItem("externalId");
-      if (!externalId) {
-        externalId = Math.random().toFixed(16).substring(1).toString(16);
-        localStorage.setItem("externalId", externalId);
-      }
-      
+      // const userId = localStorage.getItem("username");
+      // let externalId = localStorage.getItem("externalId");
+      // if (!externalId) {
+      //   externalId = Math.random().toFixed(16).substring(1).toString(16);
+      //   localStorage.setItem("externalId", externalId);
+      // }
+     
       await Pacdora.init({
         userId: "10",
         appId: "71ee73045e3480fe",
@@ -496,12 +509,11 @@
       });
 
       const modelId = "{{$modelid}}";
-      const id = getQueryValue("id");
+      const id = '1';
       const templateId = getQueryValue("templateId");
       // Create a project
       await Pacdora.createScene({
-     
-        modelId: modelId,
+        modelId: modelId, 
         isShowLoading: false,
         doneBtn: "Save",
       });
@@ -528,44 +540,7 @@
 
       // Listen for the callback event after the `data-pacdora-ui="design-btn"` component editor has successfully opened
       Pacdora.$on("design:opened", () => {
-        if (!userId) {
-    loginBtn.onclick = function () {
-      const dom = document.createElement("div");
-      Object.assign(dom.style, {
-        width: "540px",
-        height: "520px",
-        position: "fixed",
-        display: "inline-block",
-        borderRadius: "16px",
-        left: 0,
-        top: 0,
-        bottom: 0,
-        right: 0,
-        margin: "auto",
-        padding: "0 20px",
-        boxShadow: "0px 8px 24px rgba(113, 66, 180, 0.12)",
-        background: "#fff",
-      });
-      dom.innerHTML = `
-        <div class="login-header">
-          <i class="iconfont icon-ico-qingkong" onclick="closeLogin()"></i>
-        </div>
-        <div class="login-title">
-          Sign in
-        </div>
-        <div class="login-form">
-          <div class="form-item" id="login-input">
-            <i class="iconfont icon-zhanghao"></i>
-            <input class="login-input" placeholder="Your email"></input>
-          </div>
-          <div class="login-valid-error"></div>
-          <div class="btn mt40" onclick="onSign()">Sign in</div>
-        </div>
-      `;
-      dom.className = "login-dialog";
-      document.body.appendChild(dom);
-    };
-  }else{
+ 
 
   
         const sizeBox = document.querySelector(".size-box");
@@ -624,7 +599,7 @@
             showApiToast(tipUIEle, ele.dataset.uiTip, false);
           };
         }
-    }
+    
       });
       // Retrieve the box information of the created project and initialize the GUI
       const info = await Pacdora.getBoxInfo();

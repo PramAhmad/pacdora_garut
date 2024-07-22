@@ -10,4 +10,5 @@ class Provinsi extends Model
     use HasFactory;
 
     protected $table = 'provinsi';
+    
 }

@@ -46,7 +46,7 @@ class AjaxController extends Controller
                                 ->orWhere('nama_provinsi', 'LIKE', '%' . $request->term . '%')
                                 ->simplePaginate($resultCount);
 
-        $wilayah = Kelurahan::select('kelurahan.id as id','nama_kelurahan', 'nama_kecamatan', 'nama_kota', 'nama_provinsi')
+        $wilayah = Kelurahan::select('kelurahan.id as id','provinsi.id as provinsi_id','kota.id as kota_id','kecamatan.id as kecamatan_id','nama_kelurahan', 'nama_kecamatan', 'nama_kota', 'nama_provinsi')
                                 ->join('kecamatan', 'kecamatan.id', 'kelurahan.kecamatan_id')
                                 ->join('kota', 'kota.id', 'kecamatan.kota_id')
                                 ->join('provinsi', 'provinsi.id', 'kota.provinsi_id')

@@ -51,7 +51,7 @@
               confirmButtonColor: '#4CAF50',
               confirmButtonText: 'Ok'
             }).then(() => {
-              window.location.href = '{{ route("dashboard") }}'; 
+              window.location.href = '{{ route("home") }}'; 
             });
           } else {
             Swal.fire({

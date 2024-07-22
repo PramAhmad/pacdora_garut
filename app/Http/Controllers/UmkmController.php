@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UmkmDataTable;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
+use App\Models\Kota;
+use App\Models\Provinsi;
 use App\Models\Umkm;
 use Illuminate\Http\Request;
 
@@ -39,8 +43,13 @@ class UmkmController extends Controller
      */
     public function show(string $id)
     {
-        $umkm = Umkm::find($id);
-        return view('back.umkm.detail', compact('umkm'));
+        $umkm = Umkm::find($id)->with('provinsi')->first();
+        // $provinsi = Provinsi::all();
+        // $kota = Kota::where('provinsi_id',$umkm->provinsi->id)->get();
+        // $kecamata = Kecamatan::where('kota_id',$umkm->kota->id)->get();
+        // $kelurahan = Kelurahan::where('kecamatan_id',$umkm->kecamatan->id)->get();
+
+        return view('back.umkm.show', compact('umkm'));
     }
 
     /**
@@ -48,8 +57,7 @@ class UmkmController extends Controller
      */
     public function edit(string $id)
     {
-        $umkm = Umkm::find($id);
-        return view('back.umkm.edit', compact('umkm'));
+       
     }
 
     /**
@@ -57,7 +65,39 @@ class UmkmController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $umkm = Umkm::findOrFail($id);
+        
+        $request->validate([
+            'nama' => 'nullable',
+            'nik' => 'nullable',
+            'nama_pemilik' => 'nullable',
+            'nama_usaha' => 'nullable',
+            'alamat_usaha' => 'nullable',
+            'nohp' => 'nullable',
+            'provinsi_id' => 'nullable',
+            'kota_id' => 'nullable',
+            'kecamatan_id' => 'nullable',
+            'kelurahan_id' => 'nullable',
+        ]);
+        if($request->type == 1){
+            // update email or password
+            
+            $umkm->user->email = $request->email;
+            if($request->has('password')){
+                $umkm->user->password = bcrypt($request->password);
+            }
+            $umkm->user->save();
+        
+        }elseif($request->type == 2){
+            $updateData =array_filter($request->all());
+            // if($request->provinsi_id != null){
+            $umkm->update($updateData);
+            return response()->json($umkm);
+        
+
+        }
+        return response()->json(['message' => 'Data berhasil diupdate'], 200);
     }
 
     /**
@@ -71,5 +111,6 @@ class UmkmController extends Controller
     /**
      * Approve UMKM
      */
+    
    
 }
