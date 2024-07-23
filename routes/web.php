@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AjaxCategoryController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardControler;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UmkmController;
@@ -43,7 +45,7 @@ Route::get("/register",[RegisterController::class, 'index'])->name('register');
 Route::get("/wilayah/search",[AjaxController::class,'searchWilayah'])->name("ajax.wilayah.search");
 Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail');
-
+    
 });
 
 // 
@@ -52,6 +54,7 @@ Route::group(['middleware' => ['auth','role:user']], function () {
 Route::group(['middleware' => ['auth','role:admin']], function () {
     // prefix admin
     Route::group(['prefix' => 'admin'], function () {
+        Route::get("/subcategory/search/{id}",[AjaxCategoryController::class,'getSubCategory'])->name("ajax.subcategory");
         Route::get('/dashboard',[DashboardControler::class, 'index'])->name('dashboard');
         
         Route::resource('umkm', UmkmController::class);
@@ -65,8 +68,9 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::delete('/category/delete/{id}',[CategoryController::class,"destroy"]);
         Route::get('/subcategory/edit/{id}',[SubCategoryController::class,"edit"]);
         Route::delete('/subcategory/delete/{id}',[SubCategoryController::class,"destroy"]);
-        
         Route::resource('/subcategory', SubCategoryController::class);
+        Route::resource('/model', ModelsController::class);
+        Route::get('/model/edit/{id}',[ModelsController::class,'edit']);
     });
  
 });

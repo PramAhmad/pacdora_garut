@@ -23,7 +23,49 @@ class ModelsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'models.action')
+            ->editColumn('image', function ($model) {
+                return '<img src="'.$model->image.'" width="100px" height="100px">';
+            })
+            ->editColumn('subimage', function ($model) {
+                return '<img src="'.$model->subimageone .' " width="50px" height="50px" class="mb-3"> <img src="'.$model->subimagetwo.'" width="50px" height="50px">';
+            })
+            ->editColumn('board', function ($model) {
+                return $model->white_board ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+            })
+            ->editColumn('flute', function ($model) {
+                return $model->flute ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+            })
+            ->editColumn('sub_category', function ($model) {
+                return $model->subcategory->name;
+            })
+            ->editColumn('action', function ($model) {
+                return '<div class="btn-group">
+                          <button
+                            class="btn btn-light-secondary text-secondary font-medium btn-sm dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            Actions
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/model/show/'.$model->id.'">Detail</a></li>
+                            <li>
+                                <button type="button" class="dropdown-item edit-btn" data-id="'.$model->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
+                            </li>
+                            <li>
+                              <form action="/model/delete/'.$model->id.'" method="POST" style="display:inline;">
+                                '.csrf_field().'
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="dropdown-item">Delete</button>
+                              </form>
+                            </li>
+                          </ul>
+                        </div>';
+            })
+
+            ->rawColumns(['image', 'subimage', 'subimagetwo', 'action','flute','board','action'])
             ->setRowId('id');
     }
 
@@ -41,11 +83,11 @@ class ModelsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('models-table')
+                    ->setTableId('model-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -63,15 +105,23 @@ class ModelsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::computed('id')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
+            Column::make('image'),
+            Column::make('subimage'),
+            Column::make('title'),
+            Column::make('board'),
+            Column::make('flute'),
+            Column::make('model'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+
         ];
     }
 
