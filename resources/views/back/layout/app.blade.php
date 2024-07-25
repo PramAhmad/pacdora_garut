@@ -243,6 +243,13 @@
                   
                 </ul>
               </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('model.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-paper-bag"></i>
+                  </span>
+                  <span class="hide-menu">Models</span>
+                </a>
            </ul>
          
           </nav>

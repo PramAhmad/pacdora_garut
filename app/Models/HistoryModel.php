@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class HistoryModel extends Model
 {
     use HasFactory;
-    protected $table = 'historymodel';
+    protected $table = 'history_models';
     protected $fillable = [
         'umkm_id',
         'model_id',

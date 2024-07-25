@@ -5,12 +5,15 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardControler;
+use App\Http\Controllers\HistoryModelsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UmkmController;
+use App\Http\Controllers\UmkmProfileController;
+use App\Models\HistoryModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +48,18 @@ Route::get("/register",[RegisterController::class, 'index'])->name('register');
 Route::get("/wilayah/search",[AjaxController::class,'searchWilayah'])->name("ajax.wilayah.search");
 Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail');
-    
+    Route::get('/profile',[UmkmProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit',[UmkmProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update',[UmkmProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/history',[UmkmProfileController::class, 'history'])->name('profile.history');
+    Route::get('/profile/history/{id}',[UmkmProfileController::class, 'historyDetail'])->name('profile.history.detail');
+    Route::get('/profile/history/{id}/edit',[UmkmProfileController::class, 'historyEdit'])->name('profile.history.edit');
+    Route::put('/profile/history/{id}/update',[UmkmProfileController::class, 'historyUpdate'])->name('profile.history.update');
+
+    Route::post('/history/store',[HistoryModelsController::class, 'store'])->name('history.store');
 });
 
-// 
+
 // group route url to admin
 
 Route::group(['middleware' => ['auth','role:admin']], function () {

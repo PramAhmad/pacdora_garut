@@ -30,10 +30,10 @@ class ModelsDataTable extends DataTable
                 return '<img src="'.$model->subimageone .' " width="50px" height="50px" class="mb-3"> <img src="'.$model->subimagetwo.'" width="50px" height="50px">';
             })
             ->editColumn('board', function ($model) {
-                return $model->white_board ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+                return $model->white_board == "ya" ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
             })
             ->editColumn('flute', function ($model) {
-                return $model->flute ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+                return $model->flute == "ya" ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
             })
             ->editColumn('sub_category', function ($model) {
                 return $model->subcategory->name;
