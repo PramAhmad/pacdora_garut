@@ -68,7 +68,7 @@ class UmkmDataTable extends DataTable
      */
     public function query(Umkm $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->where('approved', "!=", 2);
     }
 
     /**

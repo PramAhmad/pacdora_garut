@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Umkm;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -26,9 +27,12 @@ class ApprovalUmkmDataTable extends DataTable
             ->editColumn('user_id', function ($umkm) {
                 return $umkm->user->name;
             })
+            ->editColumn('updated_at', function ($umkm) {
+               return  Carbon::parse($umkm->updated_at)->format('d F Y H:i');          
+            })
 
             ->editColumn('status', function ($umkm) {
-                return $umkm->approved == 0 ? '<span class="badge font-medium bg-light-primary text-primary>Waiting</span>"' : '<span class="badge font-medium bg-light-danger text-danger">Reject</span> ';
+                return $umkm->approved == 2 ? '<span class="badge font-medium bg-light-danger text-danger">Reject</span>' : '<span class="badge font-medium bg-light-primary text-primary">Waiting</span> ';
             })
             ->addColumn('action', function($umkm){
                 return ''
@@ -87,6 +91,7 @@ class ApprovalUmkmDataTable extends DataTable
                   ->addClass('text-center w-full '),
               
                 Column::make('user_id'),
+                Column::make('updated_at'),
                 Column::make('nik'),
                 Column::make('nama_usaha'),
                 Column::make('status'),

@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/profile/history/{id}/edit',[UmkmProfileController::class, 'historyEdit'])->name('profile.history.edit');
     Route::put('/profile/history/{id}/update',[UmkmProfileController::class, 'historyUpdate'])->name('profile.history.update');
 
-    Route::post('/history/store',[HistoryModelsController::class, 'store'])->name('history.store');
+    // Route::post('/history/store',[HistoryModelsController::class, 'store'])->name('history.store');
     Route::post('/export/{id}',[ExportController::class, 'index'])->name('export.pdf');
 });
 
@@ -75,9 +75,11 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::get("/umkm/show/{id}",[UmkmController::class,'show']);
     
         Route::get('/approved',[ApprovalController::class, 'index'])->name('approved.index');
-        Route::get('/approved/{id}',[ApprovalController::class, 'show'])->name('approval.show');
-        Route::put('/approved/{id}',[ApprovalController::class, 'update'])->name('approved');
-        Route::put("/unapprov/{id}",[ApprovalController::class,'inactive'])->name('unapprov');
+        Route::get('/approval/{id}',[ApprovalController::class, 'show'])->name('approval.show');
+        Route::put('/approval/{id}',[ApprovalController::class, 'update'])->name('approval.update');
+
+
+
         Route::resource('/category', CategoryController::class);
         Route::get('/category/edit/{id}',[CategoryController::class,"edit"]);
         Route::delete('/category/delete/{id}',[CategoryController::class,"destroy"]);
@@ -86,6 +88,8 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::resource('/subcategory', SubCategoryController::class);
         Route::resource('/model', ModelsController::class);
         Route::get('/model/edit/{id}',[ModelsController::class,'edit']);
+
+        Route::resource('/history', HistoryModelsController::class);
     });
  
 });

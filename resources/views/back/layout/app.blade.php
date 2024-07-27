@@ -250,7 +250,17 @@
                   </span>
                   <span class="hide-menu">Models</span>
                 </a>
+                </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('history.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-history"></i>
+                  </span>
+                  <span class="hide-menu">History Design</span>
+                </a>
+                </li>
            </ul>
+
          
           </nav>
           <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">

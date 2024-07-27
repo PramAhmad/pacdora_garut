@@ -8,10 +8,13 @@ use App\Models\Kelurahan;
 use App\Models\Kota;
 use App\Models\Provinsi;
 use App\Models\Umkm;
+use App\Models\User;
+use App\Traits\HttpTrait;
 use Illuminate\Http\Request;
 
 class UmkmController extends Controller
 {
+    use HttpTrait;
     /**
      * Display a listing of the resource.
      */
@@ -43,13 +46,17 @@ class UmkmController extends Controller
      */
     public function show(string $id)
     {
-        $umkm = Umkm::find($id)->with('provinsi')->first();
+        $umkm = Umkm::findOrFail($id);
+        $user_id = $umkm->user_id;
+        $design = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=".$user_id);
+      
+
         // $provinsi = Provinsi::all();
         // $kota = Kota::where('provinsi_id',$umkm->provinsi->id)->get();
         // $kecamata = Kecamatan::where('kota_id',$umkm->kota->id)->get();
         // $kelurahan = Kelurahan::where('kecamatan_id',$umkm->kecamatan->id)->get();
 
-        return view('back.umkm.show', compact('umkm'));
+        return view('back.umkm.show', compact('umkm','design'));
     }
 
     /**

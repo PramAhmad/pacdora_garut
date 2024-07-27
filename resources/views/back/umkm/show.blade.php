@@ -239,150 +239,37 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-notifications" role="tabpanel" aria-labelledby="pills-notifications-tab"
-        tabindex="0">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <div class="card">
-              <div class="card-body p-4">
-                <h4 class="fw-semibold mb-3">Notification Preferences</h4>
-                <p>
-                  Select the notificaitons ou would like to receive via email. Please note that you cannot opt out of
-                  receving service
-                  messages, such as payment, security or legal notifications.
-                </p>
-                <form class="mb-7">
-                  <label for="exampleInputPassword1" class="form-label fw-semibold">Email Address*</label>
-                  <input type="text" class="form-control" id="exampleInputtext" placeholder="" required>
-                  <p class="mb-0">Required for notificaitons.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-notifications" role="tabpanel" aria-labelledby="pills-notifications-tab"
+      tabindex="0">
+              <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+                <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Design Project <span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2">{{$design['total'] ?? "0"}}</span></h3>
+                <form class="position-relative">
+                  <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Followers">
+                  <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y text-dark ms-3"></i>
                 </form>
-                <div class="">
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-article text-dark d-block fs-7" width="22" height="22"></i>
-                      </div>
+              </div>
+              <div class="row">
+                @forelse ($design['data'] ?? [] as $item )
+                  
+                <div class=" col-md-6 col-xl-4">
+                  <div class="card">
+                    <div class="card-body p-4 d-flex align-items-center gap-3">
+                      <img src="{{$item['screenshot']}}" alt="" class="rounded-circle" width="40" height="40">
                       <div>
-                        <h5 class="fs-4 fw-semibold">Our newsletter</h5>
-                        <p class="mb-0">We'll always let you know about important changes</p>
+                        <h5 class="fw-semibold mb-0">{{$item['name']}}</h5>
+                        <span class="fs-2 d-flex align-items-center"><i class="ti ti-maximize text-dark fs-3 me-1"></i>{{$item['width']}}*{{$item['height']}}</span>
                       </div>
-                    </div>
-                    <div class="form-check form-switch mb-0">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-checkbox text-dark d-block fs-7" width="22" height="22"></i>
-                      </div>
-                      <div>
-                        <h5 class="fs-4 fw-semibold">Order Confirmation</h5>
-                        <p class="mb-0">You will be notified when customer order any product</p>
-                      </div>
-                    </div>
-                    <div class="form-check form-switch mb-0">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-clock-hour-4 text-dark d-block fs-7" width="22" height="22"></i>
-                      </div>
-                      <div>
-                        <h5 class="fs-4 fw-semibold">Order Status Changed</h5>
-                        <p class="mb-0">You will be notified when customer make changes to the order</p>
-                      </div>
-                    </div>
-                    <div class="form-check form-switch mb-0">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-truck-delivery text-dark d-block fs-7" width="22" height="22"></i>
-                      </div>
-                      <div>
-                        <h5 class="fs-4 fw-semibold">Order Delivered</h5>
-                        <p class="mb-0">You will be notified once the order is delivered</p>
-                      </div>
-                    </div>
-                    <div class="form-check form-switch mb-0">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-mail text-dark d-block fs-7" width="22" height="22"></i>
-                      </div>
-                      <div>
-                        <h5 class="fs-4 fw-semibold">Email Notification</h5>
-                        <p class="mb-0">Turn on email notificaiton to get updates through email</p>
-                      </div>
-                    </div>
-                    <div class="form-check form-switch mb-0">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                      <button class="btn btn-outline-primary py-1 px-2 ms-auto">Follow</button>
                     </div>
                   </div>
                 </div>
+                @empty
+                  <p>Tidak Ada design</p>
+                @endforelse
+             
               </div>
-            </div>
-          </div>
-          <div class="col-lg-9">
-            <div class="card">
-              <div class="card-body p-4">
-                <h4 class="fw-semibold mb-3">Date & Time</h4>
-                <p>Time zones and calendar display settings.</p>
-                <div class="d-flex align-items-center justify-content-between mt-7">
-                  <div class="d-flex align-items-center gap-3">
-                    <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-clock-hour-4 text-dark d-block fs-7" width="22" height="22"></i>
-                    </div>
-                    <div>
-                      <p class="mb-0">Time zone</p>
-                      <h5 class="fs-4 fw-semibold">(UTC + 02:00) Athens, Bucharet</h5>
-                    </div>
-                  </div>
-                  <a class="text-dark fs-6 d-flex align-items-center justify-content-center bg-transparent p-2 fs-4 rounded-circle"
-                    href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download">
-                    <i class="ti ti-download"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-9">
-            <div class="card">
-              <div class="card-body p-4">
-                <h4 class="fw-semibold mb-3">Ignore Tracking</h4>
-                <div class="d-flex align-items-center justify-content-between mt-7">
-                  <div class="d-flex align-items-center gap-3">
-                    <div class="bg-light rounded-1 p-6 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-player-pause text-dark d-block fs-7" width="22" height="22"></i>
-                    </div>
-                    <div>
-                      <h5 class="fs-4 fw-semibold">Ignore Browser Tracking</h5>
-                      <p class="mb-0">Browser Cookie</p>
-                    </div>
-                  </div>
-                  <div class="form-check form-switch mb-0">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="d-flex align-items-center justify-content-end gap-3">
-              <button class="btn btn-primary">Save</button>
-              <button class="btn btn-light-danger text-danger">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
+            
     </div>
 
   </div>
@@ -578,10 +465,11 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: `{{ route('approved', $umkm->id) }}`, 
+                            url: `{{ route('approval.update', $umkm->id) }}`, 
                             type: 'PUT',
                             data: {
                                 _token: '{{ csrf_token() }}'
+                                
                             },
                             success: function(response) {
                                 Swal.fire(
@@ -607,44 +495,7 @@
                 });
             });
 
-            $('#inactive').on('click', function() {
-                Swal.fire({
-                    title: 'Apakah Kamu Yakin?',
-                    text: "Kamu Akan Menonaktifkan UMKM ini.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Nonaktifkan UMKM!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: `{{ route('unapprov', $umkm->id) }}`, 
-                            type: 'PUT',
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
-                            success: function(response) {
-                                Swal.fire(
-                                    'Disapproved!',
-                                    'The item has been disapproved.',
-                                    'success'
-                                );
-                                setTimeout(function(){
-                                    window.location.reload();
-                                }, 3000);
-                            },
-                            error: function(xhr) {
-                                Swal.fire(
-                                    'Error!',
-                                    'There was an error disapproving the item.',
-                                    'error'
-                                );
-                            }
-                        });
-                    }
-                });
-            });
+         
         });
     </script>
 @endsection

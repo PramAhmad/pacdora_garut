@@ -21,18 +21,23 @@ class ApprovalController extends Controller
         $umkm = Umkm::findOrFail($id);
             return view('back.approved.show',compact('umkm'));
         }
-    public function update( $id)
+    public function update(Request $request, $id)
     {
-        $umkm = Umkm::find($id);
-        $umkm->approved = 1;
-        $umkm->save();
-        return response()->json(['message' => 'Data berhasil diapproved'], 200);
+        // dd($request->all());
+        $request->validate([
+            'approved' => 'required|in:1,2',
+            'alasan_reject' => 'nullable'
+        ],[
+            'approved.required' => 'Pilih status',
+            'approved.in' => 'Pilih status yang benar',
+        ]);
+
+        Umkm::findOrFail($id)->update([
+            'approved' => $request->approved,
+            'alasan_reject' => $request->alasan_reject
+        ]);
+      
+        return redirect()->back()->with('success','Berhasil mengubah status');
     }
 
-    public function inactive($id){
-        $umkm = Umkm::findOrFail($id);
-        $umkm->approved = 0;
-        $umkm->save();
-        return response()->json(['message' => 'Data berhasil di nonaaktifkan'], 200);
-    }
 }
