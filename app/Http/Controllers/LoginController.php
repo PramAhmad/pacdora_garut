@@ -32,12 +32,7 @@ class LoginController extends Controller
         if ($user->role == 'admin') {
             return response()->json(['success' => 'Selamat datang admin']);
         } elseif ($user->role == 'user') {
-            if ($user->umkm->approved == 1) {
-                return response()->json(['success' => 'Selamat datang di beranda'], 200);
-            } else {
-                Auth::logout();
-                return response()->json(['message' => 'Akun anda belum di verifikasi oleh admin'], 403);
-            }
+            return response()->json(['success' => 'Selamat datang user']);
         } else {
             Auth::logout();
             return response()->json(['message' => 'Peran pengguna tidak valid'], 403);

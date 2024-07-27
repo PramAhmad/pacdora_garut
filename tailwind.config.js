@@ -31,11 +31,16 @@ export default {
       "accent-dark": "#0d9488",
       "accent-light": "#2dd4bf",
       "accent-lighter": "#5eead4",
+      'accent-lightest': "#8cf2e6",
       "light-base": "#F5F8FA",
+
       green: "#10b981",
       orange: "#FEB240",
       "orange-bright": "#FA6D1E",
       red: "#EF4444",
+      "red-bright": "#fef2f2",
+      yellow: "#F59E0B",
+      "yellow-bright": "#FFFBEB",
       blue: "#428AF8",
       jacarta: {
         base: "#5A5D79",

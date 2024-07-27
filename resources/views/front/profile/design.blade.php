@@ -495,12 +495,10 @@
       },
     });
 
-    const modelId = "{{$modelid}}";
-    const id = '123456';
-    const templateId = getQueryValue("templateId");
-
+  
+  
     await Pacdora.createScene({
-      modelId: modelId,
+      id : "{{$id}}",
       isShowLoading: false,
       doneBtn: "Save",
     });

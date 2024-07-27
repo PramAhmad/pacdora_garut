@@ -27,20 +27,18 @@ class ApprovalUmkmDataTable extends DataTable
                 return $umkm->user->name;
             })
 
-            ->editColumn('approved', function ($umkm) {
-                return $umkm->approved ? '<span class="badge font-medium bg-light-primary text-primary>Approved</span>"' : '<span class="badge font-medium bg-light-danger text-danger">Not Approved</span> ';
+            ->editColumn('status', function ($umkm) {
+                return $umkm->approved == 0 ? '<span class="badge font-medium bg-light-primary text-primary>Waiting</span>"' : '<span class="badge font-medium bg-light-danger text-danger">Reject</span> ';
             })
-            ->addColumn('approv', function($umkm){
-                return '<form action="/approved/'.$umkm->id.'" method="POST" style="display:inline;">
-                            '.csrf_field().'
-                            <input type="hidden" name="_method" value="PUT">
-                            <button type="submit" class="btn-sm btn btn-primary">Approve</button>
-                        </form>';
+            ->addColumn('action', function($umkm){
+                return ''
+                
+                .'<a href="'.route('approval.show',$umkm->id).'" class="btn btn-primary btn-sm">Detail</a>';
             })
             
             
             ->setRowId('id')
-            ->rawColumns(['approv','approved']);
+            ->rawColumns(['action','status']);
 
     }
 
@@ -49,7 +47,7 @@ class ApprovalUmkmDataTable extends DataTable
      */
     public function query(Umkm $model): QueryBuilder
     {
-        return $model->where('approved' , 0)->with('user');
+        return $model->where('approved' , '!=' , '1')->with('user');
     }
 
     /**
@@ -91,8 +89,8 @@ class ApprovalUmkmDataTable extends DataTable
                 Column::make('user_id'),
                 Column::make('nik'),
                 Column::make('nama_usaha'),
-                Column::make('approved'),
-                Column::make('approv')    
+                Column::make('status'),
+                Column::make('action')    
 
         ];
     }

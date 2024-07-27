@@ -22,7 +22,11 @@ class Umkm extends Model
         'alamat_usaha',
         'nohp',
         'approved',
-        'domisili'
+        'domisili',
+        'referensi',
+        'is_garut',
+        'disabilitas',
+        'alasan_reject'
     ];
 
     public function user()  {

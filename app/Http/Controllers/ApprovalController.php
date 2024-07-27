@@ -13,9 +13,14 @@ class ApprovalController extends Controller
     {
 
 
-        return $dataTable->render('back.umkm.approved');
+        return $dataTable->render('back.approved.index');
     }
      
+    public function show($id)
+    {
+        $umkm = Umkm::findOrFail($id);
+            return view('back.approved.show',compact('umkm'));
+        }
     public function update( $id)
     {
         $umkm = Umkm::find($id);

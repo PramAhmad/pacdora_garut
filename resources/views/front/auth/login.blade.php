@@ -47,7 +47,7 @@
             Swal.fire({
               icon: 'success',
               title: 'Berhasil Login!',
-              text: 'Terima kasih telah masuk.',
+              text: data.message,
               confirmButtonColor: '#4CAF50',
               confirmButtonText: 'Ok'
             }).then(() => {

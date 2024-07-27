@@ -15,7 +15,7 @@ trait HttpTrait
         $data = Cache::remember($cacheKey, 60, function () use ($path) {
             $response = Http::withHeaders([
                 'appId' => "71ee73045e3480fe",
-                'appKey' => "a3e831ccfa3ffd84"
+            'appKey' => "a3e831ccfa3ffd84"
             ])->get($path);
 
             if ($response->successful()) {
@@ -34,9 +34,9 @@ trait HttpTrait
     public function post($path, $data)
     {
         $response = Http::withHeaders([
-            'appId' => env('ApiId'),
-            'appKey' => env('ApiKey')
-        ])->post($path, $data);
+            'appId' => "71ee73045e3480fe",
+            'appKey' => "a3e831ccfa3ffd84"
+        ],)->post($path, $data);
 
         if ($response->successful()) {
             return $response->json();
