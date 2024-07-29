@@ -405,9 +405,6 @@
     });
   });
 </script>
-@endsection
-
-<!-- jqeury cdn -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -420,8 +417,8 @@
         type: 'POST',
         contentType: 'application/json',
         headers: {
-          'appId': '71ee73045e3480fe',
-          'appKey': 'a3e831ccfa3ffd84',
+          'appId': '{{env("ApiId")}}',
+                'appKey': '{{env("ApiKey")}}',
           'X-CSRF-TOKEN': csrf
         },
         data: JSON.stringify({
@@ -431,32 +428,34 @@
           console.log(data.data[0].taskId);
           let taskId = data.data[0].taskId;
 
-          let interval = setInterval(function() {
+          // Set an interval to keep making the request every 5 seconds
+          let intervalId = setInterval(function() {
             $.ajax({
               url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
               type: 'GET',
               headers: {
-                'appId': '71ee73045e3480fe',
-                'appKey': 'a3e831ccfa3ffd84',
+                'appId': '{{env("ApiId")}}',
+                'appKey': '{{env("ApiKey")}}',
                 'X-CSRF-TOKEN': csrf
               },
               data: {
                 taskId: taskId
               },
               success: function(response) {
-                console.log(response);
-                if (response.filePath != "") {
-                  clearInterval(interval);
-                  console.log(response.filePath);
-                  // redirect
+                console.log(response.data)
+                console.log(response.data.filePath);
+                if (response.data.filePath) {
+                  clearInterval(intervalId);
                   window.location.href = response.data.filePath;
+                } else {
+                  console.log('proses cuy');
                 }
               },
               error: function(error) {
                 console.log('Error:', error);
               }
             });
-          }, 5000); 
+          }, 5000);
         },
         error: function(error) {
           console.log('Error:', error);
@@ -465,3 +464,6 @@
     });
   });
 </script>
+@endsection
+
+<!-- jqeury cdn -->
