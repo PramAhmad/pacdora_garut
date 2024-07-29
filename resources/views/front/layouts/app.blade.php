@@ -177,7 +177,7 @@
     <header class="js-page-header fixed top-0 z-20 w-full backdrop-blur transition-colors">
       <div class="flex items-center px-6 py-6 xl:px-24">
         <!-- Logo -->
-        <a href="index.html" class="shrink-0">
+        <a href="{{route('home')}}" class="shrink-0">
           <img src="{{asset('assets/img/logo.png')}}" class="logo-lg h-14 align-middle inline-block" alt="">
           <span class="text-lg text-jacarta-900 font-semibold">Myopia</span>
         </a>
@@ -198,7 +198,7 @@
           <!-- Mobile Logo / Menu Close -->
           <div class="t-0 fixed left-0 z-10 flex w-full items-center justify-between bg-white p-6 dark:bg-jacarta-800 lg:hidden">
             <!-- Mobile Logo -->
-            <a href="index.html" class="shrink-0">
+            <a href="{{route('home')}}" class="shrink-0">
               <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace">
               <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace">
             </a>
@@ -799,7 +799,7 @@
         <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12">
           <div class="col-span-full sm:col-span-3 md:col-span-4">
             <!-- Logo -->
-            <a href="index.html" class="mb-6 inline-block">
+            <a href="{{route('home')}}" class="mb-6 inline-block">
               <img src="/template/dist/img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace" />
               <img src="/template/dist/img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
             </a>

@@ -590,20 +590,7 @@
     });
     Pacdora.$on('design:save', async ()=> {
       const data =  await Pacdora.getBoxInfo();
-      // send requst useing ajak
-      $.ajax({
-        type: "POST",
-        url: "{{route('history.store')}}",
-        data: {
-          _token: "{{ csrf_token() }}",
-          image_file: data.screenshot,
-          user_id: "{{Auth::user()->id}}",
-          model_id: modelId,
-        },
-        success: function(response) {
-          console.log(response);
-        }
-      });
+      Pacdora.rename('Title');
     }
     )
     // Retrieve the box information of the created project and initialize the GUI

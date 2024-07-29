@@ -21,13 +21,13 @@
                         @if ($m->flute)
                             
                         <a href="#">
-                            <img src="{{ $m->flute }}" alt="creator" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
+                            <img src="https://cdn.pacdora.com/materialSetting/KRAFT.png" alt="creator" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
                         </a>
                         @endif
                         @if ($m->white_board)
                             
                         <a href="">
-                            <img src="{{ $m->white_board }}" alt="owner" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
+                            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="owner" class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"  />
                         </a>
                         @endif
                     </div>
