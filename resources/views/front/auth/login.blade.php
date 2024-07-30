@@ -35,6 +35,7 @@
     function submitForm() {
       let formData = new FormData($('#login-form')[0]);
 
+      formData.append('_token', '{{ csrf_token() }}');
       $.ajax({
         url: '{{ route("login.store") }}',
         method: 'POST',

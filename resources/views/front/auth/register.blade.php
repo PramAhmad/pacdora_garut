@@ -216,6 +216,7 @@
   $(document).ready(function() {
     function submitForm() {
       let formData = new FormData($('#register-form')[0]);
+      formData.append('_token', '{{ csrf_token() }}');
 
       $.ajax({
         url: '{{ route("register.store") }}',
