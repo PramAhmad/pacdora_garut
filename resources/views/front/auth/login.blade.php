@@ -27,6 +27,7 @@
 </div>
 
 
+@push('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- jqeury -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -34,12 +35,14 @@
   $(document).ready(function() {
     function submitForm() {
       let formData = new FormData($('#login-form')[0]);
-
       formData.append('_token', '{{ csrf_token() }}');
+
       $.ajax({
         url: '{{ route("login.store") }}',
         method: 'POST',
-        data: formData,
+        data:
+        formData,
+
         contentType: false,
         processData: false,
         success: function(data) {
@@ -113,4 +116,5 @@
     });
   });
 </script>
+@endpush
 @endsection
