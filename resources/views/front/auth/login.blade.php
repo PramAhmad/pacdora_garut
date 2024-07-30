@@ -37,11 +37,14 @@
       let formData = new FormData($('#login-form')[0]);
       formData.append('_token', '{{ csrf_token() }}');
       
-
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
       $.ajax({
         url: '{{ route("login.store") }}',
         method: 'POST',
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         data:
         formData,
 
