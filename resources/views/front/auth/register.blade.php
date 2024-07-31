@@ -107,6 +107,8 @@
               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
               @enderror
             </div>
+            <!-- disabilitas -->
+
 
             <!-- email password 1/2 1/2 -->
             <div class="flex space-x-7 mt-5">
@@ -131,21 +133,38 @@
               </div>
             </div>
             <!-- refresnsi -->
-            <div class="mb-6">
-              <label for="referensi" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                Referensi<span class="text-red">*</span>
-              </label>
-              <select name="referensi" id="" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300">
-                <option value="">Pilih Referensi</option>
-                <option value="0">Dinas Koperasi dan UKM Kab. Garut</option>
-                <option value="1">Website</option>
-                <option value="2">Social Media</option>
-                <option value="3">Lainya</option>
-              </select>
-              @error('referensi')
-              <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-              @enderror
-            </div>
+             <div class="flex space-x-7 mt-5">
+
+               <div class="mb-6 w-1/2">
+                 <label for="referensi" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                   Referensi<span class="text-red">*</span>
+                 </label>
+                 <select name="referensi" id="" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300">
+                   <option value="">Pilih Referensi</option>
+                   <option value="0">Dinas Koperasi dan UKM Kab. Garut</option>
+                   <option value="1">Website</option>
+                   <option value="2">Social Media</option>
+                   <option value="3">Lainya</option>
+                 </select>
+                 @error('referensi')
+                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                 @enderror
+               </div>
+               <!-- disabilitas select -->
+                <div class="mb-6 w-1/2">
+                  <label for="disabilitas" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                    Disabilitas<span class="text-red">*</span>
+                  </label>
+                  <select name="disabilitas" id="" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300">
+                    <option value="" aria-readonly="">Pilih Disabilitas</option>
+                    <option value="tidak">Tidak</option>
+                    <option value="ya">Ya</option>
+                  </select>
+                  @error('disabilitas')
+                  <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                  @enderror
+                  </div>  
+             </div>
 
             <div class="mb-6 mt-5 flex items-center space-x-2">
               <input type="checkbox" id="agree_to_terms" name="agree_to_terms" class="h-5 w-5 self-start rounded border-jacarta-200 text-accent checked:bg-accent focus:ring-accent/20 focus:ring-offset-0 dark:border-jacarta-500 dark:bg-jacarta-600" />
