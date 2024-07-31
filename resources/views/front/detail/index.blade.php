@@ -463,11 +463,11 @@
 <script src="{{asset('js/detail.js')}}"></script>
 @push('js')
 <script>
-  let apppid = '{{env("ApiId")}}'
+  console.log("{{Auth::user()->id}}")
   setTimeout(async () => {
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: apppid,
+      appId: "71ee73045e3480fe",
       isDelay: true,
     });
   }, 1000);
@@ -483,10 +483,9 @@
     //   localStorage.setItem("externalId", externalId);
     // }
 
-    let appid = '{{env("ApiId")}}'
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: appid,
+      appId: "71ee73045e3480fe",
       isDelay: true,
       theme: "#dc2626",
       doneBtn: "Save",
