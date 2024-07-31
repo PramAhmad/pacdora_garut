@@ -422,7 +422,7 @@
                 </div> -->
 
         <div>
-          <div class="sub-title mt30">Quantity</div>
+          <div class="sub-title mt30">Kuantitas</div>
           <div class="selector-box">
             <select onchange="onChangeNumber(this)" id="number">
               <option value="500" selected="selected">500</option>

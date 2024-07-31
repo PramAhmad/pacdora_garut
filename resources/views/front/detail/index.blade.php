@@ -467,7 +467,7 @@
   setTimeout(async () => {
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: "{{env('ApiId ')}}",
+      appId: '{{env("ApiId")}}',
       isDelay: true,
     });
   }, 1000);
@@ -485,7 +485,7 @@
 
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: "{{env('ApiId ')}}",
+      appId: '{{env("ApiId")}}',
       isDelay: true,
       theme: "#dc2626",
       doneBtn: "Save",
