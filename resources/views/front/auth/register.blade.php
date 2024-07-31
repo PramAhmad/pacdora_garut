@@ -363,6 +363,18 @@
     });
   });
 </script>
+<script>
+    $('#no_ktp').on('input', function() {
+            if ($(this).val().length > 16) {
+                $(this).val($(this).val().slice(0, 16))
+            }
+        }) 
+        $('#nohp').on('input',function(){
+          if($(this).val().length > 15){
+            $(this).val($(this).val().slice(0,15))
+          }
+        })
+</script>
 
 
 @endsection
