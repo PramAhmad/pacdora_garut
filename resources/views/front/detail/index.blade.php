@@ -310,7 +310,6 @@
     <div class="left">
       <div class="box-info-slider">
         <div class="box-info-item active">
-          <!-- 3D box expansion and collapse control component start -->
           <div class="collapse-control" data-position="bottom">
             <div onclick="openPacdora(0)">Open</div>
             <div class="slider-box">
@@ -319,7 +318,7 @@
             </div>
             <div onclick="openPacdora(1)">Close</div>
           </div>
-          <!-- 3D box expansion and collapse control component end -->
+       
 
           <!-- Pacdora component data-pacdora-ui="3d" start -->
           <div class="d3" data-pacdora-ui="3d" data-pacdora-id="d3" data-init-rotation="true"></div>
@@ -357,7 +356,7 @@
       <div class="sub-title">Dimension</div>
       <div class="selector-box">
         <select onchange="onChangeDimension(this)" id="dimension">
-          <option value="">Choose the dimension</option>
+          <option value="">Pilih Dimensi</option>
           <option value="315*202*62">315*202*62mm</option>
           <option value="150*100*50">150*100*50mm</option>
           <option value="360*240*40">360*240*40mm</option>
@@ -367,7 +366,7 @@
       <div class="sub-title mt30">Material</div>
       <div class="selector-box">
         <select onchange="onChangeMaterial(this)" id="material">
-          <option value="">Choose the material</option>
+          <option value="">Pilih Material</option>
           <option value="White card board">White card board</option>
           <option value="E-flute paper">E-flute paper</option>
           <option value="Kraft paper">Dark kraft paper</option>
@@ -468,7 +467,7 @@
   setTimeout(async () => {
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: "71ee73045e3480fe",
+      appId: "{{env('ApiId ')}}",
       isDelay: true,
     });
   }, 1000);
@@ -486,7 +485,7 @@
 
     await Pacdora.init({
       userId: "{{Auth::user()->id}}",
-      appId: "71ee73045e3480fe",
+      appId: "{{env('ApiId ')}}",
       isDelay: true,
       theme: "#dc2626",
       doneBtn: "Save",

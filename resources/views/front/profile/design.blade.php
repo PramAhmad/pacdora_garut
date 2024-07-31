@@ -357,7 +357,7 @@
       <div class="sub-title">Dimension</div>
       <div class="selector-box">
         <select onchange="onChangeDimension(this)" id="dimension">
-          <option value="">Choose the dimension</option>
+          <option value="">Pilih Dimensi</option>
           <option value="315*202*62">315*202*62mm</option>
           <option value="150*100*50">150*100*50mm</option>
           <option value="360*240*40">360*240*40mm</option>
@@ -367,7 +367,7 @@
       <div class="sub-title mt30">Material</div>
       <div class="selector-box">
         <select onchange="onChangeMaterial(this)" id="material">
-          <option value="">Choose the material</option>
+          <option value="">Pilih Material</option>
           <option value="White card board">White card board</option>
           <option value="E-flute paper">E-flute paper</option>
           <option value="Kraft paper">Dark kraft paper</option>
@@ -378,7 +378,7 @@
       </div>
       <div class="selector-box">
         <select onchange="onChangeThickness(this)" id="thickness">
-          <option value="">Choose the thickness</option>
+          <option value="">Pilih Ketebalan</option>
           <option value="1.5">1.5mm</option>
           <option value="1">1mm</option>
           <option value="2">2mm</option>
@@ -390,7 +390,7 @@
           <div class="sub-title mt30">Print</div>
           <div class="selector-box">
             <select onchange="onChangePrint(this)" id="print">
-              <option value="">Choose the print method</option>
+              <option value="">Pilih Metode Print</option>
               <option value="blank">Blank</option>
               <option value="outside" selected="selected">
                 Outside
@@ -589,19 +589,7 @@
     Pacdora.$on('design:save', async ()=> {
       const data =  await Pacdora.getBoxInfo();
       // send requst useing ajak
-      $.ajax({
-        type: "POST",
-        url: "{{route('history.store')}}",
-        data: {
-          _token: "{{ csrf_token() }}",
-          image_file: data.screenshot,
-          user_id: "{{Auth::user()->id}}",
-          model_id: modelId,
-        },
-        success: function(response) {
-          console.log(response);
-        }
-      });
+     
     }
     )
     // Retrieve the box information of the created project and initialize the GUI
