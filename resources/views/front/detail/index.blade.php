@@ -441,11 +441,11 @@
                 </div> -->
         <div class="btn design-btn" data-pacdora-ui="design-btn" data-save-screenshot="true" data-screenshot-width="800">
           <div class="pac-loading small"></div>
-          Design online {{Auth::user()->id}}
+          Desain Kemasan
         </div>
       </div>
       <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
-        Download the Dieline
+        Download Kemasan
       </div>
     </div>
   </div>

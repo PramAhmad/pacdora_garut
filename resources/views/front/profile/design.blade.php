@@ -301,8 +301,8 @@
 
 <div class="pt-28 container">
   <div class="crumb-box" data-position="bottom">
-    <a class="crumb-item">All products</a>
-    /<a class="crumb-item">Folding Box</a>
+    <a class="crumb-item" href="{{route('home')}}">home</a>
+    /<a class="crumb-item">Folding </a>
     /Custom dimensions flip top boxes mailer
   </div>
   <div class="info-name" data-pacdora-ui="info-name"></div>
@@ -344,7 +344,7 @@
           3D
         </div>
         <div class="switch-item" onclick="onSwitch2DAnd3D('dieline')">
-          Dieline
+            Garis
         </div>
         <div class="switch-item" onclick="onSwitch2DAnd3D('2d')">
           2D
@@ -442,11 +442,11 @@
                 </div> -->
         <div class="btn design-btn" data-pacdora-ui="design-btn" data-save-screenshot="true" data-screenshot-width="800">
           <div class="pac-loading small"></div>
-          Design online {{Auth::user()->id}}
+          Design  
         </div>
       </div>
       <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
-        Download the Dieline
+        Download Kemasan
       </div>
     </div>
   </div>

@@ -19,7 +19,8 @@ class Models extends Model
         "white_board",
         "flute",
         "sub_category",
-        "model"
+        "model",
+        "category_id"
     ];
 
     

@@ -250,7 +250,11 @@
                   </i>
                 </a>
                 <ul class="dropdown-menu group-hover:visible lg:invisible -left-6 top-[85%] z-10 hidden grid-flow-col grid-rows-5 gap-x-4 whitespace-nowrap rounded-xl bg-white transition-all will-change-transform group-hover:opacity-100 dark:bg-jacarta-800 lg:absolute lg:!grid lg:translate-y-4 lg:py-8 lg:px-5 lg:opacity-0 lg:shadow-2xl lg:group-hover:translate-y-2" aria-labelledby="navDropdown-1">
-                
+                @php
+                use App\Models\CategoryModel;
+                  $menu = CategoryModel::all()
+                @endphp
+
                 <li>
                     <a href="collections.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
                       <span class="mr-3 rounded-xl bg-light-base p-[0.375rem]">
@@ -259,7 +263,7 @@
                           <path d="M22 12.999V20a1 1 0 0 1-1 1h-8v-8.001h9zm-11 0V21H3a1 1 0 0 1-1-1v-7.001h9zM11 3v7.999H2V4a1 1 0 0 1 1-1h8zm10 0a1 1 0 0 1 1 1v6.999h-9V3h8z"></path>
                         </svg>
                       </span>
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 1</span>
+                      <span class="font-display text-sm text-jacarta-700 dark:text-white">{{$menu}}</span>
                     </a>
                   </li>
                
@@ -801,12 +805,12 @@
         <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12">
           <div class="col-span-full sm:col-span-3 md:col-span-4">
             <!-- Logo -->
-            <a href="{{route('home')}}" class="mb-6 inline-block">
-              <img src="/template/dist/img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace" />
-              <img src="/template/dist/img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
+            <a href="{{route('home')}}" class="mb-6 flex items-center gap-4">
+              <img src="{{asset('assets/img/logo.png')}}" class="w-16 max-h-16 " alt="Xhibiter | NFT Marketplace" />
+            <span class="text-lg text-jacarta-900 font-semibold">MyOpia</span>
             </a>
             <p class="mb-12 dark:text-jacarta-300">
-              Create, sell and collect truly rare digital artworks. Powered by blockchain technology.
+                Buat Desain Kemasan 3D menggunakan AI
             </p>
             <!-- Socials -->
             <div class="flex space-x-5">

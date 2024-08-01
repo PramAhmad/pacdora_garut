@@ -54,6 +54,7 @@ class UmkmProfileController extends Controller
 
     }
     public function design($id){
+    
         return view('front.profile.design',compact('id'));
     }
 }

@@ -21,8 +21,11 @@ class HomeController extends Controller
     }
     public function category($mockupNameKey)
     {
+        // dd($mockupNameKey);
         $category = CategoryModel::where("key", $mockupNameKey)->with("subcategory")->first();
-        $items = Models::inRandomOrder()->paginate(9);
+        // dd($category->id);
+        $items = Models::where('category_id', $category->id)->paginate(9);
+      
     
         if (request()->ajax()) {
             return response()->json([
