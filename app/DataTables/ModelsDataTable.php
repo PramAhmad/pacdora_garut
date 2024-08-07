@@ -29,11 +29,11 @@ class ModelsDataTable extends DataTable
             ->editColumn('subimage', function ($model) {
                 return '<img src="'.$model->subimageone .' " width="50px" height="50px" class="mb-3"> <img src="'.$model->subimagetwo.'" width="50px" height="50px">';
             })
-            ->editColumn('board', function ($model) {
-                return $model->white_board == "ya" ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+            ->editColumn('materialone', function ($model) {
+                return '<img src="'.$model->materialone.'" width="20px" height="20px">';
             })
-            ->editColumn('flute', function ($model) {
-                return $model->flute == "ya" ? '<span class="badge font-medium bg-light-primary text-primary">Yes</span>' : '<span class="badge font-medium bg-light-danger text-danger">No</span>';
+            ->editColumn('materialtwo', function ($model) {
+                return  '<img src="'.$model->materialtwo.'" width="20px" height="20px">';
             })
             ->editColumn('sub_category', function ($model) {
                 return $model->subcategory->name;
@@ -60,12 +60,12 @@ class ModelsDataTable extends DataTable
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="dropdown-item">Delete</button>
                               </form>
-                            </li>
+                            </
                           </ul>
                         </div>';
             })
 
-            ->rawColumns(['image', 'subimage', 'subimagetwo', 'action','flute','board','action'])
+            ->rawColumns(['image', 'subimage', 'subimagetwo', 'action','materialtwo','materialone','action'])
             ->setRowId('id');
     }
 
@@ -113,8 +113,8 @@ class ModelsDataTable extends DataTable
             Column::make('image'),
             Column::make('subimage'),
             Column::make('title'),
-            Column::make('board'),
-            Column::make('flute'),
+            Column::make('materialone'),
+            Column::make('materialtwo'),
             Column::make('model'),
             Column::computed('action')
                   ->exportable(false)

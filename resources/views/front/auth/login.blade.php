@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="flex w-full justify-center items-center h-[80vh]">
-        <div class="w-[40%] bg-light-base py-10 px-5 rounded-lg border border-jacarta-100">
+        <div class="md:w-[40%] w-full  bg-light-base md:py-10 py-16 px-5 rounded-lg border border-jacarta-100">
             <h3 class="text-center text-xl text-accent font-semibold ">Login</h3>
             <p class="text-center text-base mt-2">Isi email dan password dengan benar</p>
             <form  id="login-form">
@@ -60,7 +60,8 @@
               confirmButtonColor: '#4CAF50',
               confirmButtonText: 'Ok'
             }).then(() => {
-              window.location.href = '{{ route("home") }}'; 
+              window.location.href = '{{ route("dashboard") }}';
+
             });
           } else {
             Swal.fire({

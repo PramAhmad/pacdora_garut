@@ -255,17 +255,23 @@
                   $menu = CategoryModel::all()
                 @endphp
 
+                @forelse ($menu as $c)
+                  
                 <li>
-                    <a href="collections.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="mr-3 rounded-xl bg-light-base p-[0.375rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700">
+                    <a href="/category/{{$c->key}}" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
+                      <!-- <span class="mr-3 rounded-xl bg-light-base p-[0.375rem]"> -->
+                        <img src="{{$c->image}}" class="w-10 h-10 mr-2 rounded-xl" alt="">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700">
                           <path fill="none" d="M0 0h24v24H0z"></path>
                           <path d="M22 12.999V20a1 1 0 0 1-1 1h-8v-8.001h9zm-11 0V21H3a1 1 0 0 1-1-1v-7.001h9zM11 3v7.999H2V4a1 1 0 0 1 1-1h8zm10 0a1 1 0 0 1 1 1v6.999h-9V3h8z"></path>
-                        </svg>
-                      </span>
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">{{$menu}}</span>
+                        </svg> -->
+                      <!-- </span> -->
+                      <span class="font-display text-sm text-jacarta-700 dark:text-white">{{$c->name}}</span>
                     </a>
                   </li>
+                @empty
+                  
+                @endforelse
                
                 </ul>
               </li>

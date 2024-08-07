@@ -1,3 +1,3 @@
 
-    {{ $items->links('vendor.pagination.simple-tailwind') }}
+    {{ $items->links('vendor.pagination.tailwind') }}
     

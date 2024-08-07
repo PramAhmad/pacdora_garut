@@ -16,7 +16,7 @@
                   <div class="bg-white dark:bg-gray-800/40 backdrop-blur-2xl rounded-2xl shadow-lg w-full relative p-4">
                     <div class="grid grid-cols-12 gap-4">
                       <div class="col-span-2">
-                        <img src="{{ $category->image ?? '' }}" alt="" class="max-w-30px h-auto rounded-xl">
+                        <img src="{{ $category->image ?? '' }}" alt="" class="max-w-30px h-12 rounded-xl">
                       </div>
                       <div class="col-span-10">
                         <div class="h-full flex flex-col p-3">
@@ -35,7 +35,7 @@
                     <div class="bg-white dark:bg-gray-800/40 backdrop-blur-2xl rounded-2xl shadow-lg w-full relative p-4">
                       <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-2">
-                          <img src="{{ $sub->image }}" alt="" class="max-w-30px h-auto rounded-xl">
+                          <img src="{{ $sub->image }}" alt="" class="max-w-[3rem] h-12 rounded-xl">
                         </div>
                         <div class="col-span-10">
                           <div class="h-full flex flex-col p-3">

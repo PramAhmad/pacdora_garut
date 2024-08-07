@@ -62,8 +62,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-1">
-                                <label for="subimageone" class="form-label">Sub Image URL</label>
-                                <input type="text" class="form-control" id="subimageone" name="subimageone" required>
+                                <label for="subimagetwo" class="form-label">Sub Image URL</label>
+                                <input type="text" class="form-control" id="subimagetwo" name="subimagetwo" required>
                             </div>
                             <div class="mb-2">
                                 <label for="subimagetwo" class="form-label"></label>
@@ -111,39 +111,17 @@
                         <div class="col-md-6">
 
                             <div class="mb-3">
-                                <label for="whiteboard" class="form-label">Whiteboard Template</label>
-                                    <!-- radio check if ya -->
-                                    <div class="form-check">
-                                <input class="form-check-input" type="radio" name="white_board" id="whiteboard" value="ya"
-                               >
-                                <label class="form-check-label" for="whiteboard">Ya</label>
-                              </div>
-                                <!-- radio check if no -->
-                                <div class="form-check">
-                                <input class="form-check-input" type="radio" name="white_board" id="whiteboardno" value="tidak"
-                                >
-                                <label class="form-check-label" for="whiteboardno">Tidak</label>
-                                </div>
-                                 
+                                <label for="materialone" class="form-label">Material One</label>
+                                <input type="text" class="form-control" id="materialone" name="materialone" required>
+                               
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <!-- flute -->
+                            <!-- materialtwo -->
                             <div class="mb-3">
-                                <label for="flute" class="form-label">Flute Template</label>
-                                    <!-- radio check if ya -->
-                                    <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flute" id="flute" value="ya"
-                               >
-                                <label class="form-check-label" for="flute">Ya</label>
-                              </div>
-                                <!-- radio check if no -->
-                                <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flute" id="fluteno" value="tidak"
-                                >
-                                <label class="form-check-label" for="fluteno">Tidak</label>
-                                </div>
-                                 
+                                <label for="materialtwo" class="form-label">Material Two</label>
+                                <!-- input text -->
+                                 <input type="text" class="form-control" id="materialtwo" name="materialtwo" required>
                             </div>
                         </div>
                     </div>
@@ -226,8 +204,8 @@
                 $('#edit-id').val(data.id);
                 $('#image').val(data.image);
                 $('#model').val(data.model);
-                $('#subimageone').val(data.subimageone);
-                $("#sub1-img-preview").attr('src', data.subimageone);
+                $('#subimagetwo').val(data.subimagetwo);
+                $("#sub1-img-preview").attr('src', data.subimagetwo);
                 $('#subimagetwo').val(data.subimagetwo);
                 $("#sub2-img-preview").attr('src', data.subimagetwo);
 
@@ -236,18 +214,8 @@
                 $('#category').val(data.category_id);
                 $("#img-preview").attr('src', data.image);
                 $('#edit-modal').modal('show');
-                // whiteboard handle checked
-                if(data.white_board == 'ya'){
-                    $('#whiteboard').prop('checked', true);
-                }else{
-                    $('#whiteboardno').prop('checked', true);
-                }
-                // flute handle checked
-                if(data.flute == 'ya'){
-                    $('#flute').prop('checked', true);
-                }else{
-                    $('#fluteno').prop('checked', true);
-                }
+               $('#materialone').val(data.materialone);
+                $('#materialtwo').val(data.materialtwo);
 
 
             });
