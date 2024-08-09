@@ -13,7 +13,7 @@ class UmkmProfileController extends Controller
     public function index()
     {
         $umkm = Umkm::where('user_id', auth()->user()->id)->first();
-        $design = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=",auth()->user()->id);
+        $design = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=".Auth::user()->id);
        $data = $design['data'];
        if($data == null){
            $data = [];

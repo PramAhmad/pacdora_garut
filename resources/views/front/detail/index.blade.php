@@ -587,11 +587,11 @@
       }
 
     });
-    Pacdora.$on('design:save', async ()=> {
-      const data =  await Pacdora.getBoxInfo();
-      Pacdora.rename('Title');
-    }
-    )
+    // Pacdora.$on('design:save', async ()=> {
+    //   const data =  await Pacdora.getBoxInfo();
+    //   Pacdora.rename('Title');
+    // }
+    // )
     // Retrieve the box information of the created project and initialize the GUI
     const info = await Pacdora.getBoxInfo();
     // input image for info.screenshoot
