@@ -417,8 +417,8 @@
         type: 'POST',
         contentType: 'application/json',
         headers: {
-          'appId': '{{env("ApiId")}}',
-                'appKey': '{{env("ApiKey")}}',
+          'appId': '{{getenv("ApiId")}}',
+            'appKey': '{{getenv("ApiKey")}}',
           'X-CSRF-TOKEN': csrf
         },
         data: JSON.stringify({
@@ -434,8 +434,8 @@
               url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
               type: 'GET',
               headers: {
-                'appId': '{{env("ApiId")}}',
-                'appKey': '{{env("ApiKey")}}',
+                'appId': '{{getenv("ApiId")}}',
+                'appKey': '{{getenv("ApiKey")}}',
                 'X-CSRF-TOKEN': csrf
               },
               data: {
