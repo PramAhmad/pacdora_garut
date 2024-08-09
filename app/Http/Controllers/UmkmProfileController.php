@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Umkm;
 use App\Traits\HttpTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UmkmProfileController extends Controller
 {
@@ -12,9 +13,12 @@ class UmkmProfileController extends Controller
     public function index()
     {
         $umkm = Umkm::where('user_id', auth()->user()->id)->first();
-        $design = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=".auth()->user()->id);
-        
-        return view('front.profile.index',compact('umkm','design'));
+        $design = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=",auth()->user()->id);
+       $data = $design['data'];
+       if($data == null){
+           $data = [];
+       }
+        return view('front.profile.index',compact('umkm','data'));
     }
 
     public function update(Request $request, $id)

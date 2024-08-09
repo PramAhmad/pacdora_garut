@@ -219,7 +219,7 @@
           <div class="lg:flex">
             <!-- Records -->
             <div class="mb-10 shrink-0 basis-8/12 space-y-5 lg:mb-0 lg:pr-10">
-              @forelse ($design['data'] as $item)
+              @forelse ($data as $item)
               <div href="" class="relative flex items-center rounded-2.5xl border border-jacarta-100 bg-white p-8 transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700" data-id="{{$item['id']}}">
                 <figure class="mr-5 self-start">
                   <img src="{{$item['screenshot']}}" alt="avatar 2" class="rounded-2lg w-32 h-32 object-cover" loading="lazy" />
