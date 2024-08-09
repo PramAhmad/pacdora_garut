@@ -56,12 +56,7 @@ class RegisterController extends Controller
         'nohp.numeric' => 'No HP harus berupa angka',
         'nohp.digits_between' => 'No HP harus antara 10 sampai 15 digit',
     ]);
-    $referensi  = [
-        0 => 'Dinas Koperasi dan UKM Kab. Garut',
-        1 => 'Website',
-        2 => 'Social Media',
-        3 => 'Lainya',
-    ];
+   
    
 
     if (User::where('email', $request->email)->exists()) {
@@ -86,7 +81,7 @@ class RegisterController extends Controller
         'nama' => $request->nama,
         'is_garut' => $is_garut,
         'domisili' => $request->domisili ?? null,
-        'referensi' => $referensi[$request->referensi] ?? null,
+        'referensi' => $request->referensi ?? null,
         'nama_usaha' => $request->nama_usaha,
         'provinsi_id' => $provinsi->id ?? null,
         'kota_id' => $kota->id ?? null,
