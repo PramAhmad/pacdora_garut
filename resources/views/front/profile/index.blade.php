@@ -417,8 +417,8 @@
         type: 'POST',
         contentType: 'application/json',
         headers: {
-          'appId': '{{getenv("ApiId")}}',
-            'appKey': '{{getenv("ApiKey")}}',
+          'appId': '71ee73045e3480fe',
+            'appKey': 'a3e831ccfa3ffd84',
           'X-CSRF-TOKEN': csrf
         },
         data: JSON.stringify({
@@ -428,14 +428,13 @@
           console.log(data.data[0].taskId);
           let taskId = data.data[0].taskId;
 
-          // Set an interval to keep making the request every 5 seconds
           let intervalId = setInterval(function() {
             $.ajax({
               url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
               type: 'GET',
               headers: {
-                'appId': '{{getenv("ApiId")}}',
-                'appKey': '{{getenv("ApiKey")}}',
+                'appId': '71ee73045e3480fe',
+                'appKey': 'a3e831ccfa3ffd84',
                 'X-CSRF-TOKEN': csrf
               },
               data: {
