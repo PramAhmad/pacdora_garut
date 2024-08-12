@@ -1,7 +1,10 @@
 @extends('front.layouts.app')
 @section("content")
 @push("css")
-
+<link rel="stylesheet" href="/css/iconfont.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/index.css" />
 <style>
   .box-info {
     display: flex;
@@ -97,7 +100,7 @@
   }
 
   .d3-and-d2-switch .switch-item.active {
-    background: #731eff;
+    background: #0d9488;
     color: #fff;
   }
 
@@ -525,44 +528,35 @@
 
     Pacdora.$on("design:opened", () => {
 
-      //ajax post to histrory controller
-
+      //add items in left create elemet menu-card-menu
+      const designHeader = document.querySelector(".menu-card-menu");
+      const menuCard = document.createElement("div");
+      menuCard.className = "menu-card";
+      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'><i data-v-8814160e="" class="p-icon-element"></i><p data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</p></div>`;
+      designHeader.appendChild(menuCard);
+      
 
       const sizeBox = document.querySelector(".size-box");
       sizeBox.dataset.uiTip = "editor-size";
-      sizeBox.dataset.position = "right";
-      const materialBox = document.querySelector(".pacdora-material-box");
-      materialBox.dataset.uiTip = "editor-material";
-      materialBox.dataset.position = "right";
-      const recommendBox = document.querySelector(".recommend-color-root");
-      recommendBox.dataset.uiTip = "editor-recommend";
-      recommendBox.dataset.position = "right";
-      const saveBtn = document.querySelector(".save-btn");
-      saveBtn.dataset.uiTip = "editor-save";
-      const watermark = document.querySelector(".pacdora-watermark");
-      watermark.dataset.uiTip = "editor-white-label";
-      const designHeader = document.querySelector(".design-body");
-      designHeader.dataset.uiTip = "locale";
-      designHeader.dataset.position = "bottom";
+      sizeBox.dataset.position = "bottom";
+
+
+  
       const tipEles = [
         sizeBox,
-        materialBox,
-        recommendBox,
-        saveBtn,
-        watermark,
-        designHeader,
       ];
       for (let i = 0; i < tipEles.length; i++) {
         const ele = tipEles[i];
         const style = getComputedStyle(ele);
-        if (style.position !== "absolute" && style.position !== "fixed") {
-          ele.style.position = "relative";
-        }
+       
         const tipUIEle = document.createElement("div");
         tipUIEle.className = "api-tip";
-        tipUIEle.style.left = "-20px";
-        tipUIEle.style.top = "0px";
+        // tipUIEle.style.left = "-350%";
+        // tipUIEle.style.top = "250px";
         const tipInner = document.createElement("div");
+        // add text
+        tipInner.innerHTML = "";
+
         tipInner.className = "api-tip-inner";
         tipUIEle.appendChild(tipInner);
         ele.appendChild(tipUIEle);
@@ -662,7 +656,22 @@
     makeQuotation();
   })();
 </script>
-<script>
-  
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>  
+  $(document).ready(function(){
+ 
+
+    $(".menu-card-menu").on("click", "#template", function(){
+      $(".menu-card-menu .card-menu-item").removeClass("active");
+      $(this).addClass("active");
+      // add elemnt  div 
+      const designHeader = document.querySelector(".menu-card-menu");
+      const menuCard = document.createElement("div");
+      menuCard.className = "menu-card";
+      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'><i data-v-8814160e="" class="p-icon-element"></i><p data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</p></div>`;
+    });
+  });
+
 </script>
 @endsection

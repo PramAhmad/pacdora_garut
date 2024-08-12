@@ -37,30 +37,30 @@
                 <a href="/detail/{{$m->model}}">
                     <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white">{{ $m->title }}</span>
                 </a>
-                <!-- <div class="dropup rounded-full hover:bg-jacarta-100 dark:hover:bg-jacarta-600">
-                    <a href="#" class="dropdown-toggle inline-flex h-8 w-8 items-center justify-center text-sm" role="button" id="itemActions" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg width="16" height="4" viewBox="0 0 16 4" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-jacarta-500 dark:fill-jacarta-200">
-                            <circle cx="2" cy="2" r="2" />
-                            <circle cx="8" cy="2" r="2" />
-                            <circle cx="14" cy="2" r="2" />
-                        </svg>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end z-10 hidden min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800" aria-labelledby="itemActions">
-                        <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
-                            New bid
-                        </button>
-                        <hr class="my-2 mx-4 h-px border-0 bg-jacarta-100 dark:bg-jacarta-600" />
-                        <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
-                            Refresh Metadata
-                        </button>
-                        <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
-                            Share
-                        </button>
-                        <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
-                            Report
-                        </button>
-                    </div>
-                </div> -->
+            <!-- <div class="dropup rounded-full hover:bg-jacarta-100 dark:hover:bg-jacarta-600">
+                <a href="#" class="dropdown-toggle inline-flex h-8 w-8 items-center justify-center text-sm" role="button" id="itemActions" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg width="16" height="4" viewBox="0 0 16 4" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-jacarta-500 dark:fill-jacarta-200">
+                        <circle cx="2" cy="2" r="2" />
+                        <circle cx="8" cy="2" r="2" />
+                        <circle cx="14" cy="2" r="2" />
+                    </svg>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end z-10 hidden min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800" aria-labelledby="itemActions">
+                    <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
+                        New bid
+                    </button>
+                    <hr class="my-2 mx-4 h-px border-0 bg-jacarta-100 dark:bg-jacarta-600" />
+                    <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
+                        Refresh Metadata
+                    </button>
+                    <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
+                        Share
+                    </button>
+                    <button class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600">
+                        Report
+                    </button>
+                </div>
+            </div> -->
             </div>
             <div class="mt-8 flex items-center justify-between">
                 <button class="font-display text-sm font-semibold text-accent" data-bs-toggle="modal" data-bs-target="#buyNowModal">

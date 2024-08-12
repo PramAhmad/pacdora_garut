@@ -376,27 +376,16 @@ a {
   margin-left: 30px;
 }
 
-.api-tip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate(100%, -50%);
-  background: rgba(115, 30, 255, 0.24);
-  cursor: pointer;
-}
-.api-tip-inner {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 12px;
 
-  background: #731eff;
+.api-tip-inner {
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  padding:1rem;
+  
 }
 .api-tip:hover {
   transform: translate(100%, -50%) scale(1.5);
