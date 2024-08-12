@@ -1,5 +1,3 @@
-require("matchmedia-polyfill")
-require("matchmedia-polyfill/matchMedia.addListener")
 
 class MobileMenu {
   constructor() {
@@ -54,4 +52,4 @@ class MobileMenu {
   }
 }
 
-export default MobileMenu
+

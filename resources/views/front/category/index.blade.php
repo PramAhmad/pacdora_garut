@@ -2,7 +2,7 @@
 
 @section("content")
 <main class="py-[135px]">
-  <div class="xl:px-24">
+  <div class="">
     <div class="flex flex-col">
       <div class="relative w-full py-[20px]">
         <div class="z-1">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-span-10">
                           <div class="h-full flex flex-col p-3">
-                            <a href="#" class="text-base font-semibold text-gray-600 dark:text-slate-200 block leading-5 truncate hover:underline hover:underline-offset-[4px] subcategory-link" data-key="{{ $sub->key }}">
+                            <a href="#" class="text-base font-semibold text-jacarta-600 dark:text-slate-200 block leading-5 truncate hover:underline hover:underline-offset-[4px] subcategory-link" data-key="{{ $sub->key }}">
                               {{ $sub->name }}
                             </a>
                           </div>

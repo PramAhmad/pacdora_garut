@@ -1,4 +1,7 @@
 @extends('front.layouts.app')
+@push('css')
+
+@endpush
 @section('content')
 <div class="container">
     <div class="flex w-full justify-center items-center h-[80vh]">

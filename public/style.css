@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 @layer utilities {
   .visible {
@@ -135,7 +135,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /* Mobile Menu */
 .nav-menu--is-open {
-  @apply visible flex flex-col items-start overflow-y-auto px-6 pb-6 pt-0 opacity-100;
+  @apply  flex flex-col items-start overflow-y-auto px-6 pb-6 pt-0 opacity-100;
 }
 
 .nav-open-noscroll {

@@ -1,7 +1,12 @@
+/** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin")
 
-module.exports = {
-  content: ["./dist/**/*.{html,js}", "./src/**/*.js"],
+export default {
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+  ],
   darkMode: "class",
   theme: {
     screens: {
@@ -22,15 +27,19 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
-      accent: "#14b8a6",
-      "accent-dark": "#7444FF",
-      "accent-light": "#9E7CFF",
-      "accent-lighter": "#B9A0FF",
+      accent: "#50a1a7",
+      "accent-dark": "#0d9488",
+      "accent-light": "#2dd4bf",
+      "accent-lighter": "#5eead4",
+      'accent-lightest': "#8cf2e6",
       "light-base": "#F5F8FA",
       green: "#10b981",
       orange: "#FEB240",
       "orange-bright": "#FA6D1E",
       red: "#EF4444",
+      "red-bright": "#fef2f2",
+      yellow: "#F59E0B",
+      "yellow-bright": "#FFFBEB",
       blue: "#428AF8",
       jacarta: {
         base: "#5A5D79",
@@ -55,7 +64,7 @@ module.exports = {
       xl: "0px 8px 10px -6px rgba(13, 16, 45, 0.1), 0px 20px 25px -5px rgba(13, 16, 45, 0.1)",
       "2xl": "0px 25px 50px -12px rgba(13, 16, 45, 0.1), 0px 12px 24px 0px rgba(13, 16, 45, 0.1)",
       "accent-volume":
-        "5px 5px 10px rgba(108, 106, 213, 0.25), inset 2px 2px 6px #A78DF0, inset -5px -5px 10px #6336E4",
+        "",
       "white-volume": "5px 5px 10px rgba(108, 106, 212, 0.25), inset 2px 2px 6px #EEF1F9, inset -5px -5px 10px #DFE3EF"
     },
     fontSize: {
@@ -133,4 +142,6 @@ module.exports = {
     visibility: false
   },
   plugins: [require("@tailwindcss/forms"), require("tailwindcss-custom-groups")]
+
 }
+

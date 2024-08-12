@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 @section('content')
-<main class="pt-[5.5rem] lg:pt-24 overflow-x-hidden ">
+<main class="  overflow-x-hidden ">
   <!-- Banner -->
   <div class="relative">
     <img src="{{asset('template/dist/img/user/banner.jpg')}}" alt="banner" class="h-[18.75rem] object-cover" />

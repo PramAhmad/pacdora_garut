@@ -1,9 +1,12 @@
 @extends('front.layouts.app')
+@push('css')
+  
+@endpush
 
 @section("content")
-<main class="pt-[5.5rem] lg:pt-24">
+<main class="">
   <!-- Contact -->
-  <section class="relative py-24 dark:bg-jacarta-800">
+  <section class="relative py-10 dark:bg-jacarta-800">
     <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">
       <img src="template/dist/img/gradient_light.jpg" alt="gradient" class="h-full w-full" />
     </picture>

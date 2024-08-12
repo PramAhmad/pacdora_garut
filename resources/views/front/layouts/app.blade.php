@@ -1,1058 +1,502 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <title>Home Page 5</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon" sizes="16x16">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  @vite('resources/css/app.css')
+<!-- <link rel="stylesheet" href="{{asset('template/dist/css/style.css')}}"> -->
+  <script src="{{asset('darkMode.bundle.js')}}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 
-  <!DOCTYPE html>
-<html lang="en" dir="ltr" data-scheme="light">
-  <head>
-    <title>Pacdora garut</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/go.min.js"></script>
+  <style>
+    .select2.select2-container {
+      width: 100% !important;
+    }
 
-    <meta charset="utf-8" />
-    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <!-- csrf -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    .select2.select2-container .select2-selection {
+      border: 1px solid rgb(231 232 236);
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      border-radius: 7px;
+      height: 55px;
+      margin-bottom: 15px;
+      outline: none !important;
+      transition: all .15s ease-in-out;
+    }
 
-    <!-- Css -->
-    @vite('resources/css/app.css')
-    <!-- <link rel="stylesheet" href="style.css" /> -->
+    .select2.select2-container .select2-selection .select2-selection__rendered {
+      color: #333;
+      line-height: 55px;
+      padding-right: 33px;
+    }
 
-    <!-- Dark Mode JS -->
-    <script src="{{asset('darkMode.bundle.js')}}"></script>
+    .select2.select2-container .select2-selection .select2-selection__arrow {
+      background: #f8f8f8;
+      border-left: 1px solid rgb(231 232 236);
+      -webkit-border-radius: 0 3px 3px 0;
+      -moz-border-radius: 0 3px 3px 0;
+      border-radius: 0 7px 7px 0;
+      height: 53px;
+      width: 33px;
+    }
+
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
+      background: #f8f8f8;
+    }
+
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
+      -webkit-border-radius: 0 3px 0 0;
+      -moz-border-radius: 0 3px 0 0;
+      border-radius: 0 3px 0 0;
+    }
+
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
+      border: 1px solid #34495e;
+    }
+
+    .select2.select2-container .select2-selection--multiple {
+      height: auto;
+      min-height: 34px;
+    }
+
+    .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
+      margin-top: 0;
+      height: 44px;
+    }
+
+    .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+      display: block;
+      padding: 0 4px;
+      line-height: 29px;
+    }
+
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice {
+      background-color: #f8f8f8;
+      border: 1px solid rgb(231 232 236);
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 9px;
+      margin: 4px 4px 0 0;
+      padding: 0 6px 0 22px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 12px;
+      position: relative;
+    }
+
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 46px;
+      width: 46px;
+      margin: 0;
+      text-align: center;
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .select2-container .select2-dropdown {
+      background: transparent;
+      border: none;
+      margin-top: -5px;
+    }
+
+    .select2-container .select2-dropdown .select2-search {
+      padding: 0;
+    }
+
+    .select2-container .select2-dropdown .select2-search input {
+      outline: none !important;
+      border: 1px solid #34495e !important;
+      border-bottom: none !important;
+      padding: 8px 12px !important;
+    }
+
+    .select2-container .select2-dropdown .select2-results {
+      padding: 0;
+    }
+
+    .select2-container .select2-dropdown .select2-results ul {
+      background: #fff;
+      border: 1px solid #34495e;
+    }
+
+    .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+      background-color: #3498db;
+    }
     
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
+  </style>
+    <style>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- <link href="{{ asset('template/src/css/style.css') }}" rel="stylesheet"> -->
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="img/favicon.ico" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
-
-    <link rel="stylesheet" href="/css/iconfont.css" />
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-  <link rel="stylesheet" href="/css/index.css" />
-    @stack('css')
-    <!-- select 2 custom style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-     
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/go.min.js"></script>
-      <style>
-      
-.select2.select2-container {
-  width: 100% !important;
+.burger-icon {
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    z-index: 1002
 }
 
-.select2.select2-container .select2-selection {
-  border: 1px solid rgb(231 232 236);
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-  height:55px;
-  margin-bottom: 15px;
-  outline: none !important;
-  transition: all .15s ease-in-out;
+@media (min-width:768px) {
+    .burger-icon {
+        right: 37px
+    }
 }
 
-.select2.select2-container .select2-selection .select2-selection__rendered {
-  color: #333;
-  line-height: 55px;
-  padding-right: 33px;
+.burger-icon.burger-icon-white>span:after,
+.burger-icon.burger-icon-white>span:before {
+    background-color:black
 }
 
-.select2.select2-container .select2-selection .select2-selection__arrow {
-  background: #f8f8f8;
-  border-left: 1px solid rgb(231 232 236);
-  -webkit-border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  border-radius: 0 7px 7px 0;
-  height: 53px;
-  width: 33px;
+.burger-icon>span {
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%
 }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
-  background: #f8f8f8;
+.burger-icon>span:after,
+.burger-icon>span:before {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
 }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
-  -webkit-border-radius: 0 3px 0 0;
-  -moz-border-radius: 0 3px 0 0;
-  border-radius: 0 3px 0 0;
+.burger-icon>span.burger-icon-top {
+    top: 2px
 }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
-  border: 1px solid #34495e;
+.burger-icon>span.burger-icon-mid {
+    top: 9px
 }
 
-.select2.select2-container .select2-selection--multiple {
-  height: auto;
-  min-height: 34px;
+.burger-icon>span.burger-icon-bottom {
+    bottom: 2px
 }
 
-.select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
-  margin-top: 0;
-  height: 44px;
+.burger-icon.burger-close {
+    filter: invert(8%) sepia(34%) saturate(870%) hue-rotate(181deg) brightness(97%) contrast(98%) !important
 }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__rendered {
-  display: block;
-  padding: 0 4px;
-  line-height: 29px;
+@media screen and (max-width:1023.98px) {
+    .burger-icon.burger-close {
+        position: fixed;
+        right: 10px;
+        top: 20px
+    }
 }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice {
-  background-color: #f8f8f8;
-  border: 1px solid rgb(231 232 236);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 9px;
-  margin: 4px 4px 0 0;
-  padding: 0 6px 0 22px;
-  height: 44px;
-  line-height: 44px;
-  font-size: 12px;
-  position: relative;
+.burger-icon.burger-close>span.burger-icon-top {
+    display: none;
+    opacity: 0
 }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 46px;
-  width: 46px;
-  margin: 0;
-  text-align: center;
-  color: #e74c3c;
-  font-weight: bold;
-  font-size: 16px;
+.burger-icon.burger-close>span.burger-icon-mid {
+    top: 8px;
+    transform: rotate(45deg)
 }
 
-.select2-container .select2-dropdown {
-  background: transparent;
-  border: none;
-  margin-top: -5px;
+.burger-icon.burger-close>span.burger-icon-bottom {
+    bottom: 10px;
+    transform: rotate(-45deg)
 }
 
-.select2-container .select2-dropdown .select2-search {
-  padding: 0;
+.burger-icon.burger-close>span.burger-icon-top {
+    display: none;
+    opacity: 0
 }
 
-.select2-container .select2-dropdown .select2-search input {
-  outline: none !important;
-  border: 1px solid #34495e !important;
-  border-bottom: none !important;
-  padding: 8px 12px !important;
+.burger-icon.burger-close>span.burger-icon-mid {
+    top: 8px;
+    transform: rotate(45deg)
 }
 
-.select2-container .select2-dropdown .select2-results {
-  padding: 0;
+.burger-icon.burger-close>span.burger-icon-bottom {
+    bottom: 10px;
+    transform: rotate(-45deg)
 }
-
-.select2-container .select2-dropdown .select2-results ul {
-  background: #fff;
-  border: 1px solid #34495e;
+@media (min-width:768px) {
+    .menu{
+      display: none;
+    }
 }
+  </style>
+  <link rel="stylesheet" href="{{asset('agency/app.min.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&amp;family=Noto+Sans:wght@400;500;600;700;800&amp;display=swap">
+  @stack('css')
+</head>
 
-.select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
-  background-color: #3498db;
-}
-      </style>  
-  </head>
-
-  <body
-
-    class="overflow-x-hidden font-body text-jacarta-500 dark:bg-jacarta-900"
-    itemscope
-    itemtype="http://schema.org/WebPage"
-  >
-    <!-- Header -->
-    <header class="js-page-header fixed top-0 z-20 w-full backdrop-blur transition-colors">
-      <div class="flex items-center px-6 py-6 xl:px-24">
-        <!-- Logo -->
-        <a href="{{route('home')}}" class="shrink-0">
-          <img src="{{asset('assets/img/logo.png')}}" class="logo-lg h-14 align-middle inline-block" alt="">
-          <span class="text-lg text-jacarta-900 font-semibold">Myopia</span>
-        </a>
-
-        <!-- Search -->
-        <form action="search" class="relative ml-12 mr-8 hidden basis-3/12 lg:block xl:ml-[8%]">
-          <input type="search" class="w-full rounded-2xl border border-jacarta-100 py-[0.6875rem] px-4 pl-10 text-jacarta-700 placeholder-jacarta-500 focus:ring-accent dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white" placeholder="Search" data-has-listeners="true">
-          <span class="absolute left-0 top-0 flex h-full w-12 items-center justify-center rounded-2xl">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-500 dark:fill-white">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
-            </svg>
-          </span>
-        </form>
-
-        <!-- Menu / Actions -->
-        <div class="js-mobile-menu invisible lg:visible fixed inset-0 z-10 ml-auto items-center bg-white opacity-0 dark:bg-jacarta-800 lg:relative lg:inset-auto lg:flex lg:bg-transparent lg:opacity-100 dark:lg:bg-transparent">
-          <!-- Mobile Logo / Menu Close -->
-          <div class="t-0 fixed left-0 z-10 flex w-full items-center justify-between bg-white p-6 dark:bg-jacarta-800 lg:hidden">
-            <!-- Mobile Logo -->
-            <a href="{{route('home')}}" class="shrink-0">
-              <img src="img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace">
-              <img src="img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace">
-            </a>
-
-            <!-- Mobile Menu Close -->
-            <button class="js-mobile-close group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent" aria-label="close mobile menu">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:fill-white">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"></path>
-              </svg>
-            </button>
+<body class="overflow-x-hidden w-screen relative home-page-5">
+<div class=""><a name="top"> </a>
+      <div class="absolute top-0 left-0 w-screen h-full bg-opacity-80 hidden video-iframe bg-[#0b0b0b] z-[999999]">
+        <div class="mx-auto video w-1/2">
+          <div class="flex justify-end">
+            <button class="text-white close-video text-[20px]" type="button" title="Close (Esc)">x</button>
           </div>
-
-          <!-- Mobile Search -->
-          <form action="search" class="relative mt-24 mb-8 w-full lg:hidden">
-            <input type="search" class="w-full rounded-2xl border border-jacarta-100 py-3 px-4 pl-10 text-jacarta-700 placeholder-jacarta-500 focus:ring-accent dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white" placeholder="Search" data-has-listeners="true">
-            <span class="absolute left-0 top-0 flex h-full w-12 items-center justify-center rounded-2xl">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-500 dark:fill-white">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
-              </svg>
-            </span>
-          </form>
-
-          <!-- Primary Nav -->
-          <nav class="navbar w-full">
-            <ul class="flex flex-col lg:flex-row">
-              <li class="js-nav-dropdown group relative">
-                <a href="{{route('home')}}" class=" flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5 show" >Home
-                  <i class="lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 dark:fill-white">
-                      <path fill="none" d="M0 0h24v24H0z"></path>
-                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"></path>
-                    </svg>
-                  </i>
-                </a>
-              
-              </li>
-         
-              <li class="js-nav-dropdown nav-item dropdown group relative">
-                <a href="collections.html" class="dropdown-toggle flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5" id="navDropdown-3" aria-expanded="false" role="button" data-bs-toggle="dropdown">Design
-                  <i class="lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 dark:fill-white">
-                      <path fill="none" d="M0 0h24v24H0z"></path>
-                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"></path>
-                    </svg>
-                  </i>
-                </a>
-                <ul class="dropdown-menu group-hover:visible lg:invisible -left-6 top-[85%] z-10 hidden grid-flow-col grid-rows-5 gap-x-4 whitespace-nowrap rounded-xl bg-white transition-all will-change-transform group-hover:opacity-100 dark:bg-jacarta-800 lg:absolute lg:!grid lg:translate-y-4 lg:py-8 lg:px-5 lg:opacity-0 lg:shadow-2xl lg:group-hover:translate-y-2" aria-labelledby="navDropdown-1">
-                @php
-                use App\Models\CategoryModel;
-                  $menu = CategoryModel::all()
-                @endphp
-
-                @forelse ($menu as $c)
-                  
-                <li>
-                    <a href="/category/{{$c->key}}" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <!-- <span class="mr-3 rounded-xl bg-light-base p-[0.375rem]"> -->
-                        <img src="{{$c->image}}" class="w-10 h-10 mr-2 rounded-xl" alt="">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700">
-                          <path fill="none" d="M0 0h24v24H0z"></path>
-                          <path d="M22 12.999V20a1 1 0 0 1-1 1h-8v-8.001h9zm-11 0V21H3a1 1 0 0 1-1-1v-7.001h9zM11 3v7.999H2V4a1 1 0 0 1 1-1h8zm10 0a1 1 0 0 1 1 1v6.999h-9V3h8z"></path>
-                        </svg> -->
-                      <!-- </span> -->
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">{{$c->name}}</span>
-                    </a>
-                  </li>
-                @empty
-                  
-                @endforelse
+          <iframe class="aspect-video w-full" src="https://www.youtube.com/embed/oRI37cOPBQQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="overlay"></div>
+      <header class="h-auto full-width relative py-[15px] first-letter:lg:py-[26px]">
+        <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 flex items-center justify-between mx-auto relative !mt-0 max-w-[1320px]"><a class="flex" href="/"><img class="logo z-50 w-[60px]" src="{{asset('assets/img/logo.png')}}" alt="logo image"><span class="my-auto mx-2 font-bold text-jacarta-900">Myopia</span></a>
+          <nav class="z-50 absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:block"> 
+            <ul class="navbar flex flex-col justify-center font-chivo gap-[34px] lg:flex-row">
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Home</a>
                
+              </li>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Tentang Kami</a>
+               
+              </li>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Category Mockup</a><i><img class="icon-caret group-hover:filter-green" src="agency/assets/images/icons/icon-caret.svg" alt="caret"></i>
+                <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-[185px]">
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="sv1"><a class="flex items-center text-[14px]" href="/services-1.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-gem.svg" alt=""><span class="whitespace-nowrap">Services 01</span></a></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="sv2"><a class="flex items-center text-[14px]" href="/services-2.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-gem.svg" alt=""><span class="whitespace-nowrap">Services 02</span></a></li>
+                  <li class="hr px-[22px]"> <span class="block bg-gray-100 w-full h-[1px] my-[5px]"></span></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="p1"><a class="flex items-center text-[14px]" href="/pricing-1.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-database.svg" alt=""><span class="whitespace-nowrap">Pricing 01</span></a></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="p2"><a class="flex items-center text-[14px]" href="/pricing-2.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-database.svg" alt=""><span class="whitespace-nowrap">Pricing 02</span></a></li>
+                  <li class="hr px-[22px]"> <span class="block bg-gray-100 w-full h-[1px] my-[5px]"></span></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="faqs1"><a class="flex items-center text-[14px]" href="/faqs-1.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-headset.svg" alt=""><span class="whitespace-nowrap">FAQS 01</span></a></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="faqs2"><a class="flex items-center text-[14px]" href="/faqs-2.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-headset.svg" alt=""><span class="whitespace-nowrap">FAQS 02</span></a></li>
+                  <li class="hr px-[22px]"> <span class="block bg-gray-100 w-full h-[1px] my-[5px]"></span></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="career"><a class="flex items-center text-[14px]" href="/career.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-briefcase.svg" alt=""><span class="whitespace-nowrap">Career</span></a></li>
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="career-details"><a class="flex items-center text-[14px]" href="/career-details.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-briefcase.svg" alt=""><span class="whitespace-nowrap">Career Detials</span></a></li>
                 </ul>
               </li>
-              <li class="js-nav-dropdown group relative">
-                <a href="#" class="dropdown-toggle flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5" id="navDropdown-4" aria-expanded="false" role="button" data-bs-toggle="dropdown">Menu 3
-                  <i class="lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 dark:fill-white">
-                      <path fill="none" d="M0 0h24v24H0z"></path>
-                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"></path>
-                    </svg>
-                  </i>
-                </a>
-                <ul class="dropdown-menu group-hover:visible lg:invisible left-0 top-[85%] z-10 hidden min-w-[200px] gap-x-4 whitespace-nowrap rounded-xl bg-white transition-all will-change-transform group-hover:opacity-100 dark:bg-jacarta-800 lg:absolute lg:grid lg:translate-y-4 lg:py-4 lg:px-2 lg:opacity-0 lg:shadow-2xl lg:group-hover:translate-y-2" aria-labelledby="navDropdown-4">
-                  <li>
-                    <a href="help-center.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 11</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="platform-status.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 12</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="partners.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 13</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 14</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="single-post.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 15</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="newsletter.html" class="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                      <span class="font-display text-sm text-jacarta-700 dark:text-white">Category 16</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="group">
-                <a href="create.html" class="flex items-center justify-between py-3.5 font-display text-base text-jacarta-700 hover:text-accent focus:text-accent dark:text-white dark:hover:text-accent dark:focus:text-accent lg:px-5">Menu 4</a>
-              </li>
+          
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Contact</a>
+               
+               </li>
+             
             </ul>
           </nav>
+          <div class="hidden xl:block">
+      <!--login register -->
+      <div class="flex items-center gap-8">
+        @if (Auth::check())
+          <a class="text-base font-inter text-white font-medium rounded-lg bg-accent p-2 px-3 hover:scale-105 transition duration-300" href="{{route('profile')}}">Dashboard</a>
+          <!-- logout -->
+          <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button class="text-base font-inter text-accent border-accent font-medium border rounded-lg p-2 px-3 hover:scale-105 transition duration-300" type="submit">Logout</button>
+          </form>
 
-      
-          <!-- Actions -->
-          <div class="ml-8 hidden lg:flex xl:ml-12">
-        
-
-            <!-- Profile -->
          
-           @if (Auth::check())
-           <div class="js-nav-dropdown group-dropdown relative">
-              <button class="dropdown-toggle group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent" id="profileDropdown" aria-expanded="false" data-bs-toggle="dropdown" aria-label="profile">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:fill-white">
-                  <path fill="none" d="M0 0h24v24H0z"></path>
-                  <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
-                </svg>
-              </button>
-              <div class="dropdown-menu group-dropdown-hover:visible lg:invisible !-right-4 !top-[85%] !left-auto z-10 hidden min-w-[14rem] whitespace-nowrap rounded-xl bg-white transition-all will-change-transform before:absolute before:-top-3 before:h-3 before:w-full group-dropdown-hover:opacity-100 dark:bg-jacarta-800 lg:absolute lg:grid lg:!translate-y-4 lg:py-4 lg:px-2 lg:opacity-0 lg:shadow-2xl" aria-labelledby="profileDropdown">
-               
-
-                <a href="{{route('profile')}}" class="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors dark:fill-white">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
-                  </svg>
-                  <span class="mt-1 font-display text-sm text-jacarta-700 dark:text-white">{{Auth::user()->name}}</span>
-                </a>
-                <a href="edit-profile.html" class="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors dark:fill-white">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M9.954 2.21a9.99 9.99 0 0 1 4.091-.002A3.993 3.993 0 0 0 16 5.07a3.993 3.993 0 0 0 3.457.261A9.99 9.99 0 0 1 21.5 8.876 3.993 3.993 0 0 0 20 12c0 1.264.586 2.391 1.502 3.124a10.043 10.043 0 0 1-2.046 3.543 3.993 3.993 0 0 0-3.456.261 3.993 3.993 0 0 0-1.954 2.86 9.99 9.99 0 0 1-4.091.004A3.993 3.993 0 0 0 8 18.927a3.993 3.993 0 0 0-3.457-.26A9.99 9.99 0 0 1 2.5 15.121 3.993 3.993 0 0 0 4 11.999a3.993 3.993 0 0 0-1.502-3.124 10.043 10.043 0 0 1 2.046-3.543A3.993 3.993 0 0 0 8 5.071a3.993 3.993 0 0 0 1.954-2.86zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                  </svg>
-                  <span class="mt-1 font-display text-sm text-jacarta-700 dark:text-white">Dashboard</span>
-                </a>
-                <a href="#" id="logoutButton" class="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors dark:fill-white">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM7 11V8l-5 4 5 4v-3h8v-2H7z"></path>
-                  </svg>
-                  <span class="mt-1 font-display text-sm text-jacarta-700 dark:text-white"  >Sign out</span>
-                </a>
-              </div>
-            </div>
-           @else
-              <div class="flex">
-                <a href="{{ route('login') }}" class="flex items-center justify-center h-10 px-5 font-display text-sm text-white bg-accent rounded-xl  hover:scale-105 transition duration-500">Login</a>
-                <a href="{{ route('register') }}" class="flex items-center justify-center h-10 px-5 ml-2 font-display text-sm text-accent bg-transparent rounded-xl  border border-accent hover:scale-105 transition duration-500 ">Register</a>
-              </div>
-           @endif
-        
-
-            <!-- Dark Mode -->
-            <a href="#" class="js-dark-mode-trigger group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="dark-mode-light h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:hidden">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"></path>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="dark-mode-dark hidden h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:block dark:fill-white">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Mobile Menu Actions -->
-        <div class="ml-auto flex lg:hidden">
-          <!-- Profile -->
-          <a href="edit-profile.html" class="group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent" aria-label="profile">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:fill-white">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M11 14.062V20h2v-5.938c3.946.492 7 3.858 7 7.938H4a8.001 8.001 0 0 1 7-7.938zM12 13c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
-            </svg>
-          </a>
-
-          <!-- Dark Mode -->
-          <a href="#" class="js-dark-mode-trigger group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="dark-mode-light h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:hidden">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"></path>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="dark-mode-dark hidden h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:block dark:fill-white">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path>
-            </svg>
-          </a>
-
-          <!-- Mobile Menu Toggle -->
-          <button class="js-mobile-toggle group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent focus:border-transparent focus:bg-accent dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent" aria-label="open mobile menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white group-focus:fill-white dark:fill-white">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path d="M18 18v2H6v-2h12zm3-7v2H3v-2h18zm-3-7v2H6V4h12z"></path>
-            </svg>
-          </button>
-        </div>
+        @else
+          
+        <a class="text-base font-inter text-white font-medium rounded-lg bg-accent p-2 px-3 hover:scale-105 transition duration-300" href="{{route('login')}}">Login</a>
+        <a class="text-base font-inter text-accent border-accent font-medium border rounded-lg p-2 px-3 hover:scale-105 transition duration-300" href="{{route('register')}}">Register</a>
+        @endif
       </div>
-    </header>
-
-    <!-- Mobile Menu -->
-     <main>
-
-       @yield("content")
-     </main>
-
-    <!-- Wallet Modal -->
-    <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
-      <div class="modal-dialog max-w-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="walletModalLabel">Connect your wallet</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                class="h-6 w-6 fill-jacarta-700 dark:fill-white"
-              >
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                  d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Body -->
-          <div class="modal-body p-6 text-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0"
-              y="0"
-              viewBox="0 0 318.6 318.6"
-              xml:space="preserve"
-              class="mb-4 inline-block h-8 w-8"
-            >
-              <style>
-                .st1,
-                .st6 {
-                  fill: #e4761b;
-                  stroke: #e4761b;
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-                }
-                .st6 {
-                  fill: #f6851b;
-                  stroke: #f6851b;
-                }
-              </style>
-              <path
-                fill="#e2761b"
-                stroke="#e2761b"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M274.1 35.5l-99.5 73.9L193 65.8z"
-              />
-              <path
-                class="st1"
-                d="M44.4 35.5l98.7 74.6-17.5-44.3zm193.9 171.3l-26.5 40.6 56.7 15.6 16.3-55.3zm-204.4.9L50.1 263l56.7-15.6-26.5-40.6z"
-              />
-              <path
-                class="st1"
-                d="M103.6 138.2l-15.8 23.9 56.3 2.5-2-60.5zm111.3 0l-39-34.8-1.3 61.2 56.2-2.5zM106.8 247.4l33.8-16.5-29.2-22.8zm71.1-16.5l33.9 16.5-4.7-39.3z"
-              />
-              <path
-                d="M211.8 247.4l-33.9-16.5 2.7 22.1-.3 9.3zm-105 0l31.5 14.9-.2-9.3 2.5-22.1z"
-                fill="#d7c1b3"
-                stroke="#d7c1b3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M138.8 193.5l-28.2-8.3 19.9-9.1zm40.9 0l8.3-17.4 20 9.1z"
-                fill="#233447"
-                stroke="#233447"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M106.8 247.4l4.8-40.6-31.3.9zM207 206.8l4.8 40.6 26.5-39.7zm23.8-44.7l-56.2 2.5 5.2 28.9 8.3-17.4 20 9.1zm-120.2 23.1l20-9.1 8.2 17.4 5.3-28.9-56.3-2.5z"
-                fill="#cd6116"
-                stroke="#cd6116"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M87.8 162.1l23.6 46-.8-22.9zm120.3 23.1l-1 22.9 23.7-46zm-64-20.6l-5.3 28.9 6.6 34.1 1.5-44.9zm30.5 0l-2.7 18 1.2 45 6.7-34.1z"
-                fill="#e4751f"
-                stroke="#e4751f"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                class="st6"
-                d="M179.8 193.5l-6.7 34.1 4.8 3.3 29.2-22.8 1-22.9zm-69.2-8.3l.8 22.9 29.2 22.8 4.8-3.3-6.6-34.1z"
-              />
-              <path
-                fill="#c0ad9e"
-                stroke="#c0ad9e"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M180.3 262.3l.3-9.3-2.5-2.2h-37.7l-2.3 2.2.2 9.3-31.5-14.9 11 9 22.3 15.5h38.3l22.4-15.5 11-9z"
-              />
-              <path
-                fill="#161616"
-                stroke="#161616"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M177.9 230.9l-4.8-3.3h-27.7l-4.8 3.3-2.5 22.1 2.3-2.2h37.7l2.5 2.2z"
-              />
-              <path
-                d="M278.3 114.2l8.5-40.8-12.7-37.9-96.2 71.4 37 31.3 52.3 15.3 11.6-13.5-5-3.6 8-7.3-6.2-4.8 8-6.1zM31.8 73.4l8.5 40.8-5.4 4 8 6.1-6.1 4.8 8 7.3-5 3.6 11.5 13.5 52.3-15.3 37-31.3-96.2-71.4z"
-                fill="#763d16"
-                stroke="#763d16"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                class="st6"
-                d="M267.2 153.5l-52.3-15.3 15.9 23.9-23.7 46 31.2-.4h46.5zm-163.6-15.3l-52.3 15.3-17.4 54.2h46.4l31.1.4-23.6-46zm71 26.4l3.3-57.7 15.2-41.1h-67.5l15 41.1 3.5 57.7 1.2 18.2.1 44.8h27.7l.2-44.8z"
-              />
-            </svg>
-            <p class="text-center dark:text-white">
-              You don't have MetaMask in your browser, please download it from
-              <a href="https://metamask.io/" class="text-accent" target="_blank" rel="noreferrer noopener">MetaMask</a>
-            </p>
-          </div>
-          <!-- end body -->
-
-          <div class="modal-footer">
-            <div class="flex items-center justify-center space-x-4">
-              <a
-                href="https://metamask.io/"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
-              >
-                Get Metamask
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Buy Now Modal -->
-    <div class="modal fade" id="buyNowModal" tabindex="-1" aria-labelledby="buyNowModalLabel" aria-hidden="true">
-      <div class="modal-dialog max-w-2xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="buyNowModalLabel">Complete checkout</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                class="h-6 w-6 fill-jacarta-700 dark:fill-white"
-              >
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                  d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Body -->
-          <div class="modal-body p-6">
-            <div class="mb-2 flex items-center justify-between">
-              <span class="font-display text-sm font-semibold text-jacarta-700 dark:text-white">Item</span>
-              <span class="font-display text-sm font-semibold text-jacarta-700 dark:text-white">Subtotal</span>
+        </div>
+        <div  class="menu burger-icon burger-icon-white menu__icon"><span class="burger-icon-top"></span><span class="burger-icon-mid"> </span><span class="burger-icon-bottom"></span></div>
+        <nav class="fixed top-0 right-0 bg-white flex flex-col h-screen nav-shadow overflow-y-scroll nav-mobile opacity-0 pointer-events-none transition-all duration-200 w-[380px] z-[100]">
+          <div class="flex items-center border-b p-[15px] lg:p-[26px] gap-[10px] border-[#F2F4F7]"><img class="max-w-[50px]" src="agency/assets/images/avatar-9.png" alt="avatar">
+            <div>
+              <p class="font-bold">Hi! Steven</p>
+              <p class="text-sm font-chivo text-gray-500">You have 5 new messages</p>
             </div>
-
-            <div class="relative flex items-center border-t border-b border-jacarta-100 py-4 dark:border-jacarta-600">
-              <figure class="mr-5 self-start">
-                <img src="/template/dist/img/avatars/avatar_2.jpg" alt="avatar 2" class="rounded-2lg" loading="lazy" />
-              </figure>
-
-              <div>
-                <a href="collection.html" class="text-sm text-accent">Elon Musk #709</a>
-                <h3 class="mb-1 font-display text-base font-semibold text-jacarta-700 dark:text-white">
-                  Lazyone Panda
-                </h3>
-                <div class="flex flex-wrap items-center">
-                  <span class="mr-1 block text-sm text-jacarta-500 dark:text-jacarta-300">Creator Earnings: 5%</span>
-                  <span
-                    data-tippy-content="The creator of this collection will receive 5% of the sale total from future sales of this item."
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      class="h-4 w-4 fill-jacarta-700 dark:fill-jacarta-300"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"
-                      />
-                    </svg>
-                  </span>
+          </div>
+          <div class="p-[30px]">
+            <ul class="font-chivo font-medium text-[16px] leading-[16px]">
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>Home</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
                 </div>
-              </div>
-
-              <div class="ml-auto">
-                <span class="mb-1 flex items-center whitespace-nowrap">
-                  <span data-tippy-content="ETH">
-                    <svg
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      x="0"
-                      y="0"
-                      viewBox="0 0 1920 1920"
-                      xml:space="preserve"
-                      class="h-4 w-4"
-                    >
-                      <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z"></path>
-                      <path fill="#62688F" d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"></path>
-                      <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z"></path>
-                      <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
-                      <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
-                    </svg>
-                  </span>
-                  <span class="text-sm font-medium tracking-tight dark:text-jacarta-100">1.55 ETH</span>
-                </span>
-                <div class="text-right text-sm dark:text-jacarta-300">$130.82</div>
-              </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="hp1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/">Homepage 01</a></li>
+                  <li class="text-md py-[10px]" id="hp2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-2.html">Homepage 02</a></li>
+                  <li class="text-md py-[10px]" id="hp3"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-3.html">Homepage 03</a></li>
+                  <li class="text-md py-[10px]" id="hp4"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-4.html">Homepage 04</a></li>
+                  <li class="text-md py-[10px]" id="hp5"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-5.html">Homepage 05</a></li>
+                  <li class="text-md py-[10px]" id="hp6"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-6.html">Homepage 06</a></li>
+                  <li class="text-md py-[10px]" id="hp7"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-7.html">Homepage 07</a></li>
+                  <li class="text-md py-[10px]" id="hp8"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-8.html">Homepage 08</a></li>
+                </ul>
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>About</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="ab1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/about-1.html">About 01</a></li>
+                  <li class="text-md py-[10px]" id="ab2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/about-2.html">About 02</a></li>
+                  <li class="text-md py-[10px]" id="ab3"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/about-3.html">About 03</a></li>
+                </ul>
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>Services</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="sv1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/services-1.html">Services 01</a></li>
+                  <li class="text-md py-[10px]" id="sv2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/services-2.html">Services 02</a></li>
+                  <li class="text-md py-[10px]" id="p1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/pricing-1.html">Pricing 01</a></li>
+                  <li class="text-md py-[10px]" id="p2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/pricing-2.html">Pricing 02</a></li>
+                  <li class="text-md py-[10px]" id="faqs1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/faqs-1.html">FAQS 01</a></li>
+                  <li class="text-md py-[10px]" id="faqs2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/faqs-2.html">FAQS 02</a></li>
+                  <li class="text-md py-[10px]" id="career"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/career.html">Career</a></li>
+                  <li class="text-md py-[10px]" id="career-details"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/career-details.html">Career Detials</a></li>
+                </ul>
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>Pages</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="contact"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/contact.html">Contact</a></li>
+                  <li class="text-md py-[10px]" id="singup"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/signup.html">Sign Up</a></li>
+                  <li class="text-md py-[10px]" id="login"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/login.html">Log In</a></li>
+                  <li class="text-md py-[10px]" id="rp"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/reset-password.html">Reset Password</a></li>
+                  <li class="text-md py-[10px]" id="error404"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/error-404.html">Error 404</a></li>
+                </ul>
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>Blog</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="b1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/blog-1.html">Blog 01</a></li>
+                  <li class="text-md py-[10px]" id="b2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/blog-2.html">Blog 02</a></li>
+                  <li class="text-md py-[10px]" id="single"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/single.html">Blog Single</a></li>
+                </ul>
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <p>Shop</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                </div>
+                <ul class="pl-5 menu-child hidden pt-[10px]">
+                  <li class="text-md py-[10px]" id="s1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/shop-1.html">Shop 01</a></li>
+                  <li class="text-md py-[10px]" id="s2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/shop-2.html">Shop 02</a></li>
+                  <li class="text-md py-[10px]" id="product"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/single-product.html">Product Details</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="mt-5 border-t border-b border-gray-100 pb-5 mb-[25px] pt-[30px]">
+              <p class="font-bold text-heading-6 mb-[10px]">Your Account</p>
+              <ul class="text-[15px]"> 
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Profile</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Work Preferences</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">My Boosted Shots</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">My Collections</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Account Settings</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Go Pro</a></li>
+                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Sign Out</a></li>
+              </ul>
             </div>
-
-            <!-- Total -->
-            <div
-              class="mb-2 flex items-center justify-between border-b border-jacarta-100 py-2.5 dark:border-jacarta-600"
-            >
-              <span class="font-display font-semibold text-jacarta-700 hover:text-accent dark:text-white">Total</span>
-              <div class="ml-auto">
-                <span class="flex items-center whitespace-nowrap">
-                  <span data-tippy-content="ETH">
-                    <svg
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      x="0"
-                      y="0"
-                      viewBox="0 0 1920 1920"
-                      xml:space="preserve"
-                      class="h-4 w-4"
-                    >
-                      <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z"></path>
-                      <path fill="#62688F" d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"></path>
-                      <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z"></path>
-                      <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
-                      <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
-                    </svg>
-                  </span>
-                  <span class="font-medium tracking-tight text-green">1.55 ETH</span>
-                </span>
-                <div class="text-right dark:text-jacarta-300">$130.82</div>
-              </div>
-            </div>
-
-            <!-- Terms -->
-            <div class="mt-4 flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="buyNowTerms"
-                class="h-5 w-5 self-start rounded border-jacarta-200 text-accent checked:bg-accent focus:ring-accent/20 focus:ring-offset-0 dark:border-jacarta-500 dark:bg-jacarta-600"
-              />
-              <label for="buyNowTerms" class="text-sm dark:text-jacarta-200"
-                >By checking this box, I agree to Xhibiter's <a href="#" class="text-accent">Terms of Service</a></label
-              >
-            </div>
+            <div class="text-gray-400 font-chivo text-[13px]">Copyright 2022 © Agon - Agency Template.<br><span>Designed by</span><a class="text-green-900" href="http://alithemes.com">&nbsp;AliThemes</a></div>
           </div>
-          <!-- end body -->
+        </nav>
+      </header>
+  <div class="">
+    @yield('content')
+ 
+   
+  </div>
+  <div class="container">
 
-          <div class="modal-footer">
-            <div class="flex items-center justify-center space-x-4">
-              <button
-                type="button"
-                class="rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
-              >
-                Confirm Checkout
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Place Bid Modal -->
-    <div class="modal fade" id="placeBidModal" tabindex="-1" aria-labelledby="placeBidLabel" aria-hidden="true">
-      <div class="modal-dialog max-w-2xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="placeBidLabel">Place a bid</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                class="h-6 w-6 fill-jacarta-700 dark:fill-white"
-              >
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                  d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Body -->
-          <div class="modal-body p-6">
-            <div class="mb-2 flex items-center justify-between">
-              <span class="font-display text-sm font-semibold text-jacarta-700 dark:text-white">Price</span>
-            </div>
-
-            <div
-              class="relative mb-2 flex items-center overflow-hidden rounded-lg border border-jacarta-100 dark:border-jacarta-600"
-            >
-              <div class="flex flex-1 items-center self-stretch border-r border-jacarta-100 bg-jacarta-50 px-2">
-                <span>
-                  <svg
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0"
-                    y="0"
-                    viewBox="0 0 1920 1920"
-                    xml:space="preserve"
-                    class="mr-1 h-5 w-5"
-                  >
-                    <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z"></path>
-                    <path fill="#62688F" d="M959.8 731L420.1 976.3l539.7 319.1zm539.8 245.3L959.8 80.7V731z"></path>
-                    <path fill="#454A75" d="M959.8 1295.4l539.8-319.1L959.8 731z"></path>
-                    <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
-                    <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
-                  </svg>
-                </span>
-                <span class="font-display text-sm text-jacarta-700">ETH</span>
-              </div>
-
-              <input
-                type="text"
-                class="h-12 w-full flex-[3] border-0 focus:ring-inset focus:ring-accent"
-                placeholder="Amount"
-                value="0.05"
-              />
-
-              <div class="flex flex-1 justify-end self-stretch border-l border-jacarta-100 bg-jacarta-50">
-                <span class="self-center px-2 text-sm">$130.82</span>
-              </div>
-            </div>
-
-            <div class="text-right">
-              <span class="text-sm dark:text-jacarta-400">Balance: 0.0000 WETH</span>
-            </div>
-
-            <!-- Terms -->
-            <div class="mt-4 flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="terms"
-                class="h-5 w-5 self-start rounded border-jacarta-200 text-accent checked:bg-accent focus:ring-accent/20 focus:ring-offset-0 dark:border-jacarta-500 dark:bg-jacarta-600"
-              />
-              <label for="terms" class="text-sm dark:text-jacarta-200"
-                >By checking this box, I agree to Xhibiter's <a href="#" class="text-accent">Terms of Service</a></label
-              >
-            </div>
-          </div>
-          <!-- end body -->
-
-          <div class="modal-footer">
-            <div class="flex items-center justify-center space-x-4">
-              <button
-                type="button"
-                class="rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
-              >
-                Place Bid
-              </button>
-            </div>
+    <div class="bg fixed bottom-28 rounded-full grid place-items-center opacity-0 invisible transition-all duration-300 right-[20px] z-[9999] w-[48px] h-[48px]" id="backToTop"><a class="rounded-full bg-accent grid place-items-center w-[48px] h-[48px]" href="#top"><img src="/agency/assets/images/icons/icon-up.svg" alt="to top icon"></a></div>
+    <footer class="mt-[92px] lg:mt-[150px] xl:mt-[200px] mb-[30px]">
+      <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0">
+        <div class="flex flex-col items-center gap-2 mb-14 md:flex-row md:justify-between"> <img class="h-full w-full object-cover max-w-[80px]" src="{{asset('assets/img/logo.png')}}" alt="logo">
+          <div class="flex items-center flex-col gap-5 md:flex-row lg:gap-[30px]">
+            <p class="text-heading-6 font-chivo font-bold">Ready to get started?</p>
+            <button type="button"> <a class="flex items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-md bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900 hover:-translate-y-[2px] text-white bg-gray-900 w-fit" href="#"><span class="block text-inherit w-full h-full rounded-md text-lg font-chivo font-semibold">Create an Account</span></a></button>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="page-footer bg-white dark:bg-jacarta-900">
-      <div class="container">
-        <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12">
-          <div class="col-span-full sm:col-span-3 md:col-span-4">
-            <!-- Logo -->
-            <a href="{{route('home')}}" class="mb-6 flex items-center gap-4">
-              <img src="{{asset('assets/img/logo.png')}}" class="w-16 max-h-16 " alt="Xhibiter | NFT Marketplace" />
-            <span class="text-lg text-jacarta-900 font-semibold">MyOpia</span>
-            </a>
-            <p class="mb-12 dark:text-jacarta-300">
-                Buat Desain Kemasan 3D menggunakan AI
+        <div class="w-full bg-gray-200 h-[1px] mb-[52px]"></div>
+        <div class="text-gray-600 grid gird-cols-1 gap-8 mb-[48px] md:grid-cols-2 lg:grid-cols-5 xl:gap-[98px]">
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Contact</h5>
+            <p class="text-text mb-5">4517 Washington Ave. Manchester, Kentucky 39495
             </p>
-            <!-- Socials -->
-            <div class="flex space-x-5">
-              <a href="#" class="group">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="facebook"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
-                  ></path>
-                </svg>
-              </a>
-              <a href="#" class="group">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="twitter"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
-                  ></path>
-                </svg>
-              </a>
-              <a href="#" class="group">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="discord"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                >
-                  <path
-                    d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"
-                  ></path>
-                </svg>
-              </a>
-              <a href="#" class="group">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="instagram"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
-                  ></path>
-                </svg>
-              </a>
-              <a href="#" class="group">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="tiktok"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
+            <p class="text-text underline">(239) 555-0108
+            </p>
+            <p class="text-text underline">contact@agon.com
+            </p>
           </div>
-
-          <div class="col-span-full sm:col-span-3 md:col-span-2 md:col-start-7">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Marketplace</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">All NFTs</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Art</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Music</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Domain Names</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Collectibles</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Virtual World</a>
-              </li>
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">About Us</h5>
+            <ul>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Mission &amp; Vision</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Our Team</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Careers</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Press &amp; Media</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Advertising</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Testimonials</a></li>
             </ul>
           </div>
-
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Company</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Explore</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">About</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Contact Us</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Our Blog</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">FAQ</a>
-              </li>
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Discover</h5>
+            <ul>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Our Blog</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Plans &amp; Pricing</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Knowledge Base</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Cookie Policy</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Office Center</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">News &amp; Events</a></li>
             </ul>
           </div>
-
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">My Account</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Authors</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Collection</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Author Profile</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-accent dark:hover:text-white">Create Item</a>
-              </li>
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Support</h5>
+            <ul>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">FAQs</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Editor Help</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Community</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Live Chatting</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Contact Us</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Support Center</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Useful links</h5>
+            <ul>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Request an offer</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">How it works</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Pricing</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Reviews</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Stories</a></li>
             </ul>
           </div>
         </div>
-        <div class="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
-          <span class="text-sm dark:text-jacarta-400"
-            >&copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>
-            Xhibiter — Made by
-            <a href="https://deothemes.com" class="hover:text-accent">DeoThemes</a></span
-          >
-          <ul class="flex flex-wrap space-x-4 text-sm dark:text-jacarta-400">
-            <li>
-              <a href="#" class="hover:text-accent">Terms and conditions</a>
-            </li>
-            <li><a href="#" class="hover:text-accent">Privacy policy</a></li>
-          </ul>
+        <div class="w-full bg-gray-200 h-[1px] mb-[46px]"></div>
+        <div class="text-gray-400 lg:flex lg:items-center lg:justify-between">
+          <div class="md:flex md:items-center md:gap-6">
+            <p class="text-lead font-bold">©Agon Official 2022
+            </p>
+            <div class="flex items-center justify-between md:gap-6"><a class="text-text" href="/">Privacy policy</a><a class="text-text" href="/">Cookies</a><a class="text-text" href="/">Terms of service</a></div>
+          </div>
+          <div class="flex items-center justify-center gap-5 mt-5 lg:mt-0"><a class="w-8 h-8 transition-all duration-300 hover:opacity-70 hover:-translate-y-1" href="/"><img class="h-full w-full object-cover" src="/agency/assets/images/icons/icon-facebook-green.svg" alt="facebook icon"></a><a class="w-8 h-8 transition-all duration-300 hover:opacity-70 hover:-translate-y-1" href="/"><img class="h-full w-full object-cover" src="/agency/assets/images/icons/icon-instagram-green.svg" alt="instagram icon"></a><a class="w-8 h-8 transition-all duration-300 hover:opacity-70 hover:-translate-y-1" href="/"><img class="h-full w-full object-cover" src="/agency/assets/images/icons/icon-twitter-green.svg" alt="twitter icon"></a><a class="w-8 h-8 transition-all duration-300 hover:opacity-70 hover:-translate-y-1" href="/"><img class="h-full w-full object-cover" src="/agency/assets/images/icons/icon-linkedin-green.svg" alt="linkedin icon"></a></div>
         </div>
       </div>
     </footer>
-
-    <!-- JS Scripts -->
-     <!-- <script></script> -->
-     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-     <script>
-      require("matchmedia-polyfill")
-    require("matchmedia-polyfill/matchMedia.addListener")
-
-    $(document).ready(function() {
-      const $mobileToggle = $(".js-mobile-toggle");
-      const $mobileMenu = $(".js-mobile-menu");
-      const $mobileMenuClose = $(".js-mobile-close");
-      const $pageHeader = $(".js-page-header");
-      const $navDropdown = $(".js-nav-dropdown");
-
-      if (!$mobileToggle.length) return;
-
-      const belowMobile = window.matchMedia("(max-width: 1024px)");
-      const aboveMobile = window.matchMedia("(min-width: 1025px)");
-
-      $mobileToggle.on("click", function() {
-        toggleMobileMenu();
-      });
-
-      $mobileMenuClose.on("click", function() {
-        toggleMobileMenu();
-      });
-
-      belowMobile.addListener(function(e) {
-        if (e.matches) {
-          $mobileMenu.removeClass("nav-menu--is-open");
-        }
-      });
-
-      aboveMobile.addListener(function(e) {
-        if (e.matches) {
-          $("body").removeClass("nav-open-noscroll");
-          $pageHeader.removeClass("h-full");
-          $mobileMenu.removeClass("nav-menu--is-open");
-        }
-      });
-
-      $navDropdown.on("mouseenter", function() {
-        $(this).children().first().attr("aria-expanded", true);
-      });
-
-      $navDropdown.on("mouseleave", function() {
-        $(this).children().first().attr("aria-expanded", false);
-      });
-
-      function toggleMobileMenu() {
-        $("body").toggleClass("nav-open-noscroll");
-        $pageHeader.toggleClass("h-full");
-        $mobileMenu.toggleClass("nav-menu--is-open");
-      }
-    });
-
-     </script>
-   
-    <!-- <script src="{{ asset('template/src/js/index.js') }}"></script> -->
-    <script src="{{ asset('template/src/js/contact-form.js') }}"></script>
-    <script src="{{ asset('template/src/js/countdown.js') }}"></script>
-    <script src="{{ asset('template/src/js/charts.js') }}"></script>
-    <script src="{{ asset('template/src/js/dark-mode.js') }}"></script>
-    <script src="{{ asset('template/src/js/video-lightbox.js') }}"></script>
-    <script src="{{asset('template/dist/js/app.bundle.js')}}"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </div>
+  </div>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    // Your JavaScript for slider initialization
     document.addEventListener("DOMContentLoaded", function() {
       const Sliders = {
         initFullSlider: function() {
@@ -1117,96 +561,56 @@
         },
         initCardSlider: function() {
           const swiper = new Swiper(".card-slider-4-columns", {
-      modules: [Navigation, Lazy],
-      speed: 400,
-      spaceBetween: 30,
-      slidesPerView: 1,
-      breakpoints: {
-        560: {
-          slidesPerView: 2,
-          slidesPerGroup: 2
-        },
-        768: {
-          slidesPerView: 3,
-          slidesPerGroup: 3
-        },
-        1024: {
-          slidesPerView: 3,
-          slidesPerGroup: 3
-        },
-        1200: {
-          slidesPerView: 4,
-          slidesPerGroup: 4
-        }
-      },
-      preloadImages: false,
-      lazy: true,
-      navigation: {
-        nextEl: ".swiper-button-next-1",
-        prevEl: ".swiper-button-prev-1"
-      }
-    })
+            modules: [Navigation, Lazy],
+            speed: 400,
+            spaceBetween: 30,
+            slidesPerView: 1,
+            breakpoints: {
+              560: {
+                slidesPerView: 2,
+                slidesPerGroup: 2
+              },
+              768: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              1200: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+              }
+            },
+            preloadImages: false,
+            lazy: true,
+            navigation: {
+              nextEl: ".swiper-button-next-1",
+              prevEl: ".swiper-button-prev-1"
+            }
+          })
         }
 
       };
 
-      // Initialize sliders
       Sliders.initFullSlider();
       Sliders.initCenteredSlider();
       Sliders.initCardSlider()
-      
+
     });
   </script>
-    <script src="/css/iconfont.js"></script>
-  <script src="/js/tips.js"></script>
-  <script src="/js/index.js"></script>
-  <script src="/js/base.js"></script>
+  <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+  <script type="text/javascript" src="agency/assets/scripts/vendors/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="agency/assets/scripts/vendors/slick.min.js"></script>
+  <script src="agency/assets/scripts/app.js"></script>
+  <script src="{{asset('template/dist/js/app.bundle.js')}}"></script>
+  <script src="{{ asset('template/src/js/dark-mode.js') }}"></script>
   <script src="https://cdn.pacdora.com/Pacdora-v1.1.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-@stack('js')
-  <script>
-        $(document).ready(function() {
-            $('#logoutButton').on('click', function(e) {
-                e.preventDefault();
+  @stack('js')
 
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You are about to log out.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, log out!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: `{{ route('logout') }}`,
-                            type: 'POST',
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
-                            success: function(response) {
-                                Swal.fire(
-                                    'Logged Out!',
-                                    'You have been logged out successfully.',
-                                    'success'
-                                ).then(() => {
-                                    window.location.href = '/';
-                                });
-                            },
-                            error: function(xhr) {
-                                Swal.fire(
-                                    'Error!',
-                                    'There was an error logging you out.',
-                                    'error'
-                                );
-                            }
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-    
-  </body>
+</body>
+
 </html>
