@@ -466,7 +466,7 @@
   console.log("{{Auth::user()->id}}")
   setTimeout(async () => {
     await Pacdora.init({
-      userId: "{{Auth::user()->id}}",
+      userId: "{{hashId(Auth::user()->id)}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
     });
@@ -484,7 +484,7 @@
     // }
 
     await Pacdora.init({
-      userId: "{{Auth::user()->id}}",
+      userId: "{{hashId(Auth::user()->id)}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
       theme: "#dc2626",

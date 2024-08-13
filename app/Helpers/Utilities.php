@@ -2,6 +2,7 @@
 
 use Vinkla\Hashids\Facades\Hashids;
 
+
 if (!function_exists('hashId')) {
     function hashId($string, $type = 'encode')
     {

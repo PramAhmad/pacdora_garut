@@ -470,7 +470,7 @@
   console.log("{{Auth::user()->id}}")
   setTimeout(async () => {
     await Pacdora.init({
-      userId: "{{Auth::user()->id}}",
+      userId: "{{hashId(Auth::user()->id)}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
     });
@@ -480,15 +480,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   (async () => {
-    // const userId = localStorage.getItem("username");
-    // let externalId = localStorage.getItem("externalId");
-    // if (!externalId) {
-    //   externalId = Math.random().toFixed(16).substring(1).toString(16);
-    //   localStorage.setItem("externalId", externalId);
-    // }
+  
 
     await Pacdora.init({
-      userId: "{{Auth::user()->id}}",
+      userId: "{{hashId(Auth::user()->id)}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
       theme: "#dc2626",
