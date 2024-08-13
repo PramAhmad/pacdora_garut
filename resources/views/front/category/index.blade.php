@@ -1,7 +1,7 @@
 @extends("front.layouts.app")
 
 @section("content")
-<main class="py-[135px]">
+<main class="w-full max-w-7xl mx-auto">
   <div class="">
     <div class="flex flex-col">
       <div class="relative w-full py-[20px]">
