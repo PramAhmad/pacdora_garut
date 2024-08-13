@@ -45,7 +45,7 @@ class RegisterController extends Controller
         'appKey' => 'a3e831ccfa3ffd84',
     ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
         
-    $response = json_decode($response->body(), true);
+   return  $response = json_decode($response->body(), true);
    
 
   
