@@ -484,7 +484,7 @@
     // }
 
     await Pacdora.init({
-      userId: "{{Auth::usetar()->id}}",
+      userId: "{{Auth::user()->id}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
       theme: "#dc2626",
