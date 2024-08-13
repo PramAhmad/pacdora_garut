@@ -25,7 +25,27 @@ class RegisterController extends Controller
     public function store(Request $request)
 {
     
-  
+    $randimg = Template::inRandomOrder()->limit(5)->get();
+
+    $data = [
+        'imgs' => [],
+        'userId' => 14, 
+    ];
+
+    foreach ($randimg as $key => $value) {
+        $data['imgs'][] = [
+            'url' => url('upload/template/'.$value->image),
+            'name' => $value->name,
+        ];
+    } 
+    json_encode($data);
+  //   return $data;
+    $response = Http::withHeaders([
+        'appId' => '71ee73045e3480fe',
+        'appKey' => 'a3e831ccfa3ffd84',
+    ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
+    
+   
 
   
     // dd($request->all());
@@ -99,27 +119,7 @@ class RegisterController extends Controller
         'disabilitas' => $request->disabilitas,
         'nohp' => $request->nohp,
     ]);
-    $randimg = Template::inRandomOrder()->limit(5)->get();
-
-    $data = [
-        'imgs' => [],
-        'userId' => $user->id, 
-    ];
-
-    foreach ($randimg as $key => $value) {
-        $data['imgs'][] = [
-            'url' => url('upload/template/'.$value->image),
-            'name' => $value->name,
-        ];
-    } 
-    json_encode($data);
-  //   return $data;
-    $response = Http::withHeaders([
-        'appId' => '71ee73045e3480fe',
-        'appKey' => 'a3e831ccfa3ffd84',
-    ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
-    
-   
+  
 
  
     return response()->json([
