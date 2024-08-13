@@ -484,14 +484,14 @@
     // }
 
     await Pacdora.init({
-      userId: "{{Auth::user()->id}}",
+      userId: "{{Auth::usetar()->id}}",
       appId: "71ee73045e3480fe",
       isDelay: true,
       theme: "#dc2626",
       doneBtn: "Save",
       localeResource: {
         "Upload & Design": "Online design",
-      },
+      },                                              
     });
 
     const modelId = "{{$modelid}}";
@@ -504,7 +504,7 @@
       doneBtn: "Save",
     });
 
-    
+          
     Pacdora.$on("download:start", () => {
       const downloadEle = document.querySelector(".download-text");
       downloadEle.innerText = "Downloading...";
@@ -516,7 +516,7 @@
         downloadEle.innerText = "Download the Dieline";
       }, 1000);
     });
-    Pacdora.$on("download:fail", () => {
+    Pacdora.$on("download:fail", () => {                                                                      
       const downloadEle = document.querySelector(".download-text");
       downloadEle.innerText = "Download failed";
       setTimeout(() => {
@@ -526,9 +526,7 @@
 
     Pacdora.$on("design:opened", () => {
 
-      //ajax post to histrory controller
-
-
+    
       const sizeBox = document.querySelector(".size-box");
       sizeBox.dataset.uiTip = "editor-size";
       sizeBox.dataset.position = "right";

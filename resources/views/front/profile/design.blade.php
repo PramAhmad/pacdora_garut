@@ -658,20 +658,65 @@
 </script>
 <!-- jquery cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>  
+<script>
   $(document).ready(function(){
- 
-
     $(".menu-card-menu").on("click", "#template", function(){
       $(".menu-card-menu .card-menu-item").removeClass("active");
       $(this).addClass("active");
-      // add elemnt  div 
-      const designHeader = document.querySelector(".menu-card-menu");
-      const menuCard = document.createElement("div");
-      menuCard.className = "menu-card";
-      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'><i data-v-8814160e="" class="p-icon-element"></i><p data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</p></div>`;
+
+      // Create modal element with Tailwind classes
+      const modal = document.createElement("div");
+      modal.className = "modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50";
+      modal.innerHTML = `
+      <div class="modal-content bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <span class="close text-gray-600 cursor-pointer">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Choose a template</h2>
+        <div class="template-box grid grid-cols-2 gap-4">
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/KRAFT.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">Kraft</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+        </div>
+      </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Handle modal close
+      const close = modal.querySelector(".close");
+      close.onclick = function(){
+        modal.style.display = "none";
+        document.body.removeChild(modal);
+      }
+
+      // Close modal on outside click
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.removeChild(modal);
+        }
+      }
     });
   });
-
 </script>
+
 @endsection

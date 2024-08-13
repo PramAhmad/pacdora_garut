@@ -12,6 +12,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\TemplateUserController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UmkmProfileController;
 use App\Models\HistoryModel;
@@ -83,13 +84,20 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::resource('/category', CategoryController::class);
         Route::get('/category/edit/{id}',[CategoryController::class,"edit"]);
         Route::delete('/category/delete/{id}',[CategoryController::class,"destroy"]);
+
         Route::get('/subcategory/edit/{id}',[SubCategoryController::class,"edit"]);
         Route::delete('/subcategory/delete/{id}',[SubCategoryController::class,"destroy"]);
         Route::resource('/subcategory', SubCategoryController::class);
+
         Route::resource('/model', ModelsController::class);
         Route::get('/model/edit/{id}',[ModelsController::class,'edit']);
 
         Route::resource('/history', HistoryModelsController::class);
+
+        // template
+        Route::get('/template',[TemplateUserController::class, 'index'])->name('template.index');
+        Route::post('/template/store',[TemplateUserController::class, 'store'])->name('template.store');
+        
     });
  
 });

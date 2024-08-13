@@ -252,6 +252,14 @@
                 </a>
                 </li>
               <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('template.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-template"></i>
+                  </span>
+                  <span class="hide-menu">Template Desain</span>
+                </a>
+                </li>
+                <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('history.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-history"></i>
