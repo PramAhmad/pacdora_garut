@@ -125,7 +125,7 @@ class TemplateUserController extends Controller
             ];
         }
         $data = json_encode($data);
-        return $data;
+       
         $post = Http::withHeaders([
             'appId' => '71ee73045e3480fe',
             'appKey' => 'a3e831ccfa3ffd84',
