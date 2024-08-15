@@ -124,13 +124,13 @@ class TemplateUserController extends Controller
                 'name' => $value->name,
             ];
         }
-        $data = json_encode($data);
+        json_encode($data);
        
-        $post = Http::withHeaders([
+       Http::withHeaders([
             'appId' => '71ee73045e3480fe',
             'appKey' => 'a3e831ccfa3ffd84',
         ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
-        dd($post->json());    
+           
 
       
         return redirect()->back();
