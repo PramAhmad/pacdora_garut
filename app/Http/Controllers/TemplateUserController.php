@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DataTables\TemplateUserDataTable;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class TemplateUserController extends Controller
 {
@@ -92,5 +94,45 @@ class TemplateUserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function select()
+    {
+        $data['templates'] = Template::paginate(10);
+        return view('front.template.select',$data);
+    }
+    // select store
+    public function selectStore(Request $request)
+    {
+      
+        $request->validate([
+            'template_id' => 'required',
+        ],[
+            'template_id.required' => 'Template harus dipilih',
+        ]);
+
+        
+        $template = Template::whereIn('id',$request->template_id)->get(['image','name']);
+        json_encode($template);
+        $data = [
+            'imgs' => [],
+            'userId' => hashId(Auth::user()->id), 
+        ];
+        foreach ($template as $key => $value) {
+            $data['imgs'][] = [
+                'url' => url('upload/template/'.$value->image),
+                'name' => $value->name,
+            ];
+        }
+        $data = json_encode($data);
+        return $data;
+        $post = Http::withHeaders([
+            'appId' => '71ee73045e3480fe',
+            'appKey' => 'a3e831ccfa3ffd84',
+        ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
+        dd($post->json());    
+
+      
+        return redirect()->back();
     }
 }
