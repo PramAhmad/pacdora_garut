@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Home Page 5</title>
+  <title>Myopia</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-  <link rel="icon" href="favicon-16x16.png" type="image/x-icon" sizes="16x16">
+  <link rel="icon" href="{{asset('assets/img/logo.png')}}" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   @vite('resources/css/app.css')
 <!-- <link rel="stylesheet" href="{{asset('template/dist/css/style.css')}}"> -->
@@ -295,8 +295,8 @@
          
         @else
           
-        <a class="text-base font-inter text-white font-medium rounded-lg bg-accent p-2 px-3 hover:scale-105 transition duration-300" href="{{route('login')}}">Login</a>
-        <a class="text-base font-inter text-accent border-accent font-medium border rounded-lg p-2 px-3 hover:scale-105 transition duration-300" href="{{route('register')}}">Register</a>
+        <a class="text-base font-inter text-white font-medium rounded-lg bg-accent p-2 px-3 hover:scale-105 transition duration-300" href="{{route('login')}}">Masuk</a>
+        <a class="text-base font-inter text-accent border-accent font-medium border rounded-lg p-2 px-3 hover:scale-105 transition duration-300" href="{{route('register')}}">Daftar</a>
         @endif
       </div>
         </div>

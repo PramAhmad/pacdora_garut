@@ -40,9 +40,9 @@
 
         <div class="mt-6 flex items-center justify-center space-x-2.5">
           @if ($umkm->approved == 1)
-          <div class="p-3 rounded-full bg-accent-lightest ">
+          <div class="p-3 rounded-full bg-accent-lightest border border-accent-lighter ">
 
-            <span class="text-accent">Akun sudah berhasil di terima sekarang kamu dapat menggunakan semua fitur
+            <span class="text-accent-dark">Akun sudah berhasil di terima sekarang kamu dapat menggunakan semua fitur
               myopia</span>
           </div>
           @elseif($umkm->approved == 0)
@@ -226,17 +226,29 @@
                 </figure>
 
                 <div>
-                  <a href="{{route('profile.design', ['id' => $item['id']])}}" class="mb-1 font-display text-base font-semibold text-jacarta-700 dark:text-white">
-                    {{$item['name']}}
-                  </a>
+                  <div class="flex gap-1">
+                    <a href="{{route('profile.design', ['id' => $item['id']])}}" class="mb-1 font-display text-base font-semibold text-jacarta-700 dark:text-white judul">{{$item['name']}}</a>
+                    <div class="   rounded-full p-1 -translate-y-6">
+                      <a  id="modal-title">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                      </a>
+                      <!-- #region -->
+                    </div>
+                  </div>
+
                   <span class="mb-3 block text-sm text-jacarta-500">width {{$item['width']}} / height
                     {{$item['height']}}</span>
                   <span class="block text-xs text-jacarta-300">Panjang {{$item['length']}}</span>
                 </div>
                 <div class="ml-auto rounded-full border border-jacarta-100 p-3 dark:border-jacarta-600 svg-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24" stroke-width="1.5" stroke="currentColor" class=" ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24" stroke-width="1.5" stroke="currentColor" class="svg-doc">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" id="icon" />
                   </svg>
+           
+
                 </div>
               </div>
               @empty
@@ -409,16 +421,28 @@
 <script>
   $(document).ready(function() {
     $('.svg-icon').click(function() {
+      let svgIcon = $(this);
+      let svgDoc = svgIcon.find('.svg-doc'); 
+      svgDoc.hide(); 
+
+      let loadingSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transform rotating svg-load">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+      `;
+      svgIcon.append(loadingSvg); 
+
       let csrf = "{{csrf_token()}}";
-      var id = $(this).closest('.relative.flex.items-center').data('id');
+      var id = svgIcon.closest('.relative.flex.items-center').data('id');
       console.log(id);
+
       $.ajax({
         url: 'https://api.pacdora.com/open/v1/user/projects/export/pdf',
         type: 'POST',
         contentType: 'application/json',
         headers: {
           'appId': '71ee73045e3480fe',
-            'appKey': 'a3e831ccfa3ffd84',
+          'appKey': 'a3e831ccfa3ffd84',
           'X-CSRF-TOKEN': csrf
         },
         data: JSON.stringify({
@@ -441,13 +465,15 @@
                 taskId: taskId
               },
               success: function(response) {
-                console.log(response.data)
+                console.log(response.data);
                 console.log(response.data.filePath);
                 if (response.data.filePath) {
                   clearInterval(intervalId);
                   window.location.href = response.data.filePath;
+                  svgIcon.find('.svg-load').remove();
+                  svgDoc.show();
                 } else {
-                  console.log('proses cuy');
+                  console.log('Processing...');
                 }
               },
               error: function(error) {
@@ -463,6 +489,49 @@
     });
   });
 </script>
+<script>
+  $(document).ready(function() {
+    $('#modal-title').click(function(e) {
+      var id = $(this).closest('.relative.flex.items-center').data('id');
+      var nama_project = $(this).closest('.relative.flex.items-center').find('.judul').text();
+      console.log(nama_project);
+      console.log(id)
+          Swal.fire({
+        title: "Masukan Nama Project",
+        input: "text",
+        inputLabel: "Nama Project",
+        inputValue:nama_project,
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "Kamu haru mengisi judul nama project!";
+          }
+
+        }
+        
+
+      });
+
+    })
+  });
+</script>
+
+@push('css')
+  <style>
+    @-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    -webkit-animation: rotating 2s linear infinite;
+}
+  </style>
+@endpush
 @endsection
 
 <!-- jqeury cdn -->

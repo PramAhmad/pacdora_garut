@@ -133,6 +133,6 @@ class TemplateUserController extends Controller
            
 
       
-        return redirect()->back();
+        return redirect()->back()->with('success','Template berhasil di tambahkan');
     }
 }
