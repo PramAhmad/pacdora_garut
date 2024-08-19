@@ -1,6 +1,10 @@
 @extends('front.layouts.app')
 @section("content")
 @push("css")
+<link rel="stylesheet" href="/css/iconfont.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/index.css" />
 
 <style>
   .box-info {
