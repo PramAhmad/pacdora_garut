@@ -32,7 +32,7 @@
                         <div class="d-flex align-items-center">
                           <img src="{{$p['screenshot']}}" class="rounded-2" width="42" height="42" />
                           <div class="ms-3">
-                            <h6 class="fw-semibold mb-1">{{$p['name']}}</h6>
+                            <h6 class="fw-semibold mb-1">{{$p['name'] ?? '' }}</h6>
                             <span class="fw-normal">{{$p['width']}} * {{$p['height']}}</span>
                           </div>
                         </div>
@@ -40,7 +40,7 @@
                       <td>
                         <div class="d-flex align-items-center gap-2">
                       
-                            <span class="badge bg-light-primary text-primary rounded-3 fw-semibold fs-2">{{ $p['umkm']->nama }}</span>
+                            <span class="badge bg-light-primary text-primary rounded-3 fw-semibold fs-2">{{ $p['umkm']->nama  ?? ''}}</span>
                       
                         </div>
                       </td>
@@ -52,10 +52,7 @@
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i class="fs-4 ti ti-plus"></i>Lihat</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i class="fs-4 ti ti-edit"></i>Edit</a>
+                              <a class="dropdown-item d-flex align-items-center gap-3" href="{{route('profile.design',['id' => $p['id']])}}"><i class="fs-4 ti ti-plus"></i>Lihat</a>
                             </li>
                             <li>
                               <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i class="fs-4 ti ti-trash"></i>Delete</a>
@@ -74,6 +71,13 @@
                 </table>
               </div>
         </div>
+        <!-- diplay paging link -->
+
+   <div class="py-5">
+   {{ $project->links('vendor.pagination.bootstrap-5') }}
+    
+   </div>
+
     </div>
 </div>
 

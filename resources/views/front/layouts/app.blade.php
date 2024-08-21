@@ -270,8 +270,13 @@
                
               </li>
               <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Category Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
-                <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-[185px]">
-                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:filter-green hover:pl-[25px] hover:opacity-100" data-menu="sv1"><a class="flex items-center text-[14px]" href="/services-1.html"><img class="opacity-40 w-[12px] h-[12px] mr-[8px] -translate-y-[1px]" src="agency/assets/images/icons/icon-gem.svg" alt=""><span class="whitespace-nowrap">Services 01</span></a></li>
+                <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-1/2">
+                  @php
+                      $categories = \App\Models\CategoryModel::all();
+                  @endphp
+                  @foreach ($categories as $category)
+                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px]  hover:pl-[25px] hover:opacity-100" data-menu="sv1"><a class="flex items-center text-[14px]" href="/category/{{$category->key}}"><img class="opacity-40 w-[30px] h-[30px] mr-[8px] -translate-y-[1px]" src="{{$category->image}}" alt=""><span class="whitespace-nowrap">{{$category->name}}</span></a></li>
+                  @endforeach
                  </ul>
               </li>
           
@@ -305,30 +310,22 @@
         <nav class="fixed top-0 right-0 bg-white flex flex-col h-screen nav-shadow overflow-y-scroll nav-mobile opacity-0 pointer-events-none transition-all duration-200 w-[380px] z-[100]">
           <div class="flex items-center border-b p-[15px] lg:p-[26px] gap-[10px] border-[#F2F4F7]"><img class="max-w-[50px]" src="agency/assets/images/avatar-9.png" alt="avatar">
             <div>
-              <p class="font-bold">Hi! Steven</p>
-              <p class="text-sm font-chivo text-gray-500">You have 5 new messages</p>
+              <p class="font-bold"> {{Auth::user()->name ?? 'Belum Masuk'}}</p>
+    
+              <p class="text-sm font-chivo text-gray-500">{{Auth::user()->umkm->nama_usaha ?? 'Belum Memiliki UMKM'}}</p>
             </div>
           </div>
           <div class="p-[30px]">
             <ul class="font-chivo font-medium text-[16px] leading-[16px]">
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Home</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Home</p>
                 </div>
-                <ul class="pl-5 menu-child hidden pt-[10px]">
-                  <li class="text-md py-[10px]" id="hp1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/">Homepage 01</a></li>
-                  <li class="text-md py-[10px]" id="hp2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-2.html">Homepage 02</a></li>
-                  <li class="text-md py-[10px]" id="hp3"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-3.html">Homepage 03</a></li>
-                  <li class="text-md py-[10px]" id="hp4"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-4.html">Homepage 04</a></li>
-                  <li class="text-md py-[10px]" id="hp5"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-5.html">Homepage 05</a></li>
-                  <li class="text-md py-[10px]" id="hp6"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-6.html">Homepage 06</a></li>
-                  <li class="text-md py-[10px]" id="hp7"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-7.html">Homepage 07</a></li>
-                  <li class="text-md py-[10px]" id="hp8"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/home-8.html">Homepage 08</a></li>
-                </ul>
+               
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>About</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Category Desain</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
                 </div>
                 <ul class="pl-5 menu-child hidden pt-[10px]">
                   <li class="text-md py-[10px]" id="ab1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/about-1.html">About 01</a></li>
@@ -338,65 +335,37 @@
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Services</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Pendampingan</p>
                 </div>
-                <ul class="pl-5 menu-child hidden pt-[10px]">
-                  <li class="text-md py-[10px]" id="sv1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/services-1.html">Services 01</a></li>
-                  <li class="text-md py-[10px]" id="sv2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/services-2.html">Services 02</a></li>
-                  <li class="text-md py-[10px]" id="p1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/pricing-1.html">Pricing 01</a></li>
-                  <li class="text-md py-[10px]" id="p2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/pricing-2.html">Pricing 02</a></li>
-                  <li class="text-md py-[10px]" id="faqs1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/faqs-1.html">FAQS 01</a></li>
-                  <li class="text-md py-[10px]" id="faqs2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/faqs-2.html">FAQS 02</a></li>
-                  <li class="text-md py-[10px]" id="career"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/career.html">Career</a></li>
-                  <li class="text-md py-[10px]" id="career-details"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/career-details.html">Career Detials</a></li>
-                </ul>
+               
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Pages</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Konsultasi</p>
                 </div>
-                <ul class="pl-5 menu-child hidden pt-[10px]">
-                  <li class="text-md py-[10px]" id="contact"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/contact.html">Contact</a></li>
-                  <li class="text-md py-[10px]" id="singup"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/signup.html">Sign Up</a></li>
-                  <li class="text-md py-[10px]" id="login"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/login.html">Log In</a></li>
-                  <li class="text-md py-[10px]" id="rp"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/reset-password.html">Reset Password</a></li>
-                  <li class="text-md py-[10px]" id="error404"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/error-404.html">Error 404</a></li>
-                </ul>
+               
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Blog</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Contact Us</p>
                 </div>
-                <ul class="pl-5 menu-child hidden pt-[10px]">
-                  <li class="text-md py-[10px]" id="b1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/blog-1.html">Blog 01</a></li>
-                  <li class="text-md py-[10px]" id="b2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/blog-2.html">Blog 02</a></li>
-                  <li class="text-md py-[10px]" id="single"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/single.html">Blog Single</a></li>
-                </ul>
+               
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Shop</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>About us</p>
                 </div>
-                <ul class="pl-5 menu-child hidden pt-[10px]">
-                  <li class="text-md py-[10px]" id="s1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/shop-1.html">Shop 01</a></li>
-                  <li class="text-md py-[10px]" id="s2"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/shop-2.html">Shop 02</a></li>
-                  <li class="text-md py-[10px]" id="product"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/single-product.html">Product Details</a></li>
-                </ul>
+               
               </li>
             </ul>
             <div class="mt-5 border-t border-b border-gray-100 pb-5 mb-[25px] pt-[30px]">
               <p class="font-bold text-heading-6 mb-[10px]">Your Account</p>
               <ul class="text-[15px]"> 
                 <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Profile</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Work Preferences</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">My Boosted Shots</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">My Collections</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Account Settings</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Go Pro</a></li>
                 <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Sign Out</a></li>
               </ul>
             </div>
-            <div class="text-gray-400 font-chivo text-[13px]">Copyright 2022 © Agon - Agency Template.<br><span>Designed by</span><a class="text-green-900" href="http://alithemes.com">&nbsp;AliThemes</a></div>
+            <div class="text-gray-400 font-chivo text-[13px]">Copyright 2024 © Myopia - agency garut.<br><span>Designed by</span><a class="text-green-900" href="http://alithemes.com">&nbsp;Astacode</a></div>
           </div>
         </nav>
       </header>
@@ -474,7 +443,7 @@
         <div class="w-full bg-gray-200 h-[1px] mb-[46px]"></div>
         <div class="text-gray-400 lg:flex lg:items-center lg:justify-between">
           <div class="md:flex md:items-center md:gap-6">
-            <p class="text-lead font-bold">©Agon Official 2022
+            <p class="text-lead font-bold">©Myopia 2024. All rights reserved.</p>
             </p>
             <div class="flex items-center justify-between md:gap-6"><a class="text-text" href="/">Privacy policy</a><a class="text-text" href="/">Cookies</a><a class="text-text" href="/">Terms of service</a></div>
           </div>

@@ -39,6 +39,10 @@ Route::get('/register',[RegisterController::class, 'index'])->name('register');
     Route::post('/register',[RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/pendampingan',[HomeController::class, 'pendampingan'])->name('pendampingan');
+Route::get('/konsultasi',[HomeController::class, 'konsultasi'])->name('konsultasi');
+
+
 Route::get('/category/{mockupNameKey}',[HomeController::class, 'category'])->name('category');
 Route::get('/subcategory/{subcategoryKey}', [HomeController::class, 'subcategory'])->name('subcategory');
 // Route::get('/subcategory/{key}/items', [HomeController::class, 'fetchSubcategoryItems'])->name('subcategory.items');

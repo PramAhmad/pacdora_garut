@@ -8,19 +8,24 @@
 <div class="container">
 
 
-<div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 text-center lg:mt-[150px]"><span class="font-chivo inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[29px] md:mb-[43px]">MyOPia - Lorem, ipsum dolor. </span>
+<div class="px-[12px] md:px-[36px]  xl:px-0 text-center  pt-20"><span class="font-chivo inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[29px] md:mb-[43px]">MyOPia - Lorem, ipsum dolor. </span>
       <div class="text-center mb-[35px] md:mb-[50px]">
-        <h2 class="font-bold font-chivo mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] max-w-[725px]">Lorem ipsum dolor sit amet consectetur.</h2>
-        <p class="text-quote md:text-lead-lg text-gray-600 mx-auto max-w-[976px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint temporibus quae suscipit et, similique ad?
+        <h2 class="font-bold font-chivo mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] max-w-[725px]">Solusi masalah desain kemasan anda</h2>
+        <p class="text-quote md:text-lead-lg text-gray-600 mx-auto max-w-[976px]">Tingkatkan performa bisnis anda dengan menggunakan myopia, kami akan membantu anda dalam pengembangan bisnis anda
         </p>
       </div>
-      <div class="flex items-center justify-center gap-[22px] mb-[40px] md:mb-[70px]">
-        <button type="button"> <a class="flex items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900 hover:-translate-y-[2px] text-white bg-black text-heading-6 tracking-wide" href="#"><span class="block text-inherit w-full h-full rounded-[50px] text-lg font-chivo font-semibold">Daftar Sekarang</span><i> <img class="ml-[7px] w-[12px] filter-white group-hover:filter-black" src="/agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i></a></button>
+      <div class="md:flex  items-center justify-center gap-[22px] mb-[40px] md:mb-[70px]">
+        <button type="button"> <a class="flex md:my-0 my-5 items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900 hover:-translate-y-[2px] text-white bg-black text-heading-6 tracking-wide" href="#"><span class="block text-inherit w-full h-full rounded-[50px] text-lg font-chivo font-semibold">Daftar Sekarang</span><i> <img class="ml-[7px] w-[12px] filter-white group-hover:filter-black" src="/agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i></a></button>
         <button type="button"> <a class="flex items-center inline-block z-10 relative border border-jacarta-900 transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] bg-white text-gray-900 hover:bg-gray-900 hover:text-white hover:-translate-y-[2px] text-gray-900 bg-gray-100 text-heading-6 tracking-wide" href="#"><span class="block text-inherit w-full h-full rounded-[50px] text-lg font-chivo font-semibold">Tentang Kami</span><i> <img class="ml-[7px] w-[12px] filter-black group-hover:filter-white" src="/agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i></a></button>
       </div>
-      <div class="relative mx-auto max-w-[1190px]"><img class="h-full w-full object-cover rounded-2xl" src="/agency/assets/images/thumbnail-12.png" alt="Agon">
-        <button class="rounded-full bg-white grid place-items-center absolute play-video w-[60px] h-[60px] md:w-[40px] md:h-[40px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><img src="/agency/assets/images/icons/icon-play.svg" alt="play button" width="26"></button>
-      </div>
+      <div class="relative mx-auto max-w-[1190px] h-full">
+  <iframe class="w-full md:h-[650px] h-[190px] rounded-3xl" src="https://www.youtube.com/embed/yzsalAKMYCI?si=hQzetCIXqwTVx5F4" 
+          title="YouTube video player" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  </iframe>
+</div>
+
     </div>
     <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 lg:mt-[40px]">
       <div class="text-center mb-[45px] lg:mb-[88px] lg:mb-[88px]">
@@ -53,7 +58,7 @@
       </div>
     </div>
     <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 lg:mt-[150px]">
-      <div class="lg:grid lg:grid-cols-2 gap-[150px]"><img class="h-full w-full object-cover rounded-2xl order-0 mb-[30px] lg:mb-0 lg:flex-1" src="agency/assets/images/thumbnail-14.png" alt="Agon">
+      <div class="lg:grid lg:grid-cols-2 gap-[150px]"><img class="h-full w-full object-cover rounded-2xl order-0 mb-[30px] lg:mb-0 lg:flex-1" src="{{asset('assets/img/kemasan1.png')}}" alt="Agon">
         <div class="flex-1 order-1 items-center lg:gap-[30px] xl:gap-[45px] !grid-cols-[637px_1fr]"><span class="font-chivo inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[22px]">Fitur Apa Saja Yang ada di Myopia</span>
           <h3 class="font-chivo font-bold lg:text-heading-1 md:text-[46px] md:leading-[52px] text-[35px] leading-[44px] mb-[22px]">Myopia Membantu Pengembangan Bisnis Anda!!</h3>
           <p class="text-quote md:text-lead-lg text-gray-600 mb-[50px]">Mulai melangkah ke jenjang digitalisasi dengan menggunakan myopia, kami akan membantu anda dalam pengembangan bisnis anda</p>
@@ -193,43 +198,155 @@
       <div class="flex flex-col gap-5 items-center justify-center relative md:flex-wrap md:flex-row lg:gap-[30px] xl:gap-[110px]">
         <div class="rounded-2xl p-[30px] md:py-[20px] md:px-[53px] self-stretch relative bg-bg-2 md:w-[calc(50%-20px)] lg:w-[calc(33.33%-30px)] xl:w-[calc(33.33%-75px)] transition-all duration-300 hover:translate-y-[-3px]">
           <div class="bg-white rounded-full grid place-items-center mx-auto mb-8 w-[80px] h-[80px]"><img class="max-w-[36px]" src="/agency/assets/images/icons/icon-dharma-wheel.svg" alt="icon"></div>
-          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Start Plan
+          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Daftar
           </h4>
-          <p class="text-text text-gray-500">Choose any of our packages
+          <p class="text-text text-gray-500">Isi Data UMKM yang tersedia
           </p><img class="hidden absolute right-0 lg:block top-1/2 translate-x-[30px] z-[-1] xl:translate-x-full xl:right-[-15px]" src="/agency/assets/images/icons/icon-arrow-1.svg" alt="direction arrow">
         </div>
         <div class="rounded-2xl p-[30px] md:py-[20px] md:px-[53px] self-stretch relative bg-bg-3 md:w-[calc(50%-20px)] lg:w-[calc(33.33%-30px)] xl:w-[calc(33.33%-75px)] transition-all duration-300 hover:translate-y-[-3px]">
           <div class="bg-white rounded-full grid place-items-center mx-auto mb-8 w-[80px] h-[80px]"><img class="max-w-[36px]" src="/agency/assets/images/icons/icon-wave.svg" alt="icon"></div>
-          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Connect
+          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Verifikasi
           </h4>
-          <p class="text-text text-gray-500">Receive concepts In 24 hours
+          <p class="text-text text-gray-500">Verifikasi Data UMKM
           </p><img class="hidden absolute right-0 lg:block top-1/2 translate-x-[30px] z-[-1] xl:translate-x-full xl:right-[-15px]" src="/agency/assets/images/icons/icon-arrow-2.svg" alt="direction arrow">
         </div>
         <div class="rounded-2xl p-[30px] md:py-[20px] md:px-[53px] self-stretch relative bg-bg-5 md:w-[calc(50%-20px)] lg:w-[calc(33.33%-30px)] xl:w-[calc(33.33%-75px)] transition-all duration-300 hover:translate-y-[-3px]">
           <div class="bg-white rounded-full grid place-items-center mx-auto mb-8 w-[80px] h-[80px]"><img class="max-w-[36px]" src="/agency/assets/images/icons/icon-headphones.svg" alt="icon"></div>
-          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Match
+          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Desain
           </h4>
-          <p class="text-text text-gray-500">Development Stage
+          <p class="text-text text-gray-500">Pilih Desain yang sesuai
           </p><img class="hidden absolute right-0 top-full lg:block translate-x-[-60px] z-[-1] xl:translate-y-[30px]" src="/agency/assets/images/icons/icon-arrow-3.svg" alt="direction arrow">
         </div>
         <div class="rounded-2xl p-[30px] md:py-[20px] md:px-[53px] self-stretch relative bg-bg-9 md:w-[calc(50%-20px)] lg:w-[calc(33.33%-30px)] xl:w-[calc(33.33%-75px)] transition-all duration-300 hover:translate-y-[-3px] lg:order-1">
           <div class="bg-white rounded-full grid place-items-center mx-auto mb-8 w-[80px] h-[80px]"><img class="max-w-[36px]" src="/agency/assets/images/icons/icon-trees.svg" alt="icon"></div>
-          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Review
+          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Export
           </h4>
-          <p class="text-text text-gray-500">Project launch and checkout
+          <p class="text-text text-gray-500">Export Desain yang sudah dibuat
           </p><img class="hidden absolute left-0 lg:block top-1/2 translate-x-[-30px] z-[-1] xl:-translate-x-full xl:left-[-15px]" src="/agency/assets/images/icons/icon-arrow-4.svg" alt="direction arrow">
         </div>
         <div class="rounded-2xl p-[30px] md:py-[20px] md:px-[53px] self-stretch relative bg-bg-5 md:w-[calc(50%-20px)] lg:w-[calc(33.33%-30px)] xl:w-[calc(33.33%-75px)] transition-all duration-300 hover:translate-y-[-3px]">
           <div class="bg-white rounded-full grid place-items-center mx-auto mb-8 w-[80px] h-[80px]"><img class="max-w-[36px]" src="/agency/assets/images/icons/icon-flower.svg" alt="icon"></div>
-          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Complete
+          <h4 class="font-bold font-chivo text-[14px] xl:text-heading-5 mb-[15px]">Order
           </h4>
-          <p class="text-text text-gray-500">After-release Support
+          <p class="text-text text-gray-500">Order Desain yang sudah dibuat
           </p>
         </div>
       </div>
     </div>
     <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 md:mt-[150px]">
     </div>
+    <div class="px-[12px] py-16 md:px-[36px] mt-[70px] xl:px-0">
+        <div class="items-center justify-between md:flex mb-[30px] md:mb-[90px]">
+          <div class="mb-8">
+            <h2 class="text-gray-900 font-bold font-chivo mb-5 text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 md:mb-[30px] max-w-[725px]">Testimoni Myopia </h2>
+            <p class="text-quote md:text-lead-lg text-gray-600">Mengatahui tentang beberapa client yang bekerjasama
+            </p>
+          </div>
+          <div class="flex items-center gap-5">
+            <div class="grid place-items-center border border-gray-200 bg-gray-100 rounded-full cursor-pointer group transition-colors duration-200 w-[48px] xl:w-[64px] h-[48px] xl:h-[64px] hover:bg-gray-900 feedback-prev"><img class="group-hover:filter-white" src="agency/assets/images/icons/icon-prev.svg" alt="control icon button"></div>
+            <div class="grid place-items-center border border-gray-200 bg-gray-100 rounded-full cursor-pointer group transition-colors duration-200 w-[48px] xl:w-[64px] h-[48px] xl:h-[64px] hover:bg-gray-900 feedback-next"><img class="group-hover:filter-white" src="agency/assets/images/icons/icon-next.svg" alt="control icon button"></div>
+          </div>
+        </div>
+        <div class="feedback-list ml-[-15px]">
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-4"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-1.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-6"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-2.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-10"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-3.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-9"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-4.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-4"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-5.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-6"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-6.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-10"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-7.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+          <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-9"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-8.png" alt="avatar">
+            <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
+            <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
+            <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-[12px]  md:px-[36px] mt-[70px] xl:px-0 mt-[30px] md:mt-[80px] lg:mt-[143px]">
+      <h2 class="font-bold font-chivo text-[25px] leading-[30px] md:text-heading-3 text-center mb-[40px] md:mb-[60px] lg:mb-[84px]">Trusted by the world’s leading companies
+      </h2>
+      <div class="flex flex-wrap items-center justify-center mb-[30px] md:mb-[60px] lg:mb-[80px]"><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-1.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-2.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-3.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-4.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px] md:col-start-2 lg:col-start-auto" href="/"><img src="/agency/assets/images/partner-logo-5.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px] md:col-start-3 lg:col-start-auto" href="/"><img src="/agency/assets/images/partner-logo-6.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-1.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-2.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-3.svg" alt="partner logo"></a>
+      </div>
+    </div>
+    <div class="px-[12px] pb-20 md:px-[36px] mt-[70px] xl:px-0 lg:mt-[150px]">
+        <div class="bg-gray-100 relative p-[40px] md:pt-[91px] md:pr-[98px] md:pb-[86px] md:pl-[92px] rounded-[58px]">
+          <div class="mx-auto relative max-w-[1320px]"><img class="absolute right-0 max-w-[129px] top-[-50px]" src="agency/assets/images/mail.png" alt="mail image">
+            <p class="text-capitalized text-gray-500 uppercase tracking-[2px] mb-[15px]">Contact us</p>
+            <h2 class="font-bold font-chivo text-[25px] leading-[30px] md:text-heading-3 mb-[22px]">Mempunyai pertanyaan?
+            </h2>
+            <p class="text-text text-gray-600 mb-[30px] md:mb-[60px]">Kami akan membantu anda dalam pengembangan bisnis anda
+            </p>
+            <div class="flex flex-col gap-8 mb-[15px] md:mb-[25px] lg:flex-row lg:gap-[50px] xl:gap-[98px]">
+              <div>
+                <div class="flex gap-[13px] mb-[15px] md:mb-[25px]"> <i> <img src="agency/assets/images/icons/icon-home-fill.svg" alt="home icon"></i>
+                  <p class="text-heading-6 font-bold font-chivo">Myopia</p>
+                </div>
+                <p class="text-text text-gray-600">4517 Washington Ave.
+                </p>
+                <p class="text-text text-gray-600 mb-[10px] md:mb-[16px]">Garut, Kentucky 39495
+                </p>
+                <p class="text-text text-gray-600 underline">(239) 555-0108
+                </p>
+                <p class="text-text text-gray-600 underline">contact@myopia.com
+                </p>
+              </div>
+              <form class="flex-1" action="/">
+                <div class="flex flex-col gap-6 mb-6 lg:flex-row xl:gap-[30px]">
+                  <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Enter your name">
+                  <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Company (optional)">
+                </div>
+                <div class="flex flex-col gap-6 mb-6 lg:flex-row xl:gap-[30px]">
+                  <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Your email">
+                  <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Phone number">
+                </div>
+                <textarea class="w-full py-5 resize-none outline-0 px-[30px] max-h-[150px] mb-[35px] md:mb-[56px]" name="" cols="100" rows="10" placeholder="Tell us about yourself"></textarea>
+                <div class="flex flex-col gap-5">
+                  <button class="flex items-center transition-colors duration-200 px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] font-chivo font-semibold text-md md:text-lg text-white bg-gray-900 w-fit" type="submit">Send Message<i> <img class="ml-[7px] w-[12px] filter-white" src="agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i>
+                  </button>
+                  <p class="text-md text-gray-500">By clicking contact us button, you agree our terms and policy,</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="rounded-2xl p-[30px] md:py-[53px] md:px-[48px] gap-5 mx-auto bg-bg-6 px-[15px] py-[50px] md:flex md:px-[52px] md:py-[72px] lg:gap-[40px] lg:h-[420px] xl:h-[390px] max-w-[1190px]">
       <div class="flex-1 mb-[30px]">
         <p class="text-capitalized uppercase text-gray-500 tracking-[2px] mb-[13px]">newsletter</p>
@@ -243,14 +360,9 @@
           </div>
         </form>
       </div>
-      <div class="relative flex-1"> <img class="h-full w-full object-cover rounded-2xl img-shadow lg:absolute lg:max-w-[332px] lg:h-[403px] lg:right-0" src="agency/assets/images/thumbnail-2.png" alt="Agon"><img class="h-full w-full object-cover absolute animate-float w-[225px] h-[170px] rounded-[14px] bottom-[-20px] left-[-10px]" src="agency/assets/images/chart.png" alt="Agon">
+      <div class="relative flex-1"> <img class="h-full w-full object-cover rounded-2xl img-shadow lg:absolute lg:max-w-[332px] lg:h-[403px] lg:right-0" src="https://as1.ftcdn.net/v2/jpg/04/23/72/40/1000_F_423724053_V8czoVpPBpQWF7SYnbsJ6DsdKpJPcWax.jpg" alt="Agon"><img class="h-full w-full object-cover absolute animate-float w-[225px] h-[170px] rounded-[14px] bottom-[-20px] left-[-10px]" src="agency/assets/images/chart.png" alt="Agon">
       </div>
     </div>
-    <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 mt-[30px] md:mt-[80px] lg:mt-[143px]">
-      <h2 class="font-bold font-chivo text-[25px] leading-[30px] md:text-heading-3 text-center mb-[40px] md:mb-[60px] lg:mb-[84px]">Trusted by the world’s leading companies
-      </h2>
-      <div class="flex flex-wrap items-center justify-center mb-[30px] md:mb-[60px] lg:mb-[80px]"><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-1.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-2.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-3.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-4.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px] md:col-start-2 lg:col-start-auto" href="/"><img src="/agency/assets/images/partner-logo-5.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px] md:col-start-3 lg:col-start-auto" href="/"><img src="/agency/assets/images/partner-logo-6.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-1.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-2.svg" alt="partner logo"></a><a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/agency/assets/images/partner-logo-3.svg" alt="partner logo"></a>
-      </div>
-    </div>
+ 
     </div>
 @endsection

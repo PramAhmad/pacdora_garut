@@ -11,9 +11,11 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\WithExportQueue;
 
 class UmkmDataTable extends DataTable
 {
+  use WithExportQueue;
     /**
      * Build the DataTable class.
      *
@@ -111,7 +113,7 @@ class UmkmDataTable extends DataTable
                 Column::make('nik'),
                 Column::make('nohp'),
                 Column::make('approved'),
-                Column::make('action')
+                Column::make('action')->exportable(false)->printable(false)->width(100)->addClass('text-center w-full '),
 
         ];
     }

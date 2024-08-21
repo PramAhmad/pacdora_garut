@@ -59,4 +59,12 @@ class HomeController extends Controller
         $data['modelid'] = $modelId;
         return view('front.detail.index', $data);
       }
+
+    public function pendampingan(){
+        return view('front.pendampingan.index');
+    }
+    
+    public function konsultasi(){
+        return view('front.konsultasi.index');
+    }
 }

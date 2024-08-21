@@ -11,10 +11,13 @@ use App\Models\Umkm;
 use App\Models\User;
 use App\Traits\HttpTrait;
 use Illuminate\Http\Request;
+use Yajra\DataTables\WithExportQueue;
 
 class UmkmController extends Controller
 {
     use HttpTrait;
+   
+
     /**
      * Display a listing of the resource.
      */

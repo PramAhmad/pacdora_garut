@@ -1,5 +1,7 @@
 @extends('back.layout.app')
-
+@push('css')
+@livewireScripts
+@endpush
 @section('content')
 
 
@@ -12,7 +14,6 @@
     @endif
             <div class="card">
                 <div class="card-body">
-
                     <div class="mb-2">
                         <h5 class="mb-0">Data UMKM</h5>
                     </div>
@@ -27,6 +28,7 @@
 
 
 @push('js')
+@livewireScripts
 <script src="admin/package/dist/libs/jquery/dist/jquery.min.js"></script>
 <script src="admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}

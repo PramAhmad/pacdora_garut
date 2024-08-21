@@ -33,14 +33,15 @@ class HistoryModelsController extends Controller
     }
     public function index()
     {
-        $data['project'] = $this->get("https://api.pacdora.com/open/v1/user/projects?userId=6");
+        $data['project'] = $this->get("https://api.pacdora.com/open/v1/user/projects");
+        
         $projectData = $data['project']['data'];
-        // foreach informsi umk dari user_id
+       
         foreach($projectData as $key => $value){
-            $umkm = Umkm::where('user_id', $value['userId'])->first();
+            $umkm = Umkm::where('user_id', hashId($value['userId'], 'decode'))->first();
             $projectData[$key]['umkm'] = $umkm;
         }
-        // dd($projectData);
+        
     
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 10;
