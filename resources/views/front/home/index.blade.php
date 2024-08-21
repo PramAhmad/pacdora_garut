@@ -8,7 +8,7 @@
 <div class="container">
 
 
-<div class="px-[12px] md:px-[36px]  xl:px-0 text-center  pt-20"><span class="font-chivo inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[29px] md:mb-[43px]">MyOPia - Lorem, ipsum dolor. </span>
+<div class="px-[12px] md:px-[36px]  xl:px-0 text-center  pt-20"><span class="font-chivo inline-block bg-bg-6 text-green-900 py-[14px] px-[28px] rounded-[50px] text-[14px] leading-[14px] mb-[29px] md:mb-[43px]">MyOPia - Support Your Bussines. </span>
       <div class="text-center mb-[35px] md:mb-[50px]">
         <h2 class="font-bold font-chivo mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] max-w-[725px]">Solusi masalah desain kemasan anda</h2>
         <p class="text-quote md:text-lead-lg text-gray-600 mx-auto max-w-[976px]">Tingkatkan performa bisnis anda dengan menggunakan myopia, kami akan membantu anda dalam pengembangan bisnis anda

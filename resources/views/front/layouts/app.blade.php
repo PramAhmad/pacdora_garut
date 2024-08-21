@@ -264,12 +264,12 @@
         <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 flex items-center justify-between mx-auto relative !mt-0 max-w-[1320px]"><a class="flex" href="/"><img class="logo z-50 w-[60px]" src="{{asset('assets/img/logo.png')}}" alt="logo image"><span class="my-auto mx-2 font-bold text-jacarta-900">Myopia</span></a>
           <nav class="z-50 absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:block"> 
             <ul class="navbar flex flex-col justify-center font-chivo gap-[34px] lg:flex-row">
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Home</a>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Beranda</a>
                
               </li>
                
               </li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Category Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Kategori Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
                 <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-1/2">
                   @php
                       $categories = \App\Models\CategoryModel::all();
@@ -280,8 +280,8 @@
                  </ul>
               </li>
           
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Pendampingan</a></li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Konsultasi</a></li>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('pendampingan')}}">Pendampingan</a></li>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('konsultasi')}}">Konsultasi</a></li>
 
              
             </ul>
@@ -319,13 +319,13 @@
             <ul class="font-chivo font-medium text-[16px] leading-[16px]">
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Home</p>
+                  <p>Beranda</p>
                 </div>
                
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Category Desain</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
+                  <p>Kategori Desain</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
                 </div>
                 <ul class="pl-5 menu-child hidden pt-[10px]">
                   <li class="text-md py-[10px]" id="ab1"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="/about-1.html">About 01</a></li>
@@ -335,13 +335,13 @@
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Pendampingan</p>
+                  <a href="{{route('pendampingan')}}">Pendampingan</a>
                 </div>
                
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
-                  <p>Konsultasi</p>
+                  <a href="{{route('konsultasi')}}">Konsultasi</a>
                 </div>
                
               </li>
@@ -381,23 +381,23 @@
       <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0">
         <div class="flex flex-col items-center gap-2 mb-14 md:flex-row md:justify-between"> <img class="h-full w-full object-cover max-w-[80px]" src="{{asset('assets/img/logo.png')}}" alt="logo">
           <div class="flex items-center flex-col gap-5 md:flex-row lg:gap-[30px]">
-            <p class="text-heading-6 font-chivo font-bold">Ready to get started?</p>
-            <button type="button"> <a class="flex items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-md bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900 hover:-translate-y-[2px] text-white bg-gray-900 w-fit" href="#"><span class="block text-inherit w-full h-full rounded-md text-lg font-chivo font-semibold">Create an Account</span></a></button>
+            <p class="text-heading-6 font-chivo font-bold">Siap Untuk Memulai?</p>
+            <button type="button"> <a class="flex items-center inline-block z-10 relative transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-md bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900 hover:-translate-y-[2px] text-white bg-gray-900 w-fit" href="{{route('register')}}"><span class="block text-inherit w-full h-full rounded-md text-lg font-chivo font-semibold">Buat akun sekarang</span></a></button>
           </div>
         </div>
         <div class="w-full bg-gray-200 h-[1px] mb-[52px]"></div>
         <div class="text-gray-600 grid gird-cols-1 gap-8 mb-[48px] md:grid-cols-2 lg:grid-cols-5 xl:gap-[98px]">
           <div>
-            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Contact</h5>
-            <p class="text-text mb-5">4517 Washington Ave. Manchester, Kentucky 39495
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Kontak</h5>
+            <p class="text-text mb-5">4517 Jawa Barat, Garut Jl Satapak
             </p>
-            <p class="text-text underline">(239) 555-0108
+            <p class="text-text underline">(62) 859-12356-9232
             </p>
-            <p class="text-text underline">contact@agon.com
+            <p class="text-text underline">myopia@gmail.com
             </p>
           </div>
           <div>
-            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">About Us</h5>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Tentang Kami</h5>
             <ul>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Mission &amp; Vision</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Our Team</a></li>
@@ -407,19 +407,9 @@
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Testimonials</a></li>
             </ul>
           </div>
+         
           <div>
-            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Discover</h5>
-            <ul>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Our Blog</a></li>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Plans &amp; Pricing</a></li>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Knowledge Base</a></li>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Cookie Policy</a></li>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Office Center</a></li>
-              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">News &amp; Events</a></li>
-            </ul>
-          </div>
-          <div>
-            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Support</h5>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Bantuan</h5>
             <ul>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">FAQs</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Editor Help</a></li>
@@ -430,13 +420,24 @@
             </ul>
           </div>
           <div>
-            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Useful links</h5>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Link</h5>
             <ul>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Request an offer</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">How it works</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Pricing</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Reviews</a></li>
               <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Stories</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="text-heading-5 font-chivo font-bold text-gray-900 mb-5 text-[18px]">Lain-lain</h5>
+            <ul>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Our Blog</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Plans &amp; Pricing</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Knowledge Base</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Cookie Policy</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">Office Center</a></li>
+              <li class="mb-2"><a class="transition-all duration-200 hover:text-green-900 hover:pl-[3px]" href="/">News &amp; Events</a></li>
             </ul>
           </div>
         </div>
