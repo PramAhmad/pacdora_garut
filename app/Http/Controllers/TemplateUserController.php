@@ -51,7 +51,7 @@ class TemplateUserController extends Controller
 
         $image = $request->file('image');
         $image_name = time()."_".$image->getClientOriginalName();
-        $image->move(public_path('upload/template'),$image_name);
+        $image->move(public_path('upload/temp'),$image_name);
 
         Template::create([
             'name' => $request->name,

@@ -53,7 +53,7 @@ Route::get("/register",[RegisterController::class, 'index'])->name('register');
 // ajax controller
 Route::get("/wilayah/search",[AjaxController::class,'searchWilayah'])->name("ajax.wilayah.search");
 Route::group(['middleware' => ['auth','role:user']], function () {
-    Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail')->middleware('umkm');
+    Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail');
     Route::get('/profile',[UmkmProfileController::class, 'index'])->name('profile');
     Route::get('/profile/edit',[UmkmProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update/{id}',[UmkmProfileController::class, 'update'])->name('profile.update');

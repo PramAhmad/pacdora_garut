@@ -434,58 +434,68 @@
 
       let csrf = "{{csrf_token()}}";
       var id = svgIcon.closest('.relative.flex.items-center').data('id');
-      console.log(id);
+      if(`{{Auth::user()->umkm->approved != 1}}`){
+        Swal.fire({
+          icon: 'error',
+          title: 'Tidak Terverifikasi',
+          text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+        });
+        svgIcon.find('.svg-load').remove();
+        svgDoc.show();
+        return;
+      }else{
 
-      $.ajax({
-        url: 'https://api.pacdora.com/open/v1/user/projects/export/pdf',
-        type: 'POST',
-        contentType: 'application/json',
-        headers: {
-          'appId': '71ee73045e3480fe',
-          'appKey': 'a3e831ccfa3ffd84',
-          'X-CSRF-TOKEN': csrf
-        },
-        data: JSON.stringify({
-          projectIds: [id]
-        }),
-        success: function(data) {
-          console.log(data.data[0].taskId);
-          let taskId = data.data[0].taskId;
-
-          let intervalId = setInterval(function() {
-            $.ajax({
-              url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
-              type: 'GET',
-              headers: {
-                'appId': '71ee73045e3480fe',
-                'appKey': 'a3e831ccfa3ffd84',
-                'X-CSRF-TOKEN': csrf
-              },
-              data: {
-                taskId: taskId
-              },
-              success: function(response) {
-                console.log(response.data);
-                console.log(response.data.filePath);
-                if (response.data.filePath) {
-                  clearInterval(intervalId);
-                  window.location.href = response.data.filePath;
-                  svgIcon.find('.svg-load').remove();
-                  svgDoc.show();
-                } else {
-                  console.log('Processing...');
+        $.ajax({
+          url: 'https://api.pacdora.com/open/v1/user/projects/export/pdf',
+          type: 'POST',
+          contentType: 'application/json',
+          headers: {
+            'appId': '71ee73045e3480fe',
+            'appKey': 'a3e831ccfa3ffd84',
+            'X-CSRF-TOKEN': csrf
+          },
+          data: JSON.stringify({
+            projectIds: [id]
+          }),
+          success: function(data) {
+            console.log(data.data[0].taskId);
+            let taskId = data.data[0].taskId;
+  
+            let intervalId = setInterval(function() {
+              $.ajax({
+                url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
+                type: 'GET',
+                headers: {
+                  'appId': '71ee73045e3480fe',
+                  'appKey': 'a3e831ccfa3ffd84',
+                  'X-CSRF-TOKEN': csrf
+                },
+                data: {
+                  taskId: taskId
+                },
+                success: function(response) {
+                  console.log(response.data);
+                  console.log(response.data.filePath);
+                  if (response.data.filePath) {
+                    clearInterval(intervalId);
+                    window.location.href = response.data.filePath;
+                    svgIcon.find('.svg-load').remove();
+                    svgDoc.show();
+                  } else {
+                    console.log('Processing...');
+                  }
+                },
+                error: function(error) {
+                  console.log('Error:', error);
                 }
-              },
-              error: function(error) {
-                console.log('Error:', error);
-              }
-            });
-          }, 5000);
-        },
-        error: function(error) {
-          console.log('Error:', error);
-        }
-      });
+              });
+            }, 5000);
+          },
+          error: function(error) {
+            console.log('Error:', error);
+          }
+        });
+      }
     });
   });
 </script>
@@ -494,26 +504,43 @@
     $('#modal-title').click(function(e) {
       var id = $(this).closest('.relative.flex.items-center').data('id');
       var nama_project = $(this).closest('.relative.flex.items-center').find('.judul').text();
-      console.log(nama_project);
-      console.log(id)
-          Swal.fire({
+      
+      Swal.fire({
         title: "Masukan Nama Project",
         input: "text",
         inputLabel: "Nama Project",
-        inputValue:nama_project,
+        inputValue: nama_project,
         showCancelButton: true,
         inputValidator: (value) => {
           if (!value) {
-            return "Kamu haru mengisi judul nama project!";
+            return "Kamu harus mengisi judul nama project!";
           }
-
         }
-
+      }).then((result) => {
+        if (result.isConfirmed) {
+           Pacdora.init({
+          userId: "{{hashId(Auth::user()->id)}}",
+          appId: "71ee73045e3480fe",
+          isDelay: true,
+          theme: "#dc2626",
+          doneBtn: "Save",
+          localeResource: {
+            "Upload & Design": "Online design",
+          },
+        });
+          var newProjectName = result.value;
+          Pacdora.rename(newProjectName, id);
+        // wait 2 detik
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+        }
       });
 
-    })
+    });
   });
 </script>
+
 
 @push('css')
   <style>

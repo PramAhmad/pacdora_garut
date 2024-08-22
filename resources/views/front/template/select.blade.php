@@ -42,7 +42,8 @@
     </div>
 </div>
 @push('js')
-    <!-- ajax post all checked box -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <script>
         $(document).ready(function() {
             $('button').click(function() {
@@ -60,7 +61,14 @@
                         },
                         success: function(response) {
                             if (response.status == 200) {
-                                window.location.href = "{{ route('template.select') }}";
+                                
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
                             }
                         }
                     });
