@@ -263,7 +263,7 @@
                         <h5 class="fw-semibold mb-0">{{$item['name']}}</h5>
                         <span class="fs-2 d-flex align-items-center"><i class="ti ti-maximize text-dark fs-3 me-1"></i>{{$item['width']}}*{{$item['height']}}</span>
                       </div>
-                      <button class="btn btn-outline-primary py-1 px-2 ms-auto">Follow</button>
+              
                     </div>
                   </div>
                 </div>

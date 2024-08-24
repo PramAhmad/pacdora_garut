@@ -8,12 +8,12 @@
   <!-- end banner -->
 
   <!-- Profile -->
-  <section class="relative bg-light-base pb-12 pt-28 dark:bg-jacarta-800">
+  <section class="relative bg-light-base pb-12 pt-28 ">
     <!-- Avatar -->
     <div class="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
       <figure class="relative">
-        <img src="{{asset('template/dist/img/user/user_avatar.gif')}}" alt="collection avatar" class="rounded-xl border-[5px] border-white dark:border-jacarta-600" />
-        <div class="absolute -right-3 bottom-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-green dark:border-jacarta-600" data-tippy-content="Verified Collection">
+        <img src="{{asset('template/dist/img/user/user_avatar.gif')}}" alt="collection avatar" class="rounded-xl border-[5px] border-white " />
+        <div class="absolute -right-3 bottom-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-green " data-tippy-content="Verified Collection">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-[.875rem] w-[.875rem] fill-white">
             <path fill="none" d="M0 0h24v24H0z"></path>
             <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
@@ -24,15 +24,15 @@
 
     <div class="container">
       <div class="text-center">
-        <h2 class="mb-2 font-display text-4xl font-medium text-jacarta-700 dark:text-white">{{Auth::user()->name}}</h2>
-        <div class="mb-8 inline-flex items-center justify-center rounded-full border border-accent bg-accent py-1.5 px-4 dark:border-accent dark:bg-accent">
+        <h2 class="mb-2 font-display text-4xl font-medium text-jacarta-700 ">{{$umkm->nama}}</h2>
+        <div class="mb-8 inline-flex items-center justify-center rounded-full border border-accent bg-accent py-1.5 px-4 ">
 
-          <button class="js-copy-clipboard max-w-[10rem] select-none overflow-hidden text-ellipsis whitespace-nowrap text-white dark:text-jacarta-100" data-tippy-content="Copy">
+          <button class="js-copy-clipboard max-w-[10rem] select-none overflow-hidden text-ellipsis whitespace-nowrap text-white " data-tippy-content="Copy">
             <span>{{$umkm->approved == 1 ? 'Terverifikasi' : 'Tidak Terverifikasi'}}</span>
           </button>
         </div>
 
-        <p class="mx-auto mb-2 max-w-xl text-lg dark:text-jacarta-300">
+        <p class="mx-auto mb-2 max-w-xl text-lg ">
           {{$umkm->nama_usaha}}
         </p>
         <span class="text-jacarta-400">Bergabung {{ Carbon\Carbon::parse($umkm->created_at)->format('d F Y') }}
@@ -68,7 +68,7 @@
     </picture>
     <div class="container">
       <!-- Tabs Nav -->
-      <ul class="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px dark:border-jacarta-600 md:justify-center" role="tablist">
+      <ul class="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px  md:justify-center" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 dark:hover:text-white" id="informasi-tab" data-bs-toggle="tab" data-bs-target="#informasi" type="button" role="tab" aria-controls="informasi" aria-selected="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-1 h-5 w-5 fill-current">
@@ -109,32 +109,32 @@
               <!-- Form -->
               <div class="mb-12 md:w-1/2 md:pr-8">
                 <div class="mb-6">
-                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">Nama Pemilik<span class="text-red">*</span></label>
-                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->nama }}" name="nama" required />
+                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 ">Nama Pemilik<span class="text-red">*</span></label>
+                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->nama }}" name="nama" required />
                 </div>
                 <div class="mb-6">
-                  <label for="profile-bio" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">NIK<span class="text-red">*</span></label>
-                  <input type="text" id="profile-bio" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" required placeholder="Enter NIK" value="{{ $umkm->nik }}" name="nik" />
+                  <label for="profile-bio" class="mb-1 block font-display text-sm text-jacarta-700 ">NIK<span class="text-red">*</span></label>
+                  <input type="text" id="profile-bio" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" required placeholder="Enter NIK" value="{{ $umkm->nik }}" name="nik" />
                 </div>
                 <div class="mb-6">
                   <!-- is garut -->
                   <div class="mb-6">
-                    <label for="is_garut" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">Domisili<span class="text-red">*</span></label>
+                    <label for="is_garut" class="mb-1 block font-display text-sm text-jacarta-700 ">Domisili<span class="text-red">*</span></label>
                     <div class="flex items-center space-x-2">
-                      <input type="radio" id="is_garut_ya" name="is_garut" value="ya" {{ $umkm->is_garut == 'ya' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700" />
-                      <label for="is_garut_ya" class="text-jacarta-700 dark:text-white">Garut</label>
-                      <input type="radio" id="is_garut_tidak" name="is_garut" value="tidak" {{ $umkm->is_garut == 'tidak' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700" />
-                      <label for="is_garut_tidak" class="text-jacarta-700 dark:text-white">Bukan Garut</label>
+                      <input type="radio" id="is_garut_ya" name="is_garut" value="ya" {{ $umkm->is_garut == 'ya' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20  dark:bg-jacarta-700" />
+                      <label for="is_garut_ya" class="text-jacarta-700 ">Garut</label>
+                      <input type="radio" id="is_garut_tidak" name="is_garut" value="tidak" {{ $umkm->is_garut == 'tidak' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20  dark:bg-jacarta-700" />
+                      <label for="is_garut_tidak" class="text-jacarta-700 ">Bukan Garut</label>
                     </div>
                   </div>
 
                   <div class="mb-6" id="domisili_field" style="display: none;">
-                    <input type="text" id="domisili" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" placeholder="Masukin Domisili" value="{{ old('domisili', $umkm->domisili ?? '') }}" name="domisili" />
+                    <input type="text" id="domisili" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" placeholder="Masukin Domisili" value="{{ old('domisili', $umkm->domisili ?? '') }}" name="domisili" />
                   </div>
                 </div>
 
                 <div class="mb-6">
-                  <label for="referensi" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">Referensi<span class="text-red">*</span></label>
+                  <label for="referensi" class="mb-1 block font-display text-sm text-jacarta-700 ">Referensi<span class="text-red">*</span></label>
                   @php
                   $referensi = [
                   0 => 'Dinas Koperasi dan UKM Kab. Garut',
@@ -143,7 +143,7 @@
                   3 => 'Lainya',
                   ];
                   @endphp
-                  <select name="referensi" id="referensi" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300">
+                  <select name="referensi" id="referensi" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300">
                     <option value="">Pilih Referensi</option>
                     @foreach ($referensi as $key => $item)
                     <option value="{{ $key }}" {{ $umkm->referensi == $key ? 'selected' : '' }}>{{ $item }}</option>
@@ -151,8 +151,8 @@
                   </select>
                 </div>
                 <div class="mb-6">
-                  <label class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">No Hp</label>
-                  <input type="text" id="profile-phone" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" required placeholder="Enter phone number" value="{{ $umkm->nohp }}" name="nphp" />
+                  <label class="mb-1 block font-display text-sm text-jacarta-700 ">No Hp</label>
+                  <input type="text" id="profile-phone" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" required placeholder="Enter phone number" value="{{ $umkm->nohp }}" name="nphp" />
                 </div>
                 <button type="submit" class="rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark">
                   Update Profile
@@ -162,36 +162,36 @@
               <div class="md:w-1/2 md:pl-8">
                 <!-- Nama Usaha -->
                 <div class="mb-6">
-                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 ">
                     Nama Usaha<span class="text-red">*</span>
                   </label>
-                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->nama_usaha }}" name="nama_usaha" required />
+                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->nama_usaha }}" name="nama_usaha" required />
                 </div>
 
                 <!-- Alamat Usaha -->
                 <div class="mb-6">
-                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                  <label for="profile-username" class="mb-1 block font-display text-sm text-jacarta-700 ">
                     Alamat Usaha<span class="text-red">*</span>
                   </label>
-                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->alamat_usaha }}" name="alamat_usaha" required />
+                  <input type="text" id="profile-username" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" placeholder="Enter username" value="{{ $umkm->alamat_usaha }}" name="alamat_usaha" required />
                 </div>
 
                 <!-- Disabilitas -->
                 <div class="mb-6">
-                  <label for="disabilitas" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                  <label for="disabilitas" class="mb-1 block font-display text-sm text-jacarta-700 ">
                     Disabilitas<span class="text-red">*</span>
                   </label>
                   <div class="flex items-center space-x-2">
-                    <input type="radio" id="disabilitas_ya" name="disabilitas" value="ya" {{ $umkm->disabilitas == 'ya' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700" />
-                    <label for="disabilitas_ya" class="text-jacarta-700 dark:text-white">Ya</label>
-                    <input type="radio" id="disabilitas_tidak" name="disabilitas" value="tidak" {{ $umkm->disabilitas == 'tidak' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20 dark:border-jacarta-600 dark:bg-jacarta-700" />
-                    <label for="disabilitas_tidak" class="text-jacarta-700 dark:text-white">Tidak</label>
+                    <input type="radio" id="disabilitas_ya" name="disabilitas" value="ya" {{ $umkm->disabilitas == 'ya' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20  dark:bg-jacarta-700" />
+                    <label for="disabilitas_ya" class="text-jacarta-700 ">Ya</label>
+                    <input type="radio" id="disabilitas_tidak" name="disabilitas" value="tidak" {{ $umkm->disabilitas == 'tidak' ? 'checked' : '' }} class="h-4 w-4 text-accent border-accent focus:ring-accent/20  dark:bg-jacarta-700" />
+                    <label for="disabilitas_tidak" class="text-jacarta-700 ">Tidak</label>
                   </div>
                 </div>
 
                 <!-- Wilayah Select -->
                 <div class="mb-6">
-                  <label for="wilayah" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
+                  <label for="wilayah" class="mb-1 block font-display text-sm text-jacarta-700 ">
                     Wilayah<span class="text-red">*</span>
                   </label>
                   <select name="wilayah" id="wilayah" class="form-select wilayah"></select>
@@ -205,7 +205,7 @@
 
                 <!-- Display the Input for Address Preview -->
                 <div class="mb-6">
-                  <input type="text" id="address-preview" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" value="{{ $umkm->provinsi->nama_provinsi . ', ' . $umkm->kota->nama_kota . ', ' . $umkm->kecamatan->nama_kecamatan . ', ' . $umkm->kelurahan->nama_kelurahan }}" name="wilayah" readonly />
+                  <input type="text" id="address-preview" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  dark:bg-jacarta-700  dark:placeholder:text-jacarta-300" value="{{ $umkm->provinsi->nama_provinsi . ', ' . $umkm->kota->nama_kota . ', ' . $umkm->kecamatan->nama_kecamatan . ', ' . $umkm->kelurahan->nama_kelurahan }}" name="wilayah" readonly />
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@
 
                 <div>
                   <div class="flex gap-1">
-                    <a href="{{route('profile.design', ['id' => $item['id']])}}" class="mb-1 font-display text-base font-semibold text-jacarta-700 dark:text-white judul">{{$item['name']}}</a>
+                    <a href="{{route('profile.design', ['id' => $item['id']])}}" class="mb-1 font-display text-base font-semibold text-jacarta-700  judul">{{$item['name']}}</a>
                     <div class="   rounded-full p-1 -translate-y-6">
                       <a  id="modal-title">
 
@@ -243,7 +243,7 @@
                     {{$item['height']}}</span>
                   <span class="block text-xs text-jacarta-300">Panjang {{$item['length']}}</span>
                 </div>
-                <div class="ml-auto rounded-full border border-jacarta-100 p-3 dark:border-jacarta-600 svg-icon">
+                <div class="ml-auto rounded-full border border-jacarta-100 p-3  svg-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24" stroke-width="1.5" stroke="currentColor" class="svg-doc">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" id="icon" />
                   </svg>
@@ -259,7 +259,7 @@
             <!-- Filters -->
             <aside class="basis-4/12 lg:pl-5">
               <form action="search" class="relative mb-12 block">
-                <input type="search" class="w-full rounded-2xl border border-jacarta-100 py-[0.6875rem] px-4 pl-10 text-jacarta-700 placeholder-jacarta-500 focus:ring-accent dark:border-transparent dark:bg-white/[.15] dark:text-white dark:placeholder-white" placeholder="Search" />
+                <input type="search" class="w-full rounded-2xl border border-jacarta-100 py-[0.6875rem] px-4 pl-10 text-jacarta-700 placeholder-jacarta-500 focus:ring-accent dark:border-transparent dark:bg-white/[.15]  dark:placeholder-white" placeholder="Search" />
                 <span class="absolute left-0 top-0 flex h-full w-12 items-center justify-center rounded-2xl">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="h-4 w-4 fill-jacarta-500 dark:fill-white">
                     <path fill="none" d="M0 0h24v24H0z"></path>
@@ -269,36 +269,36 @@
                 </span>
               </form>
 
-              <h3 class="mb-4 font-display font-semibold text-jacarta-500 dark:text-white">Filters</h3>
+              <h3 class="mb-4 font-display font-semibold text-jacarta-500 ">Filters</h3>
               <div class="flex flex-wrap">
-                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:border-transparent dark:hover:bg-accent">
+                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white  dark:bg-jacarta-700  dark:hover:border-transparent dark:hover:bg-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-2 h-4 w-4 group-hover:fill-white dark:fill-white">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M10.9 2.1l9.899 1.415 1.414 9.9-9.192 9.192a1 1 0 0 1-1.414 0l-9.9-9.9a1 1 0 0 1 0-1.414L10.9 2.1zm.707 2.122L3.828 12l8.486 8.485 7.778-7.778-1.06-7.425-7.425-1.06zm2.12 6.364a2 2 0 1 1 2.83-2.829 2 2 0 0 1-2.83 2.829z" />
                   </svg>
                   <span class="text-2xs font-medium">Listing</span>
                 </button>
-                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:border-transparent dark:hover:bg-accent">
+                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white  dark:bg-jacarta-700  dark:hover:border-transparent dark:hover:bg-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-2 h-4 w-4 group-hover:fill-white dark:fill-white">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M14 20v2H2v-2h12zM14.586.686l7.778 7.778L20.95 9.88l-1.06-.354L17.413 12l5.657 5.657-1.414 1.414L16 13.414l-2.404 2.404.283 1.132-1.415 1.414-7.778-7.778 1.415-1.414 1.13.282 6.294-6.293-.353-1.06L14.586.686zm.707 3.536l-7.071 7.07 3.535 3.536 7.071-7.07-3.535-3.536z" />
                   </svg>
                   <span class="text-2xs font-medium">Bids</span>
                 </button>
-                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:border-transparent dark:hover:bg-accent">
+                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white  dark:bg-jacarta-700  dark:hover:border-transparent dark:hover:bg-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-2 h-4 w-4 group-hover:fill-white dark:fill-white">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M16.05 12.05L21 17l-4.95 4.95-1.414-1.414 2.536-2.537L4 18v-2h13.172l-2.536-2.536 1.414-1.414zm-8.1-10l1.414 1.414L6.828 6 20 6v2H6.828l2.536 2.536L7.95 11.95 3 7l4.95-4.95z" />
                   </svg>
                   <span class="text-2xs font-medium">Transfer</span>
                 </button>
-                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:border-transparent dark:hover:bg-accent">
+                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white  dark:bg-jacarta-700  dark:hover:border-transparent dark:hover:bg-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-2 h-4 w-4 group-hover:fill-white dark:fill-white">
                     <path fill="none" d="M0 0H24V24H0z" />
                     <path d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z" />
                   </svg>
                 </button>
-                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:border-transparent dark:hover:bg-accent">
+                <button class="group mr-2.5 mb-2.5 inline-flex items-center rounded-xl border border-jacarta-100 bg-white px-4 py-3 hover:border-transparent hover:bg-accent hover:text-white  dark:bg-jacarta-700  dark:hover:border-transparent dark:hover:bg-accent">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-2 h-4 w-4 group-hover:fill-white dark:fill-white">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M6.5 2h11a1 1 0 0 1 .8.4L21 6v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6l2.7-3.6a1 1 0 0 1 .8-.4zM19 8H5v12h14V8zm-.5-2L17 4H7L5.5 6h13zM9 10v2a3 3 0 0 0 6 0v-2h2v2a5 5 0 0 1-10 0v-2h2z" />

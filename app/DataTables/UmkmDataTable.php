@@ -26,7 +26,7 @@ class UmkmDataTable extends DataTable
         return (new EloquentDataTable($query))
            
             ->editColumn('user_id', function ($umkm) {
-                return $umkm->user->name;
+                return $umkm->nama;
             })
 
             ->editColumn('approved', function ($umkm) {
