@@ -68,8 +68,9 @@
                  
                     <div class="mb-3">
                         <label for="edit-image" class="form-label">Image</label>
-                        <input type="text" class="form-control" id="edit-image" name="image" required>
+                        <input type="file" class="form-control" id="edit-image" name="image">
                     </div>
+                    <img id="edit-image-preview" src="" alt="preview" style="width: 100%; height: 100%; display:none;">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
@@ -122,9 +123,13 @@ $(document).ready(function() {
     $(document).on('click', '.edit-btn', function() {
         var id = $(this).data('id');
         $.get('/admin'+'/template/' + id + '/edit', function(data) {
+            console.log(data)
             $('#edit-id').val(data.id);
             $('#edit-name').val(data.name);
             $('#edit-image').val(data.image);
+            // preview image
+            $('#edit-image-preview').attr('src', data.image);
+
             $('#edit-modal').modal('show');
         });
     });
@@ -138,7 +143,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/admin/template/' + id,
+            url: '/admin/template/update/' + id,
             data: formData,
             contentType: false, 
             processData: false, 

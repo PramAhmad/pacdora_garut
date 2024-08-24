@@ -24,33 +24,35 @@ class TemplateUserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->editColumn('image', function ($template) {
-                return '<img src="/upload/template/' . $template->image . '" width="400px" height="100%">';
+                return '<img src="/upload/temp/' . $template->image . '" width="400px" height="100%">';
             })
             // carbon created at
          
-            ->editColumn('action', function($umkm){
-                return '<div class="btn-group">
-                          <button
-                            class="btn btn-light-secondary text-secondary font-medium btn-sm dropdown-toggle"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Actions
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/admin/umkm/show/'.$umkm->id.'">Detail</a></li>
-                            <li><a class="dropdown-item" href="/admin/umkm/edit/'.$umkm->id.'">Edit</a></li>
-                            <li>
-                              <form action="/admin/umkm/delete/'.$umkm->id.'" method="POST" style="display:inline;">
-                                '.csrf_field().'
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="dropdown-item">Delete</button>
-                              </form>
-                            </li>
-                          </ul>
-                        </div>';
+            ->editColumn('action', function($template){
+                return  '<div class="btn-group">
+                <button
+                  class="btn btn-light-secondary text-secondary font-medium btn-sm dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Actions
+                </button>
+                <ul class="dropdown-menu">
+                 
+                  <li>
+                      <button type="button" class="dropdown-item edit-btn" data-id="'.$template->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
+                  </li>
+                  <li>
+                    <form action="/admin/template/delete/'.$template->id.'" method="POST" style="display:inline;">
+                      '.csrf_field().'
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="dropdown-item">Delete</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>';
             })
             ->editColumn('created_at', function ($template) {
                 return $template->created_at->format('d F Y');

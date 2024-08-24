@@ -77,7 +77,8 @@ class TemplateUserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Template::find($id);
+        return response()->json($data);
     }
 
     /**
@@ -85,7 +86,36 @@ class TemplateUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+    
+        $request->validate([
+            'name' => 'required',
+            'image' => 'nullable|file|image|mimes:jpeg,png,jpg|max:2048',
+        ],[
+            'name.required' => 'Nama harus diisi',
+            'image.file' => 'File harus berupa gambar',
+            'image.image' => 'File harus berupa gambar',
+            'image.mimes' => 'File harus berupa gambar jpeg, png, jpg',
+            'image.max' => 'File gambar maksimal 2MB',
+        ]);
+
+        $template = Template::find($id);
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = time()."_".$image->getClientOriginalName();
+            $image->move(public_path('upload/temp'),$image_name);
+            $template->update([
+                'name' => $request->name,
+                'image' => $image_name,
+            ]);
+        }else{
+            $template->update([
+                'name' => $request->name,
+            ]);
+        }
+        if($request->ajax()){
+            return response()->json(['message' => 'Template updated'], 200);
+        }
+        return redirect()->back()->with('success','Template updated');
     }
 
     /**
@@ -93,7 +123,12 @@ class TemplateUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $template = Template::find($id);
+        $template->delete();
+        if($template){
+            return redirect()->back()->with('success','Template deleted');
+        }
+        return response()->json(['message' => 'Template not found'], 404);  
     }
 
     public function select()

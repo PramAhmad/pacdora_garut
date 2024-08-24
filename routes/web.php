@@ -110,6 +110,10 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         // template
         Route::get('/template',[TemplateUserController::class, 'index'])->name('template.index');
         Route::post('/template/store',[TemplateUserController::class, 'store'])->name('template.store');
+        Route::get('/template/{id}/edit/',[TemplateUserController::class, 'edit'])->name('template.edit');
+        Route::put('/template/update/{id}',[TemplateUserController::class, 'update'])->name('template.update');
+        Route::delete('/template/delete/{id}',[TemplateUserController::class, 'destroy'])->name('template.destroy');
+
 
         // contact
         Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
