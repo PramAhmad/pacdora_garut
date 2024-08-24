@@ -63,8 +63,8 @@ class ModelsController extends Controller
             'image' => 'required|url',
             'subimageone' => 'nullable|url',
             'subimagetwo' => 'nullable|url',
-            'white_board' => 'required|in:ya,tidak',
-            'flute' => 'required|in:ya,tidak',
+            'materialone' => 'required',
+            'materialtwo' => 'required',
             'title' => 'required|min:6',
             'sub_category' => 'required|exists:sub_category,id',
             'category_id' => 'required|exists:category,id',
@@ -80,10 +80,10 @@ class ModelsController extends Controller
             'model.min' => 'Model minimal 5 karakter',
             'title.min' => 'Judul minimal 6 karakter',
             'title.required' => 'Judul tidak boleh kosong',
-            'flute.required' => 'Flute tidak boleh kosong',
-            'flute.in' => 'Flute harus ya atau tidak',
-            'white_board.required' => 'White board tidak boleh kosong',
-            'white_board.in' => 'White board harus ya atau tidak',
+            'materialtwo.required' => 'materialtwo tidak boleh kosong',
+       
+            'materialone.required' => 'White board tidak boleh kosong',
+ 
 
         ]);
       

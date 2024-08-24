@@ -4,28 +4,28 @@
 @endpush
 @section('content')
 
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ session('success') }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ session('success') }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="card">
+    <div class="card-body">
+        <div class="mb-2">
+            <h5 class="mb-0">Data UMKM</h5>
         </div>
-        
-    @endif
-            <div class="card">
-                <div class="card-body">
-                    <div class="mb-2">
-                        <h5 class="mb-0">Data UMKM</h5>
-                    </div>
-                   <div style="width: 100%;">
-                   {{ $dataTable->table() }}
-                   </div>
-    
-                </div>
-            </div>
-     
-@endsection
+        <div class="mb-2">
+            <a href="{{ route('umkm.export') }}" class="btn btn-success">Export UMKM Data</a>
+        </div>
+        <div style="width: 100%;">
+            {{ $dataTable->table() }}
+        </div>
+    </div>
+</div>
 
+@endsection
 
 @push('js')
 @livewireScripts

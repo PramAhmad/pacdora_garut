@@ -248,54 +248,29 @@
       </div>
     </div>
     <div class="feedback-list ml-[-15px]">
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-4"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-1.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-6"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-2.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-10"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-3.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-9"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-4.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-4"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-5.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-6"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-6.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-10"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-7.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
-      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] border-bg-9"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px]" src="agency/assets/images/avatar-8.png" alt="avatar">
-        <p class="text-heading-6 font-chivo font-bold mb-[6px]">Pramudita Ahmad</p>
-        <p class="text-sm font-bold mb-5 text-gray-700">Astacode</p>
-        <p class="text-text text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque natus nostrum temporibus dolorum minima.
-        </p>
-      </div>
+      @php
+        $borderbg = [
+          'border-bg-4',
+          'border-bg-6',
+          'border-bg-9',
+          'border-bg-10',
+        ]
+
+
+      @endphp
+    @forelse ($customer as $c )
+        @php
+        $random = array_rand($borderbg);
+        @endphp
+        <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] {{$random}}"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px] rounded-full" src="{{asset('upload/customer/'.$c->foto)}}" alt="customer">
+          <p class="text-sm font-bold mb-5 text-gray-700">{{$c->nama_usaha}}</p>
+          <p class="text-text text-gray-500">{{$c->isi}}
+          </p>
+        </div>
+        @empty
+          <h4>Belum ada data Customer</h4>
+        @endforelse
+  
     </div>
   </div>
 
@@ -332,20 +307,20 @@
             <p class="text-text text-gray-600 underline">contact@myopia.com
             </p>
           </div>
-          <form class="flex-1" action="/">
+          <form class="flex-1" action="{{route('contact.store')}}">
+            @csrf
             <div class="flex flex-col gap-6 mb-6 lg:flex-row xl:gap-[30px]">
-              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Enter your name">
-              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Company (optional)">
+              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="name" placeholder="Masukan Nama Kamu">
+              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="company" placeholder="Company (optional)">
             </div>
             <div class="flex flex-col gap-6 mb-6 lg:flex-row xl:gap-[30px]">
-              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Your email">
-              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" placeholder="Phone number">
+              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="email" placeholder="Email kamu">
+              <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="phone" placeholder="Nomor Telepon">
             </div>
-            <textarea class="w-full py-5 resize-none outline-0 px-[30px] max-h-[150px] mb-[35px] md:mb-[56px]" name="" cols="100" rows="10" placeholder="Tell us about yourself"></textarea>
+            <textarea class="w-full py-5 resize-none outline-0 px-[30px] max-h-[150px] mb-[35px] md:mb-[56px]" name="message" cols="100" rows="10" placeholder="Pertanyaan kamu" ></textarea>
             <div class="flex flex-col gap-5">
-              <button class="flex items-center transition-colors duration-200 px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] font-chivo font-semibold text-md md:text-lg text-white bg-gray-900 w-fit" type="submit">Send Message<i> <img class="ml-[7px] w-[12px] filter-white" src="agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i>
+              <button class="flex items-center transition-colors duration-200 px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] font-chivo font-semibold text-md md:text-lg text-white bg-gray-900 w-fit" type="submit">Kirim Pesan<i> <img class="ml-[7px] w-[12px] filter-white" src="agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i>
               </button>
-              <p class="text-md text-gray-500">By clicking contact us button, you agree our terms and policy,</p>
             </div>
           </form>
         </div>
@@ -370,4 +345,42 @@
   </div>
 
 </div>
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- swal cdn -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  $(document).ready(function(){
+    $('form').submit(function(e){
+      e.preventDefault(); 
+
+      let csrfToken = "{{ csrf_token() }}"; 
+      let form = $(this); 
+      let formData = form.serialize();
+
+      // AJAX setup
+      $.ajax({
+        type: 'POST',
+        url:  `{{route('contact.store')}}`,
+        data: formData + '&_token=' + csrfToken,
+        success: function(response){
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: response.message,
+          });
+        },
+        error: function(response){
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: response.responseJSON.message,
+          });
+        }
+      }); 
+    });
+  });
+</script>
+
+ 
 @endsection

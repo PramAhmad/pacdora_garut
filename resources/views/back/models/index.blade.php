@@ -62,8 +62,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-1">
-                                <label for="subimagetwo" class="form-label">Sub Image URL</label>
-                                <input type="text" class="form-control" id="subimagetwo" name="subimagetwo" required>
+                                <label for="subimageone" class="form-label">Sub Image URL</label>
+                                <input type="text" class="form-control" id="subimageone" name="subimageone" required>
                             </div>
                             <div class="mb-2">
                                 <label for="subimagetwo" class="form-label"></label>
@@ -204,8 +204,8 @@
                 $('#edit-id').val(data.id);
                 $('#image').val(data.image);
                 $('#model').val(data.model);
-                $('#subimagetwo').val(data.subimagetwo);
-                $("#sub1-img-preview").attr('src', data.subimagetwo);
+                $('#subimageone').val(data.subimagetwo);
+                $("#sub1-img-preview").attr('src', data.subimageone);
                 $('#subimagetwo').val(data.subimagetwo);
                 $("#sub2-img-preview").attr('src', data.subimagetwo);
 

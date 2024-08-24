@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\Customer;
 use App\Models\Models;
 use App\Models\SubCategoryModel;
 use App\Traits\HttpTrait;
@@ -16,6 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $data["category"] = CategoryModel::all();
+        $data['customer'] = Customer::all();
      
         return view('front.home.index',$data);
     }

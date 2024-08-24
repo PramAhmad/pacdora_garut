@@ -4,8 +4,11 @@ use App\Http\Controllers\AjaxCategoryController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardControler;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ExportUmkmController;
 use App\Http\Controllers\HistoryModelsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -48,6 +51,10 @@ Route::get('/subcategory/{subcategoryKey}', [HomeController::class, 'subcategory
 // Route::get('/subcategory/{key}/items', [HomeController::class, 'fetchSubcategoryItems'])->name('subcategory.items');
 
 Route::get("/register",[RegisterController::class, 'index'])->name('register');
+Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
+
+// export umkm
+Route::get('/export/umkm',[ExportUmkmController::class, 'umkm'])->name('umkm.export');
 
 
 // ajax controller
@@ -66,6 +73,7 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::post('/template/select',[TemplateUserController::class, 'selectStore'])->name('template.select.store');
     // Route::post('/history/store',[HistoryModelsController::class, 'store'])->name('history.store');
     Route::post('/export/{id}',[ExportController::class, 'index'])->name('export.pdf');
+
 });
 
 
@@ -102,6 +110,14 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         // template
         Route::get('/template',[TemplateUserController::class, 'index'])->name('template.index');
         Route::post('/template/store',[TemplateUserController::class, 'store'])->name('template.store');
+
+        // contact
+        Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
+        Route::get('/contact/{id}',[ContactController::class, 'show'])->name('contact.show');
+        Route::delete('/contact/delete',[ContactController::class, 'destroy'])->name('contact.destroy');
+
+        // customer
+    Route::resource('/customer', CustomerController::class);
         
     });
  
