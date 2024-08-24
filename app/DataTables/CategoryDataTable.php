@@ -30,7 +30,7 @@ class CategoryDataTable extends DataTable
                             Actions
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/category/show/'.$category->id.'">Detail</a></li>
+                    
                             <li>
                                 <button type="button" class="dropdown-item edit-btn" data-id="'.$category->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
                             </li>

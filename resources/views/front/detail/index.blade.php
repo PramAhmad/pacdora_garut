@@ -448,9 +448,16 @@
           Desain Kemasan
         </div>
       </div>
+      @if (Auth::user()->umkm->approved != 1)
+        <div class="download-text">
+          Menunggu Verifikasi
+        </div>
+      @else
+        
       <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
         Download Kemasan
       </div>
+      @endif
     </div>
   </div>
   <div class="description-box">

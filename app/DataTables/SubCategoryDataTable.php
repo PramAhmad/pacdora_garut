@@ -33,7 +33,7 @@ class SubCategoryDataTable extends DataTable
                             Actions
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/subcategory/show/'.$subcategory->id.'">Detail</a></li>
+                           
                             <li>
                                 <button type="button" class="dropdown-item edit-btn" data-id="'.$subcategory->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
                             </li>

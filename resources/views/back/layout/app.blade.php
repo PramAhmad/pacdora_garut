@@ -149,12 +149,12 @@
       border: 1px solid #eaeff4
     }
 
-    #editable-datatable_wrapper .dataTables_paginate .paginate_button .previous {
+   .dataTables_paginate .paginate_button .previous {
       border-radius: 7px 0 0 7px;
       background-color: #eaeff4
     }
 
-    #editable-datatable_wrapper .dataTables_paginate .paginate_button.current {
+   .dataTables_paginate .paginate_button.current {
       color: #fff;
       background-color: #5d87ff;
       border-color: #5d87ff
@@ -181,9 +181,8 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="{{route('dashboard')}}l" class="text-nowrap logo-img">
-            <img src="{{asset('admin/docs/dist/images/logo-dark.svg')}}" class="dark-logo" width="180" alt="" />
-            <img src="{{asset('admin/docs/dist/images/logo-dark.svg')}}" class="light-logo" width="180" alt="" />
+          <a href="{{route('dashboard')}}l" class="text-center fs-7 fw-6">
+           Myopia
           </a>
           <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8 text-muted"></i>

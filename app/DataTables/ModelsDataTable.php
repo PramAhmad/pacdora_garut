@@ -23,18 +23,21 @@ class ModelsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->editColumn('image', function ($model) {
-                return '<img src="'.$model->image.'" width="100px" height="100px">';
-            })
-            ->editColumn('subimage', function ($model) {
-                return '<img src="'.$model->subimageone .' " width="50px" height="50px" class="mb-3"> <img src="'.$model->subimagetwo.'" width="50px" height="50px">';
-            })
-            ->editColumn('materialone', function ($model) {
-                return '<img src="'.$model->materialone.'" width="20px" height="20px">';
-            })
-            ->editColumn('materialtwo', function ($model) {
-                return  '<img src="'.$model->materialtwo.'" width="20px" height="20px">';
-            })
+        ->editColumn('image', function ($model) {
+            return !empty($model->image) ? '<img src="' . htmlspecialchars($model->image, ENT_QUOTES, 'UTF-8') . '" width="100px" height="100px">' : 'No image';
+        })
+        ->editColumn('subimage', function ($model) {
+            $subimageone = !empty($model->subimageone) ? '<img src="' . htmlspecialchars($model->subimageone, ENT_QUOTES, 'UTF-8') . '" width="50px" height="50px" class="mb-3">' : 'No image';
+            $subimagetwo = !empty($model->subimagetwo) ? '<img src="' . htmlspecialchars($model->subimagetwo, ENT_QUOTES, 'UTF-8') . '" width="50px" height="50px">' : 'No image';
+            return $subimageone . ' ' . $subimagetwo;
+        })
+        ->editColumn('materialone', function ($model) {
+            return !empty($model->materialone) ? '<img src="' . htmlspecialchars($model->materialone, ENT_QUOTES, 'UTF-8') . '" width="20px" height="20px">' : 'No image';
+        })
+        ->editColumn('materialtwo', function ($model) {
+            return !empty($model->materialtwo) ? '<img src="' . htmlspecialchars($model->materialtwo, ENT_QUOTES, 'UTF-8') . '" width="20px" height="20px">' : 'No image';
+        })
+        
             ->editColumn('sub_category', function ($model) {
                 return $model->subcategory->name;
             })

@@ -448,9 +448,16 @@
           Design  
         </div>
       </div>
+      @if (Auth::user()->umkm->approved != 1)
+        <div class="download-text">
+          Menunggu Verifikasi
+        </div>
+      @else
+        
       <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
         Download Kemasan
       </div>
+      @endif
     </div>
   </div>
   <div class="description-box">
@@ -502,25 +509,7 @@
     });
 
     
-    Pacdora.$on("download:start", () => {
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Downloading...";
-    });
-    Pacdora.$on("download:success", () => {
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Download success";
-      setTimeout(() => {
-        downloadEle.innerText = "Download the Dieline";
-      }, 1000);
-    });
-    Pacdora.$on("download:fail", () => {
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Download failed";
-      setTimeout(() => {
-        downloadEle.innerText = "Download the Dieline";
-      }, 1000);
-    });
-
+  
     Pacdora.$on("design:opened", () => {
 
       //add items in left create elemet menu-card-menu
