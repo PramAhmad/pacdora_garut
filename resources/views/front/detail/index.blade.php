@@ -1,3 +1,4 @@
+
 @extends('front.layouts.app')
 @section("content")
 @push("css")
@@ -5,7 +6,6 @@
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/header.css" />
   <link rel="stylesheet" href="/css/index.css" />
-
 <style>
   .box-info {
     display: flex;
@@ -101,7 +101,7 @@
   }
 
   .d3-and-d2-switch .switch-item.active {
-    background: #731eff;
+    background: #0d9488;
     color: #fff;
   }
 
@@ -300,13 +300,16 @@
     bottom: 0;
     margin: auto;
   }
+  .pacdora-watermark{
+    display: none !important;
+  }
 </style>
 @endpush
 
 <div class="pt-28 container">
   <div class="crumb-box" data-position="bottom">
-    <a class="crumb-item">All products</a>
-    /<a class="crumb-item">Folding Box</a>
+    <a class="crumb-item" href="{{route('home')}}">home</a>
+    /<a class="crumb-item">Folding </a>
     /Custom dimensions flip top boxes mailer
   </div>
   <div class="info-name" data-pacdora-ui="info-name"></div>
@@ -314,6 +317,7 @@
     <div class="left">
       <div class="box-info-slider">
         <div class="box-info-item active">
+          <!-- 3D box expansion and collapse control component start -->
           <div class="collapse-control" data-position="bottom">
             <div onclick="openPacdora(0)">Open</div>
             <div class="slider-box">
@@ -322,7 +326,7 @@
             </div>
             <div onclick="openPacdora(1)">Close</div>
           </div>
-       
+          <!-- 3D box expansion and collapse control component end -->
 
           <!-- Pacdora component data-pacdora-ui="3d" start -->
           <div class="d3" data-pacdora-ui="3d" data-pacdora-id="d3" data-init-rotation="true"></div>
@@ -347,7 +351,7 @@
           3D
         </div>
         <div class="switch-item" onclick="onSwitch2DAnd3D('dieline')">
-          Dieline
+            Garis
         </div>
         <div class="switch-item" onclick="onSwitch2DAnd3D('2d')">
           2D
@@ -381,7 +385,7 @@
       </div>
       <div class="selector-box">
         <select onchange="onChangeThickness(this)" id="thickness">
-          <option value="">Choose the thickness</option>
+          <option value="">Pilih Ketebalan</option>
           <option value="1.5">1.5mm</option>
           <option value="1">1mm</option>
           <option value="2">2mm</option>
@@ -393,7 +397,7 @@
           <div class="sub-title mt30">Print</div>
           <div class="selector-box">
             <select onchange="onChangePrint(this)" id="print">
-              <option value="">Choose the print method</option>
+              <option value="">Pilih Metode Print</option>
               <option value="blank">Blank</option>
               <option value="outside" selected="selected">
                 Outside
@@ -425,7 +429,7 @@
                 </div> -->
 
         <div>
-          <div class="sub-title mt30">Quantity</div>
+          <div class="sub-title mt30">Kuantitas</div>
           <div class="selector-box">
             <select onchange="onChangeNumber(this)" id="number">
               <option value="500" selected="selected">500</option>
@@ -445,7 +449,7 @@
                 </div> -->
         <div class="btn design-btn" data-pacdora-ui="design-btn" data-save-screenshot="true" data-screenshot-width="800">
           <div class="pac-loading small"></div>
-          Desain Kemasan
+          Desain Kemasan  
         </div>
       </div>
       @if (Auth::user()->umkm->approved != 1)
@@ -487,12 +491,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   (async () => {
-    // const userId = localStorage.getItem("username");
-    // let externalId = localStorage.getItem("externalId");
-    // if (!externalId) {
-    //   externalId = Math.random().toFixed(16).substring(1).toString(16);
-    //   localStorage.setItem("externalId", externalId);
-    // }
+  
 
     await Pacdora.init({
       userId: "{{hashId(Auth::user()->id)}}",
@@ -502,77 +501,54 @@
       doneBtn: "Save",
       localeResource: {
         "Upload & Design": "Online design",
-      },                                              
+      },
     });
 
+  
+  
     const modelId = "{{$modelid}}";
-    const id = '123456';
-    const templateId = getQueryValue("templateId");
-
+   
     await Pacdora.createScene({
       modelId: modelId,
       isShowLoading: false,
       doneBtn: "Save",
     });
-
-          
-    Pacdora.$on("download:start", () => {
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Downloading...";
-    });
-    Pacdora.$on("download:success", () => {
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Download success";
-      setTimeout(() => {
-        downloadEle.innerText = "Download the Dieline";
-      }, 1000);
-    });
-    Pacdora.$on("download:fail", () => {                                                                      
-      const downloadEle = document.querySelector(".download-text");
-      downloadEle.innerText = "Download failed";
-      setTimeout(() => {
-        downloadEle.innerText = "Download the Dieline";
-      }, 1000);
-    });
-
+  
     Pacdora.$on("design:opened", () => {
 
-    
+      //add items in left create elemet menu-card-menu
+      const designHeader = document.querySelector(".menu-card-menu");
+      const menuCard = document.createElement("div");
+      menuCard.className = "menu-card";
+      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'>
+                                  <i data-v-8814160e="" class="p-icon-element"></i>
+                                  <a href="/template/select" type="_blank" data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</a>
+                              </div>
+                              `;
+      designHeader.appendChild(menuCard);
+      
+
       const sizeBox = document.querySelector(".size-box");
       sizeBox.dataset.uiTip = "editor-size";
-      sizeBox.dataset.position = "right";
-      const materialBox = document.querySelector(".pacdora-material-box");
-      materialBox.dataset.uiTip = "editor-material";
-      materialBox.dataset.position = "right";
-      const recommendBox = document.querySelector(".recommend-color-root");
-      recommendBox.dataset.uiTip = "editor-recommend";
-      recommendBox.dataset.position = "right";
-      const saveBtn = document.querySelector(".save-btn");
-      saveBtn.dataset.uiTip = "editor-save";
-      const watermark = document.querySelector(".pacdora-watermark");
-      watermark.dataset.uiTip = "editor-white-label";
-      const designHeader = document.querySelector(".design-body");
-      designHeader.dataset.uiTip = "locale";
-      designHeader.dataset.position = "bottom";
+      sizeBox.dataset.position = "bottom";
+
+
+  
       const tipEles = [
         sizeBox,
-        materialBox,
-        recommendBox,
-        saveBtn,
-        watermark,
-        designHeader,
       ];
       for (let i = 0; i < tipEles.length; i++) {
         const ele = tipEles[i];
         const style = getComputedStyle(ele);
-        if (style.position !== "absolute" && style.position !== "fixed") {
-          ele.style.position = "relative";
-        }
+       
         const tipUIEle = document.createElement("div");
         tipUIEle.className = "api-tip";
-        tipUIEle.style.left = "-20px";
-        tipUIEle.style.top = "0px";
+        // tipUIEle.style.left = "-350%";
+        // tipUIEle.style.top = "250px";
         const tipInner = document.createElement("div");
+        // add text
+        tipInner.innerHTML = "";
+
         tipInner.className = "api-tip-inner";
         tipUIEle.appendChild(tipInner);
         ele.appendChild(tipUIEle);
@@ -596,11 +572,12 @@
       }
 
     });
-    // Pacdora.$on('design:save', async ()=> {
-    //   const data =  await Pacdora.getBoxInfo();
-    //   Pacdora.rename('Title');
-    // }
-    // )
+    Pacdora.$on('design:save', async ()=> {
+      const data =  await Pacdora.getBoxInfo();
+      // send requst useing ajak
+     
+    }
+    )
     // Retrieve the box information of the created project and initialize the GUI
     const info = await Pacdora.getBoxInfo();
     // input image for info.screenshoot
@@ -671,7 +648,67 @@
     makeQuotation();
   })();
 </script>
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  
+  $(document).ready(function(){
+    $(".menu-card-menu").on("click", "#template", function(){
+      $(".menu-card-menu .card-menu-item").removeClass("active");
+      $(this).addClass("active");
+
+      // Create modal element with Tailwind classes
+      const modal = document.createElement("div");
+      modal.className = "modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50";
+      modal.innerHTML = `
+      <div class="modal-content bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <span class="close text-gray-600 cursor-pointer">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Choose a template</h2>
+        <div class="template-box grid grid-cols-2 gap-4">
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/KRAFT.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">Kraft</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+          <div class="template-item flex flex-col items-center">
+            <img src="https://cdn.pacdora.com/materialSetting/WHITE_BOARD.png" alt="template" class="w-24 h-24 object-cover" />
+            <div class="template-name mt-2 text-center">White board</div>
+          </div>
+        </div>
+      </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Handle modal close
+      const close = modal.querySelector(".close");
+      close.onclick = function(){
+        modal.style.display = "none";
+        document.body.removeChild(modal);
+      }
+
+      // Close modal on outside click
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.removeChild(modal);
+        }
+      }
+    });
+  });
 </script>
+
 @endsection

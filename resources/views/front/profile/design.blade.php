@@ -299,6 +299,9 @@
     bottom: 0;
     margin: auto;
   }
+  .pacdora-watermark{
+    display: none !important;
+  }
 </style>
 @endpush
 
@@ -445,7 +448,7 @@
                 </div> -->
         <div class="btn design-btn" data-pacdora-ui="design-btn" data-save-screenshot="true" data-screenshot-width="800">
           <div class="pac-loading small"></div>
-          Design  
+          Desain Kemasan  
         </div>
       </div>
       @if (Auth::user()->umkm->approved != 1)
@@ -516,7 +519,11 @@
       const designHeader = document.querySelector(".menu-card-menu");
       const menuCard = document.createElement("div");
       menuCard.className = "menu-card";
-      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'><i data-v-8814160e="" class="p-icon-element"></i><a href="/template/select" type="_blank" data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</a></div>`;
+      menuCard.innerHTML = `<div data-v-8814160e="" class="card-menu-item" id='template'>
+                                  <i data-v-8814160e="" class="p-icon-element"></i>
+                                  <a href="/template/select" type="_blank" data-v-8814160e="" class="pac-ell" style="padding: 0px 5px;">Template</a>
+                              </div>
+                              `;
       designHeader.appendChild(menuCard);
       
 
