@@ -406,11 +406,11 @@
             timer: 1500
           });
         },
-        error: function(xhr) {
+        error: function(response,xhr) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: response.responseJSON.message ,
           });
         }
       });
