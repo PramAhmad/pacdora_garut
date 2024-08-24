@@ -47,7 +47,7 @@ class UmkmDataTable extends DataTable
                       </button>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/admin/umkm/show/'.$umkm->id.'">Detail</a></li>
-                        <li><a class="dropdown-item" href="/admin/umkm/edit/'.$umkm->id.'">Edit</a></li>
+                      
                         <li>
                           <form action="/admin/umkm/delete/'.$umkm->id.'" method="POST" style="display:inline;">
                             '.csrf_field().'

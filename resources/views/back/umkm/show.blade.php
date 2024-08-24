@@ -1,26 +1,7 @@
 @extends('back.layout.app')
 @section('content')
 
-<div class="card bg-light-info shadow-none position-relative overflow-hidden">
-  <div class="card-body px-4 py-3">
-    <div class="row align-items-center">
-      <div class="col-9">
-        <h4 class="fw-semibold mb-8">Umkm Detail</h4>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="text-muted" href="./index.html">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page">Umkm Detail</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="col-3">
-        <div class="text-center mb-n5">
-          <img src="{{asset('admin/package/dist/images/breadcrumb/ChatBc.png')}}" alt="" class="img-fluid mb-n4">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <div class="card">
   <ul class="nav nav-pills user-profile-tab" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -65,24 +46,46 @@
 
       <div class="row">
         <div class="col-lg-6 d-flex align-items-stretch">
-          <div class="card w-100 position-relative overflow-hidden">
-            <div class="card-body p-4">
-              <h5 class="card-title fw-semibold">Approval UMKM</h5>
-              <p class="card-subtitle mb-4">Ubah Status UMKM Di Sini</p>
-              <div class="text-center">
-                @php
-                  $color = $umkm->approved == 1 ? 'success' : 'danger';
-                @endphp
-                <h5 class="pt-5">Status Sekarang <span
-                    class="text-{{$color}} fw-bold">{{$umkm->approved == 1 ? "Active" : "Inactive"}}</span></h5>
-                <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                  <button class="btn btn-primary" id="active" type="button">Active</button>
-                  <button class="btn btn-outline-danger" id="inactive">Inactive</button>
-                </div>
-                <p class="mb-0">Ubah Status Secara Langsung</p>
-              </div>
+        <div class="card w-100 position-relative overflow-hidden">
+    <div class="card-body p-4">
+        <h5 class="card-title fw-semibold">Approval UMKM</h5>
+        <p class="card-subtitle mb-4">Ubah Status UMKM Di Sini</p>
+        <div class="text-center">
+            @php
+                // Status and color mappings
+                $status = [
+                    0 => 'menunggu persetujuan',
+                    1 => 'disetujui',
+                    2 => 'ditolak',
+                ];
+                $color = [
+                    0 => 'warning',
+                    1 => 'success',
+                    2 => 'danger',
+                ];
+
+              
+                $currentStatus = $status[$umkm->approved] ?? 'unknown'; 
+                $currentColor = $color[$umkm->approved] ?? 'secondary'; 
+              
+            @endphp
+            <h5 class="pt-5">
+                Status Sekarang 
+                <span class="text-{{$currentColor}} fw-bold">
+                    {{ $currentStatus }}
+                </span>
+            </h5>
+            <div class="d-flex align-items-center justify-content-center my-4 gap-3">
+                <a href="{{route('approval.show',['id' => $umkm->id])}}" class="btn btn-{{$currentColor}}" id="toggle-status" >
+                   ubah status
+                </a>
             </div>
-          </div>
+            <p class="mb-0">Ubah Status Secara Langsung</p>
+        </div>
+    </div>
+</div>
+
+
         </div>
         <div class="col-lg-6 d-flex align-items-stretch">
           <div class="card w-100 position-relative overflow-hidden">

@@ -20,7 +20,7 @@
                     <input type="password" name="password" id="password" class="w-full border border-jacarta-100 rounded-lg px-3 py-2 mt-1">
                 </div>
                 <div class="mt-5">
-                    <button type="button" onclick="submitForm()" id="login-button" class="w-full bg-accent text-white rounded-lg py-2">Login</button>
+                    <button type="submit" id="login-button" class="w-full bg-accent text-white rounded-lg py-2">Login</button>
                 </div>
                 <div class="mt-5">
                     <p class="text-center">Belum punya akun? <a href="{{ route('register') }}" class="text-accent">Daftar</a></p>
@@ -37,7 +37,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-    function submitForm() {
+    $('#login-form').submit(function(e) {
+      e.preventDefault();
       let formData = new FormData($('#login-form')[0]);
       formData.append('_token', '{{ csrf_token() }}');
       
@@ -117,12 +118,7 @@
 
           $('#contact-form-notice').html('<p class="text-red-500 text-sm mt-1">Terjadi kesalahan saat memproses data.</p>');
         }
-      });
-    }
-
-    $('#login-button').click(function(e) {
-      e.preventDefault();
-      submitForm();
+      })
     });
   });
 </script>

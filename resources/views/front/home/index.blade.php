@@ -107,7 +107,7 @@
       <div class="swiper-slide">
         <article>
           <div
-            class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.08rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700">
+            class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.08rem] transition-shadow hover:shadow-lg  ">
             <figure>
               <a href="/category/{{$item->key}}">
                 <img
@@ -121,7 +121,7 @@
             </figure>
             <div class="mt-4 flex items-center justify-between">
               <a href="/category/{{$item->key}}">
-                <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white">{{$item->name}}</span>
+                <span class="font-display text-base text-jacarta-700 hover:text-accent ">{{$item->name}}</span>
               </a>
               <!-- <span
                              class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
