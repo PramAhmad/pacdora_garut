@@ -307,7 +307,7 @@
             <p class="text-text text-gray-600 underline">contact@myopia.com
             </p>
           </div>
-          <form class="flex-1" action="{{route('contact.store')}}">
+          <form class="flex-1 contact-form" action="{{route('contact.store')}}">
             @csrf
             <div class="flex flex-col gap-6 mb-6 lg:flex-row xl:gap-[30px]">
               <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="name" placeholder="Masukan Nama Kamu">
@@ -351,7 +351,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $(document).ready(function(){
-    $('form').submit(function(e){
+    $('.contact-form').submit(function(e){
       e.preventDefault(); 
 
       let csrfToken = "{{ csrf_token() }}"; 
