@@ -13,6 +13,7 @@ use App\Http\Controllers\HistoryModelsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModelsController;
+use App\Http\Controllers\ProfileSettingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TemplateUserController;
@@ -54,7 +55,6 @@ Route::get("/register",[RegisterController::class, 'index'])->name('register');
 Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
 
 // export umkm
-Route::get('/export/umkm',[ExportUmkmController::class, 'umkm'])->name('umkm.export');
 
 
 // ajax controller
@@ -117,7 +117,13 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::delete('/contact/delete',[ContactController::class, 'destroy'])->name('contact.destroy');
 
         // customer
-    Route::resource('/customer', CustomerController::class);
+        Route::resource('/customer', CustomerController::class);
+        Route::get('/export/umkm',[ExportUmkmController::class, 'umkm'])->name('umkm.export');
+
+        // profile account
+        Route::get('/profile',[ProfileSettingController::class, 'index'])->name('account.index');
+        Route::put('/profile/update',[ProfileSettingController::class, 'update'])->name('account.update');     
+
         
     });
  

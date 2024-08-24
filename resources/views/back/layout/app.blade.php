@@ -311,7 +311,7 @@
               <span class="hide-menu">Account</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="adadas" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('account.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-circle"></i>
                 </span>
@@ -558,12 +558,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link notify-badge nav-icon-hover" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="ti ti-basket"></i>
-                    <span class="badge rounded-pill bg-danger fs-2">2</span>
-                  </a>
-                </li>
+              
                 <li class="nav-item dropdown">
                   <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="ti ti-bell-ringing"></i>
@@ -659,36 +654,10 @@
                         </div>
                       </div>
                       <div class="message-body">
-                        <a href="./page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
-                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                            <img src="admin/package/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h6 class="mb-1 bg-hover-primary fw-semibold"> My Profile </h6>
-                            <span class="d-block text-dark">Account Settings</span>
-                          </div>
-                        </a>
-                        <a href="./app-email.html" class="py-8 px-7 d-flex align-items-center">
-                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                            <img src="admin/package/dist/images/svgs/icon-inbox.svg" alt="" width="24" height="24">
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h6 class="mb-1 bg-hover-primary fw-semibold">My Inbox</h6>
-                            <span class="d-block text-dark">Messages & Emails</span>
-                          </div>
-                        </a>
-                        <a href="./app-notes.html" class="py-8 px-7 d-flex align-items-center">
-                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                            <img src="admin/package/dist/images/svgs/icon-tasks.svg" alt="" width="24" height="24">
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h6 class="mb-1 bg-hover-primary fw-semibold">My Task</h6>
-                            <span class="d-block text-dark">To-do and Daily Tasks</span>
-                          </div>
-                        </a>
+                       
                       </div>
                       <div class="d-grid py-4 px-7 pt-8">
-                        <
+                        
                           <a href="#" class="btn btn-outline-primary" id="logoutButton">Log Out</a>
 
                       </div>
@@ -702,7 +671,26 @@
       </header>
 
       <div class="container-fluid">
-
+      <div class="card bg-light-info shadow-none position-relative overflow-hidden">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Myopia</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./index.html">Home</a></li>
+                      <li class="breadcrumb-item" aria-current="page">Selamat Datang Di Admin Myopia</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-3">
+                  <div class="text-center mb-n5">  
+                    <img src="{{asset('admin/package/dist/images/breadcrumb/ChatBc.png')}}" alt="" class="img-fluid mb-n4">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         @yield('content')
       </div>
 
