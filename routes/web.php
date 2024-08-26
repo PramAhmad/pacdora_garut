@@ -140,7 +140,7 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::get('/mitra',[MitraController::class, 'index'])->name('mitra.index');
 
         Route::post('/mitra',[MitraController::class, 'store'])->name('mitra.store');
-        Route::get('/mitra/{id}',[MitraController::class, 'show'])->name('mitra.show');
+        Route::get('/mitra/{id}/show',[MitraController::class, 'show'])->name('mitra.show');
         Route::delete('/mitra/{id}',[MitraController::class, 'destroy'])->name('mitra.destroy');
            
 

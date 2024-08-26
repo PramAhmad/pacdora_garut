@@ -278,11 +278,13 @@
     <h2 class="font-bold font-chivo text-[25px] leading-[30px] md:text-heading-3 text-center mb-[40px] md:mb-[60px] lg:mb-[84px]">Mitra Kami
     </h2>
     <div class="flex flex-wrap items-center justify-around mb-[30px] md:mb-[60px] lg:mb-[80px]">
-      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="{{asset('asset/mitra/mitra1.png')}}" alt="partner logo" class="w-32"></a>
-      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="{{asset('asset/mitra/mitra2.jpg')}}" alt="partner logo" class="w-32"></a>
-      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="{{asset('asset/mitra/mitra3.png')}}" alt="partner logo" class="w-32"></a>
-      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="{{asset('asset/mitra/mitra4.jpg')}}" alt="partner logo" class="w-32"></a>
-      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="{{asset('asset/mitra/mitra5.png')}}" alt="partner logo" class="w-32"></a>
+      @php
+        $mitra = \App\Models\Mitra::all();
+      @endphp
+      @foreach ($mitra as $m )
+      
+      <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/upload/mitra/{{$m->foto}}" alt="partner logo" class="w-32"></a>
+      @endforeach
     </div>
   </div>
   <div class="px-[12px] pb-20 md:px-[36px] mt-[70px] xl:px-0 lg:mt-[150px]">

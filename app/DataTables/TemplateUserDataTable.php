@@ -51,7 +51,11 @@ class TemplateUserDataTable extends DataTable
       ->editColumn('created_at', function ($template) {
           return $template->created_at->format('d F Y');
       })
-      ->rawColumns(['action', 'image'])
+        ->editColumn('no', function () {
+            static $no = 1;
+            return $no++;
+        })
+      ->rawColumns(['action', 'image','no'])
       ->setRowId('id');
   
     }
@@ -92,7 +96,7 @@ class TemplateUserDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('id')
+            Column::computed('no')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)

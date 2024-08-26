@@ -102,12 +102,13 @@ $(document).ready(function() {
             processData: false, 
             success: function(response) {
                 $('#create-modal').modal('hide');
-                $('#template-table').DataTable().ajax.reload();
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
                     text: 'Template created successfully!',
                 });
+                $('#id').DataTable().ajax.reload();
+
             },
             error: function(response) {
                 Swal.fire({
@@ -186,7 +187,8 @@ function confirmDelete(id) {
                     '_token': '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    $('#template-table').DataTable().ajax.reload();
+                    $('#id').DataTable().ajax.reload();
+
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',

@@ -181,13 +181,13 @@
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
             $.get('/admin/mitra/' + id + '/show', function(data) {
-                console.log(data)
+                console.log(data.foto)
                 $('#edit-id').val(data.id);
                 $('#edit-name').val(data.name);
-                $('#edit-foto').val(data.foto);
-                $('#edit-preview').attr('src', `{{ asset('upload/mitra') }}/${data.foto}`);
 
-
+                $('#edit-preview').attr('src', `/upload/mitra/${data.foto}`);
+                
+                
                 $('#edit-modal').modal('show');
             });
         })
