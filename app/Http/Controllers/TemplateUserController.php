@@ -155,12 +155,12 @@ class TemplateUserController extends Controller
         ];
         foreach ($template as $key => $value) {
             $data['imgs'][] = [
-                'url' => url('upload/template/'.$value->image),
+                'url' => asset('upload/temp/'.$value->image),
                 'name' => $value->name,
             ];
         }   
         json_encode($data);
-       
+        return $data;
      
        $post = Http::withHeaders([
             'appId' => '71ee73045e3480fe',
