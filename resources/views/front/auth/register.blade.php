@@ -23,7 +23,7 @@
 
             <div class="mb-6 ">
               <label for="name" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                Name Pemilik Usaha<span class="text-red">*</span>
+                Nama Pemilik Usaha<span class="text-red">*</span>
               </label>
               <input name="nama" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" id="name" type="text" required placeholder="Masukan Nama Sesuai KTP" />
               @error('name')
@@ -35,7 +35,7 @@
             <div class="flex space-x-7">
               <div class="mb-6 w-1/2">
                 <label for="nama_usaha" class="mb-1 block font-display text-sm text-jacarta-700 dark:text-white">
-                  Name Usaha<span class="text-red">*</span>
+                  Nama Usaha<span class="text-red">*</span>
                 </label>
                 <input name="nama_usaha" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:placeholder:text-jacarta-300" id="nama_usaha" type="text" placeholder="Masukan Nama Usaha Anda" required />
                 @error('name')

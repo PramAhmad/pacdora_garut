@@ -315,7 +315,7 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Account</span>
+              <span class="hide-menu">Other</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('account.index')}}" aria-expanded="false">
@@ -326,7 +326,15 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="asda" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('home')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-home"></i>
+                </span>
+                <span class="hide-menu">Home</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link logoutButton" href="asda" aria-expanded="false">
                 <span>
                   <i class="ti ti-logout"></i>
                 </span>
@@ -533,7 +541,7 @@
                       </div>
                       <div class="d-grid py-4 px-7 pt-8">
                         
-                          <a href="#" class="btn btn-outline-primary" id="logoutButton">Log Out</a>
+                          <a href="#" class="btn btn-outline-primary logoutButton" id="logoutButton">Log Out</a>
 
                       </div>
                     </div>
@@ -879,7 +887,7 @@
   <script src="{{asset('/admin/package/dist/js/dashboard.js')}}"></script>
   <script>
     $(document).ready(function() {
-      $('#logoutButton').on('click', function(e) {
+      $('.logoutButton').on('click', function(e) {
         e.preventDefault();
 
         Swal.fire({
