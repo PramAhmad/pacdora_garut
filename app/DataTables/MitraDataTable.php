@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Umkm;
+use App\Models\Mitra;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -11,11 +11,9 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use Yajra\DataTables\WithExportQueue;
 
-class UmkmDataTable extends DataTable
+class MitraDataTable extends DataTable
 {
-  use WithExportQueue;
     /**
      * Build the DataTable class.
      *
@@ -24,18 +22,12 @@ class UmkmDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-           
-            ->editColumn('user_id', function ($umkm) {
-                return $umkm->nama;
+            ->editColumn('foto', function ($mitra) {
+                $imagePath = asset('upload/mitra/' . $mitra->foto);
+                return '<img src="' . $imagePath . '" width="100px" height="100px">';
             })
-
-            ->editColumn('approved', function ($umkm) {
-              return $umkm->approved ? 
-                  '<span class="badge font-medium bg-light-primary text-primary">Approved</span>' : 
-                  '<span class="badge font-medium bg-light-danger text-danger">Not Approved</span>';
-          })
-          ->editColumn('action', function($umkm){
-            return '<div class="btn-group">
+            ->editColumn('action', function ($mitra) {
+                return '<div class="btn-group">
                       <button
                         class="btn btn-light-secondary text-secondary font-medium btn-sm dropdown-toggle"
                         type="button"
@@ -46,27 +38,26 @@ class UmkmDataTable extends DataTable
                         Actions
                       </button>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin/umkm/show/'.$umkm->id.'">Detail</a></li>
                       
-                         <li>
-                    <button type="button" class="dropdown-item" onclick="confirmDelete('.$umkm->id.')" >Delete</button>
-                </li>
+                        <li>
+                            <button type="button" class="dropdown-item edit-btn" data-id="' . $mitra->id . '" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
+                        </li>
+                       <li>
+                   <button type="button" class="dropdown-item" onclick="confirmDelete(' . $mitra->id . ')" >Delete</button>
+               </li>
                       </ul>
                     </div>';
-        })
-        
-          
-            ->setRowId('id')
-            ->rawColumns(['action','approved']);
-
+            })
+            ->rawColumns(['foto', 'action'])
+            ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Umkm $model): QueryBuilder
+    public function query(Mitra $model): QueryBuilder
     {
-        return $model->newQuery()->where('approved', "!=", 2);
+        return $model->newQuery();
     }
 
     /**
@@ -75,13 +66,11 @@ class UmkmDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('umkm')
+                    ->setTableId('mitra-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->searching()
                     //->dom('Bfrtip')
                     ->orderBy(1)
-                  
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -100,17 +89,18 @@ class UmkmDataTable extends DataTable
     {
         return [
             Column::computed('id')
-                  ->exportable(true)
+                  ->exportable(false)
                   ->printable(false)
                   ->width(60)
-                  ->addClass('text-center w-full '),
-              
-                Column::make('user_id'),
-                Column::make('nik'),
-                Column::make('nohp'),
-                Column::make('approved'),
-                Column::make('action')->exportable(false)->printable(false)->width(100)->addClass('text-center w-full '),
-
+                  ->addClass('text-center'),
+            Column::make('name'),
+            Column::make('foto'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
+         
         ];
     }
 
@@ -119,6 +109,6 @@ class UmkmDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Umkm_' . date('YmdHis');
+        return 'Mitra_' . date('YmdHis');
     }
 }

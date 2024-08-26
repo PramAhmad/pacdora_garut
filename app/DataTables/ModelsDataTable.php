@@ -53,17 +53,13 @@ class ModelsDataTable extends DataTable
                             Actions
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/model/show/'.$model->id.'">Detail</a></li>
+
                             <li>
                                 <button type="button" class="dropdown-item edit-btn" data-id="'.$model->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
                             </li>
-                            <li>
-                              <form action="/model/delete/'.$model->id.'" method="POST" style="display:inline;">
-                                '.csrf_field().'
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="dropdown-item">Delete</button>
-                              </form>
-                            </
+                             <li>
+                    <button type="button" class="dropdown-item" onclick="confirmDelete('.$model->id.')" >Delete</button>
+                </li>
                           </ul>
                         </div>';
             })

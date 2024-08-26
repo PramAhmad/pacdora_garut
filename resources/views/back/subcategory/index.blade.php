@@ -177,5 +177,43 @@
             });
         });
     });
+    function confirmDelete(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'DELETE',
+                url: `/admin/subcategory/delete/${id}`,
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    $('#subcategory-table').DataTable().ajax.reload();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                },
+              
+                error: function(response) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error deleting subcategory! ' + response.responseText,
+                    });
+                }
+            });
+        }
+    })
+}
+
 </script>
 @endpush

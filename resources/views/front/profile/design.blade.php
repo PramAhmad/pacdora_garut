@@ -360,7 +360,7 @@
       <div class="pac-loading crop-parent"></div>
     </div>
     <div class="right">
-      <div class="sub-title">Dimension</div>
+      <div class="sub-title">Dimensi</div>
       <div class="selector-box">
         <select onchange="onChangeDimension(this)" id="dimension">
           <option value="">Pilih Dimensi</option>
@@ -380,7 +380,7 @@
         </select>
       </div>
       <div class="sub-title mt30">
-        Thickness
+        Ketebalan
       </div>
       <div class="selector-box">
         <select onchange="onChangeThickness(this)" id="thickness">
@@ -451,19 +451,30 @@
           Desain Kemasan  
         </div>
       </div>
-      @if (Auth::user()->umkm->approved != 1)
-        <div class="download-text">
-          Menunggu Verifikasi
+      @if (Auth::user()->role == 'admin')
+      <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
+          Download Kemasan
         </div>
       @else
-        
-      <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
-        Download Kemasan
-      </div>
+
+        @if (Auth::user()->umkm->approved != 1)
+          <div class="download-text">
+            Menunggu Verifikasi
+          </div>
+        @else
+          
+        <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
+          Download Kemasan
+        </div>
+        @endif
       @endif
     </div>
   </div>
   <div class="description-box">
+    <h2 class="py-3">
+      Keterangan
+    </h2>
+    <p class="pb-5">Silahkan Klik tombol Design Kemasan, lalu upload dan sesuaikan dengan design product anda setelah itu save dan anda bisa melakukan download hasil design kemasan MYOPIA  </p>
     <h2>Deskripsi products</h2>
     <div class="description-info mt30" data-pacdora-ui="info-description"></div>
 

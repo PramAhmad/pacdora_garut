@@ -54,21 +54,12 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        if(response.success) {
-                            Swal.fire(
-                                'Deleted!',
-                                response.message,
-                                'success'
-                            )
-                     
-                            $('#dataTableBuilder').DataTable().ajax.reload();
-                        } else {
-                            Swal.fire(
-                                'Failed!',
-                                response.message,
-                                'error'
-                            )
-                        }
+                        $('#contact-table').DataTable().ajax.reload();
+                        Swal.fire(
+                            'Deleted!',
+                            'The contact has been deleted.',
+                            'success'
+                        );
                     },
                     error: function(xhr) {
                         Swal.fire(

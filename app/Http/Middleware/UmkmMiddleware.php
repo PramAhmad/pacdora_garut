@@ -16,7 +16,7 @@ class UmkmMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         // approved
-        if (auth()->user()->umkm->approved == 1) {
+        if (auth()->user()->role == 'admin' || auth()->user()->umkm->approved == 1) {
             return $next($request);
         }else{
             return redirect()->route('profile')->with('error','Anda belum di approve oleh admin');

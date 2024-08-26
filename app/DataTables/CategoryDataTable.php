@@ -34,13 +34,9 @@ class CategoryDataTable extends DataTable
                             <li>
                                 <button type="button" class="dropdown-item edit-btn" data-id="'.$category->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
                             </li>
-                            <li>
-                              <form action="/category/delete/'.$category->id.'" method="POST" style="display:inline;">
-                                '.csrf_field().'
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="dropdown-item">Delete</button>
-                              </form>
-                            </li>
+                              <li>
+                    <button type="button" class="dropdown-item" onclick="confirmDelete('.$category->id.')" >Delete</button>
+                </li>
                           </ul>
                         </div>';
             })

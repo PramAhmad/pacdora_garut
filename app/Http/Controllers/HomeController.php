@@ -69,4 +69,8 @@ class HomeController extends Controller
     public function konsultasi(){
         return view('front.konsultasi.index');
     }
+
+    public function tutorial(){
+        return view('front.tutorial.index');
+    }
 }

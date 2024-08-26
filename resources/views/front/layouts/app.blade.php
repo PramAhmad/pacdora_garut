@@ -269,7 +269,7 @@
               </li>
                
               </li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Kategori Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
                 <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-1/2">
                   @php
                       $categories = \App\Models\CategoryModel::all();
@@ -282,6 +282,7 @@
           
               <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('pendampingan')}}">Pendampingan</a></li>
               <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('konsultasi')}}">Konsultasi</a></li>
+              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('tutorial')}}">Tutorial</a></li>
 
              
             </ul>

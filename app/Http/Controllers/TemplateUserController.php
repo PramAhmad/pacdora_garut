@@ -126,7 +126,7 @@ class TemplateUserController extends Controller
         $template = Template::find($id);
         $template->delete();
         if($template){
-            return redirect()->back()->with('success','Template deleted');
+            return response()->json(['message' => 'Template deleted'], 200);
         }
         return response()->json(['message' => 'Template not found'], 404);  
     }

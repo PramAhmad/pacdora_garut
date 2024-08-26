@@ -361,7 +361,7 @@
       <div class="pac-loading crop-parent"></div>
     </div>
     <div class="right">
-      <div class="sub-title">Dimension</div>
+      <div class="sub-title">Dimensi</div>
       <div class="selector-box">
         <select onchange="onChangeDimension(this)" id="dimension">
           <option value="">Pilih Dimensi</option>
@@ -381,7 +381,7 @@
         </select>
       </div>
       <div class="sub-title mt30">
-        Thickness
+        Ketebalan
       </div>
       <div class="selector-box">
         <select onchange="onChangeThickness(this)" id="thickness">
@@ -465,6 +465,10 @@
     </div>
   </div>
   <div class="description-box">
+    <h2 class="py-3">
+      Keterangan
+    </h2>
+    <p class="pb-5">Silahkan Klik tombol Design Kemasan, lalu upload dan sesuaikan dengan design product anda setelah itu save dan anda bisa melakukan download hasil design kemasan MYOPIA  </p>
     <h2>Deskripsi products</h2>
     <div class="description-info mt30" data-pacdora-ui="info-description"></div>
 

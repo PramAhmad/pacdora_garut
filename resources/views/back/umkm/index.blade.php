@@ -30,6 +30,46 @@
 @push('js')
 @livewireScripts
 <script src="admin/package/dist/libs/jquery/dist/jquery.min.js"></script>
+<script>
+    function confirmDelete(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'DELETE',
+                url: `/admin/template/delete/${id}`,
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    $('#template-table').DataTable().ajax.reload();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                },
+              
+                error: function(response) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error deleting template! ' + response.responseText,
+                    });
+                }
+            });
+        }
+    })
+}
+
+</script>
 <script src="admin/package/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush

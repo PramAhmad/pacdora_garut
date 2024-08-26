@@ -37,13 +37,9 @@ class SubCategoryDataTable extends DataTable
                             <li>
                                 <button type="button" class="dropdown-item edit-btn" data-id="'.$subcategory->id.'" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>
                             </li>
-                            <li>
-                              <form action="/subcategory/delete/'.$subcategory->id.'" method="POST" style="display:inline;">
-                                '.csrf_field().'
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="dropdown-item">Delete</button>
-                              </form>
-                            </li>
+                           <li>
+                    <button type="button" class="dropdown-item" onclick="confirmDelete('.$subcategory->id.')" >Delete</button>
+                </li>
                           </ul>
                         </div>';
             })

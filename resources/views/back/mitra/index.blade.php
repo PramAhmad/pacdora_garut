@@ -12,9 +12,9 @@
 <div class="card">
     <div class="card-body">
         <div class="mb-2">
-            <h5 class="mb-0">Data customer</h5>
+            <h5 class="mb-0">Data mitra</h5>
         </div>
-        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#create-modal">Create customer</button>
+        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#create-modal">Create mitra</button>
         <div style="width: 100%;">
             {{ $dataTable->table() }}
         </div>
@@ -26,26 +26,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Create customer</h5>
+                <h5 class="modal-title" id="createModalLabel">Create mitra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="create-customer-form" enctype="multipart/form-data">
+                <form id="create-mitra-form" enctype="multipart/form-data">
                     @csrf
                     <!-- nama,nama_usaha,isi,foto -->
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="nama_usaha" class="form-label
-                        ">Nama Usaha</label>
-                        <input type="text" class="form-control" id="nama_usaha" name="nama_usaha" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="isi" class="form-label">Isi</label>
-                        <input type="text" class="form-control" id="isi" name="isi" required>
-                    </div>
+                  
                     <!-- file -->
                     <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
@@ -85,27 +77,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit customer</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit mitra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="edit-customer-form">
+                <form id="edit-mitra-form">
                     @csrf
                     @method('PUT')
                     <input type="hidden" id="edit-id" name="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="edit-nama" name="nama" required>
+                        <input type="text" class="form-control" id="edit-name" name="name" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="nama_usaha" class="form-label
-                        ">Nama Usaha</label>
-                        <input type="text" class="form-control" id="edit-nama_usaha" name="nama_usaha" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="isi" class="form-label">Isi</label>
-                        <input type="text" class="form-control" id="edit-isi" name="isi" required>
-                    </div>
+                   
+                  
                     <!-- file -->
                     <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
@@ -150,8 +135,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // Create customer 
-        $('#create-customer-form').on('submit', function(e) {
+        // Create mitra 
+        $('#create-mitra-form').on('submit', function(e) {
             e.preventDefault();
             let csrf = "{{ csrf_token() }}";
             let form = $(this);
@@ -159,7 +144,7 @@
             formData.append('_token', csrf);
             $.ajax({
                 type: 'POST',
-                url: `{{ route('customer.store') }}`,
+                url: `{{ route('mitra.store') }}`,
                 contentType: false,
                 processData: false,
                 
@@ -168,15 +153,14 @@
                 success: function(response) {
                     console.log(response)
                     $('#create-modal').modal('hide');
-                    $('#customer-table').DataTable().ajax.reload();
+                    $('#mitra-table').DataTable().ajax.reload();
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'customer created successfully!',
+                        text: 'mitra created successfully!',
                     });
                 // clear the input
-                $('#nama').val('');
-                $('#nama_usaha').val('');
+                $('#name').val('');
                 $('#isi').val('');
                 $('#foto').val('');
                 $('#preview').attr('src', '');
@@ -193,16 +177,15 @@
             });
         });
 
-        // Edit customer
+        // Edit mitra
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
-            $.get('/admin/customer/' + id + '/edit', function(data) {
+            $.get('/admin/mitra/' + id + '/show', function(data) {
                 console.log(data)
                 $('#edit-id').val(data.id);
-                $('#edit-nama').val(data.nama);
-                $('#edit-nama_usaha').val(data.nama_usaha);
-                $('#edit-isi').val(data.isi);
-                $('#edit-preview').attr('src', `{{ asset('upload/customer') }}/${data.foto}`);
+                $('#edit-name').val(data.name);
+                $('#edit-foto').val(data.foto);
+                $('#edit-preview').attr('src', `{{ asset('upload/mitra') }}/${data.foto}`);
 
 
                 $('#edit-modal').modal('show');
@@ -210,8 +193,8 @@
         })
 
 
-        // Update customer AJAX
-        $('#edit-customer-form').on('submit', function(e) {
+        // Update mitra AJAX
+        $('#edit-mitra-form').on('submit', function(e) {
             e.preventDefault();
             let id = $('#edit-id').val();
             let csrf = "{{ csrf_token() }}";
@@ -221,18 +204,18 @@
             formData.append('_method', 'PUT');
             $.ajax({
                 type: 'POST',
-                url: `/admin/customer/${id}`,
+                url: `/admin/mitra/${id}`,
                 contentType: false,
                 processData: false,
                 data: formData,
                 success: function(response) {
                     console.log(response)
                     $('#edit-modal').modal('hide');
-                    $('#customer-table').DataTable().ajax.reload();
+                    $('#mitra-table').DataTable().ajax.reload();
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'customer updated successfully!',
+                        text: 'mitra updated successfully!',
                     });
                 },
                 error: function(response) {
@@ -260,12 +243,12 @@
         if (result.isConfirmed) {
             $.ajax({
                 type: 'DELETE',
-                url: `/admin/customer/delete/${id}`,
+                url: `/admin/mitra/delete/${id}`,
                 data: {
                     '_token': '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    $('#customer-table').DataTable().ajax.reload();
+                    $('#mitra-table').DataTable().ajax.reload();
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
@@ -277,7 +260,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Error deleting customer! ' + response.responseText,
+                        text: 'Error deleting mitra! ' + response.responseText,
                     });
                 }
             });

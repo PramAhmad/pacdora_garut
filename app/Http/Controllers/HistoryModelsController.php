@@ -41,6 +41,12 @@ class HistoryModelsController extends Controller
             $umkm = Umkm::where('user_id', hashId($value['userId'], 'decode'))->first();
             $projectData[$key]['umkm'] = $umkm;
         }
+        // filter by umkm
+        if(request()->has('umkm')){
+            $projectData = array_filter($projectData, function($project) {
+                return $project['umkm']->id == request()->umkm;
+            });
+        }
         
     
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -52,5 +58,10 @@ class HistoryModelsController extends Controller
         ]);
         return view("back.history.index",['project' => $paginatedData]);
 
+    }
+
+    public function destroy($id)
+    {
+      
     }
 }
