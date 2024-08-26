@@ -139,7 +139,7 @@ class TemplateUserController extends Controller
     // select store
     public function selectStore(Request $request)
     {
-      
+        
         $request->validate([
             'template_id' => 'required',
         ],[
@@ -158,16 +158,16 @@ class TemplateUserController extends Controller
                 'url' => url('upload/template/'.$value->image),
                 'name' => $value->name,
             ];
-        }
+        }   
         json_encode($data);
        
-       Http::withHeaders([
+     
+       $post = Http::withHeaders([
             'appId' => '71ee73045e3480fe',
             'appKey' => 'a3e831ccfa3ffd84',
         ])->post('https://api.pacdora.com/open/v1/upload/img', $data);
+        dd($post->json());
            
-
-      
-        return redirect()->back()->with('success','Template berhasil di tambahkan');
+        return response()->json(['message' => 'Template selected'], 200);
     }
 }

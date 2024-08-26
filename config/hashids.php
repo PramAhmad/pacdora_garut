@@ -29,7 +29,7 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => '',
+            'salt' => 'myopia',
             'length' => 0,
             // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],

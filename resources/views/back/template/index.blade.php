@@ -108,6 +108,8 @@ $(document).ready(function() {
                     text: 'Template created successfully!',
                 });
                 $('#id').DataTable().ajax.reload();
+                $('#name').val('');
+                $('#image').val('');
 
             },
             error: function(response) {

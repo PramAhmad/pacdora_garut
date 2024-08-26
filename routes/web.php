@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/profile/history/{id}/edit',[UmkmProfileController::class, 'historyEdit'])->name('profile.history.edit');
     Route::put('/profile/history/{id}/update',[UmkmProfileController::class, 'historyUpdate'])->name('profile.history.update');
     Route::get("/template/select",[TemplateUserController::class, 'select'])->name('template.select');
-    Route::post('/template/select',[TemplateUserController::class, 'selectStore'])->name('template.select.store');
+    Route::post('/template/post/select',[TemplateUserController::class, 'selectStore'])->name('template.select.store');
     // Route::post('/history/store',[HistoryModelsController::class, 'store'])->name('history.store');
     Route::post('/export/{id}',[ExportController::class, 'index'])->name('export.pdf');
 

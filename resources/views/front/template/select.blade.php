@@ -21,7 +21,7 @@
                         <input type="checkbox" name="template_id" value="{{ $template->id }}" class="form-checkbox h-5 w-5 text-accent rounded-md border-accent ">
                     </td>
                     <td class="px-6 py-1">
-                        <img src="{{ asset('upload/template/' . $template->image) }}" alt="{{ $template->name }}" class="w-32 h-32 object-cover rounded-lg">
+                    <a href="{{asset('upload/temp/'.$template->image)}}" target="_blank"><img src="{{asset('upload/temp/'.$template->image)}}" width="100px" height="100px"></a>
                     </td>
                     <td class="px-6 py-1 text-jacarta-700">{{ $template->name }}</td>
                 </tr>
@@ -60,17 +60,21 @@
                             "template_id": template_id
                         },
                         success: function(response) {
-                            if (response.status == 200) {
-                                
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil',
-                                    text: response.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
-                        }
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Template berhasil ditambahkan',
+                            }).then(function() {
+                                window.location.reload();
+                            });
+                        },
+                        error: function(response) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: 'Terjadi kesalahan',
+                            });
+                        } 
                     });
                 } else {
                     alert('Pilih minimal satu template');
