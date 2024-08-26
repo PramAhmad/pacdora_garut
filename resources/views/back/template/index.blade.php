@@ -70,7 +70,7 @@
                         <label for="edit-image" class="form-label">Image</label>
                         <input type="file" class="form-control" id="edit-image" name="image">
                     </div>
-                    <img id="edit-image-preview" src="" alt="preview" style="width: 100%; height: 100%; display:none;">
+                    <img id="edit-image-preview" src="" alt="preview" style="width:100px; height:100px;   display:none;">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>

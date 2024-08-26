@@ -24,7 +24,7 @@ class TemplateUserDataTable extends DataTable
     {
       return (new EloquentDataTable($query))
       ->editColumn('image', function ($template) {
-          return '<img src="/upload/temp/' . $template->image . '" width="400px" height="100%">';
+          return '<a href="'.asset('upload/temp/'.$template->image).'" target="_blank"><img src="'.asset('upload/temp/'.$template->image).'" width="100px" height="100px"></a>';
       })
       ->editColumn('action', function($template){
           return '<div class="btn-group">
