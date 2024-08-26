@@ -88,7 +88,7 @@ class RegisterController extends Controller
 
     foreach ($randimg as $key => $value) {
         $data['imgs'][] = [
-            'url' => url('upload/template/'.$value->image),
+            'url' => asset('upload/temp/'.$value->image),
             'name' => $value->name,
         ];
     } 
