@@ -160,7 +160,7 @@ class TemplateUserController extends Controller
             ];
         }   
         json_encode($data);
-        return $data;
+       
      
        $post = Http::withHeaders([
             'appId' => '71ee73045e3480fe',
