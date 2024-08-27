@@ -38,6 +38,7 @@ export default {
       "orange-bright": "#FA6D1E",
       red: "#EF4444",
       "red-bright": "#fef2f2",
+      cyan: "#faede3",
       yellow: "#F59E0B",
       "yellow-bright": "#FFFBEB",
       blue: "#428AF8",
