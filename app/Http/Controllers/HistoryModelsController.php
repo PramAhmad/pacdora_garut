@@ -41,13 +41,12 @@ class HistoryModelsController extends Controller
             $umkm = Umkm::where('user_id', hashId($value['userId'], 'decode'))->first();
             $projectData[$key]['umkm'] = $umkm;
         }
-        // filter by umkm
-        if(request()->has('umkm')){
-            $projectData = array_filter($projectData, function($project) {
-                return $project['umkm']->id == request()->umkm;
+        if (request()->has('umkm') && request()->umkm != '') {
+            $selectedUmkmId = request()->umkm;
+            $projectData = array_filter($projectData, function ($project) use ($selectedUmkmId) {
+                return $project['umkm'] && $project['umkm']->user->id == $selectedUmkmId;
             });
         }
-        
     
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 10;

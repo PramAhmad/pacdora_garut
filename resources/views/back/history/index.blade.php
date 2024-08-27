@@ -13,7 +13,27 @@
     <div class="card-body">
         <div class="mb-2">
         <h5 class="mb-5">History Design</h5>
-          
+        <!-- search by umkm -->
+         @php
+         $umkm = \app\Models\Umkm::all();
+
+         @endphp
+    <div class="row">
+    <div class="col-md-4">
+        <select class="form-select" id="umkm" name="umkm">
+            <option value="">--Select UMKM--</option>
+
+            @foreach ($umkm as $u)
+            
+            <option value="{{ $u->user->id }}">{{ $u->nama }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" id="search">Search</button>
+    </div>  
+</div>
+
             
 
         </div>
@@ -139,6 +159,17 @@
 
     })  
   }
+
+</script>
+<script>
+    // handler search button
+    $('#search').click(function(){
+        var umkm = $('#umkm').val();
+        if(umkm == ''){
+            window.location.href = '/admin/history';
+        }
+        window.location.href = '/admin/history?umkm=' + umkm;
+    });
 
 </script>
 @endpush
