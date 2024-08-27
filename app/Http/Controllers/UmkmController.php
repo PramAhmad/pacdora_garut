@@ -115,7 +115,10 @@ class UmkmController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    
+        $umkm = Umkm::findOrFail($id);  
+        $umkm->delete();
+        return response()->json(['message' => 'Data berhasil dihapus'], 200);
     }
 
     /**

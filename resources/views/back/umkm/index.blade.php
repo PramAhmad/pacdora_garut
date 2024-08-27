@@ -44,12 +44,12 @@
         if (result.isConfirmed) {
             $.ajax({
                 type: 'DELETE',
-                url: `/admin/template/delete/${id}`,
+                url: `/admin/umkm/delete/${id}`,
                 data: {
                     '_token': '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    $('#template-table').DataTable().ajax.reload();
+                    $('#umkm').DataTable().ajax.reload();
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
@@ -61,7 +61,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Error deleting template! ' + response.responseText,
+                        text: 'Error deleting umkm! ' + response.responseText,
                     });
                 }
             });

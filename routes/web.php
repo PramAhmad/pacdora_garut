@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         
         Route::resource('umkm', UmkmController::class);
         Route::get("/umkm/show/{id}",[UmkmController::class,'show']);
+        Route::delete("/umkm/delete/{id}",[UmkmController::class,'destroy']);
     
         Route::get('/approved',[ApprovalController::class, 'index'])->name('approved.index');
         Route::get('/approval/{id}',[ApprovalController::class, 'show'])->name('approval.show');

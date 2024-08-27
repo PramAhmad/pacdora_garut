@@ -420,6 +420,7 @@
                       <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
                       <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
                     </div>
+                 
                     <div class="message-body" data-simplebar>
                       <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
                         <span class="me-3">
