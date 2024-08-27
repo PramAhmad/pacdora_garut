@@ -3,7 +3,7 @@
 
 <head>
   <!--  Title -->
-  <title>Mordenize</title>
+  <title>Admin Myopia</title>
   <!--  Required Meta Tag -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +14,7 @@
   <meta name="keywords" content="Mordenize" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!--  Favicon -->
-  <link rel="shortcut icon" type="image/png" href="{{asset('admin/package/dist/images/logos/favicon.ico')}}" />
+  <link rel="shortcut icon" type="image/png" href="{{asset('assets/img/logo.png')}}" />
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{{asset('admin/package/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/package/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
