@@ -262,31 +262,42 @@
       <div class="overlay"></div>
       <header class="h-auto full-width relative py-[15px] first-letter:lg:py-[26px]">
         <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 flex items-center justify-between mx-auto relative !mt-0 max-w-[1320px]"><a class="flex" href="/"><img class="logo z-50 w-[60px]" src="{{asset('assets/img/logo.png')}}" alt="logo image"><span class="my-auto mx-2 font-bold text-jacarta-900">Myopia</span></a>
-          <nav class="z-50 absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:block"> 
-            <ul class="navbar flex flex-col justify-center font-chivo gap-[34px] lg:flex-row">
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Beranda</a>
-               
-              </li>
-               
-              </li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="/">Desain</a><i><img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret"></i>
-                <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-1/2">
-                  @php
-                      $categories = \App\Models\CategoryModel::all();
-                  @endphp
-                  @foreach ($categories as $category)
-                  <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px]  hover:pl-[25px] hover:opacity-100" data-menu="sv1"><a class="flex items-center text-[14px]" href="/category/{{$category->key}}"><img class="opacity-40 w-[30px] h-[30px] mr-[8px] -translate-y-[1px]" src="{{$category->image}}" alt=""><span class="whitespace-nowrap">{{$category->name}}</span></a></li>
-                  @endforeach
-                 </ul>
-              </li>
-          
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('pendampingan')}}">Pendampingan</a></li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('konsultasi')}}">Konsultasi</a></li>
-              <li class="flex items-center group"><a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px]" href="{{route('tutorial')}}">Tutorial</a></li>
+        <nav class="z-50 absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:block"> 
+  <ul class="navbar flex flex-col justify-center font-chivo gap-[34px] lg:flex-row">
+    <li class="flex items-center group">
+      <a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px] {{ Request::is('/') ? 'text-accent' : '' }}" href="/">Beranda</a>
+    </li>
+    <li class="flex items-center group">
+      <a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px] {{ Request::is('desain*') ? 'text-accent' : '' }}" href="/">Desain</a>
+      <i>
+        <img class="icon-caret group-hover:filter-green" src="{{asset('agency/assets/images/icons/icon-caret.svg')}}" alt="caret">
+      </i>
+      <ul class="menu-child translate-y-4 opacity-0 bg-white top-full z-50 py-2 grid menu-shadow -translate-x-6 translate-y-8 transition-all duration-200 pointer-events-none group-hover:pointer-events-auto lg:absolute rounded-[4px] group-hover:grid group-hover:opacity-100 before:content-[''] before:block before:absolute before:w-full before:h-12 before:top-[-35px] before:left-0 grid-cols-1 w-1/2">
+        @php
+          $categories = \App\Models\CategoryModel::all();
+        @endphp
+        @foreach ($categories as $category)
+        <li class="menu-child-item font-chivo group transition-all duration-200 py-[10px] px-[22px] hover:pl-[25px] hover:opacity-100" data-menu="sv1">
+          <a class="flex items-center text-[14px] {{ Request::is('category/' . $category->key) ? 'text-accent' : '' }}" href="/category/{{$category->key}}">
+            <img class="opacity-40 w-[30px] h-[30px] mr-[8px] -translate-y-[1px]" src="{{$category->image}}" alt="">
+            <span class="whitespace-nowrap">{{$category->name}}</span>
+          </a>
+        </li>
+        @endforeach
+      </ul>
+    </li>
+    <li class="flex items-center group">
+      <a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px] {{ Request::routeIs('pendampingan') ? 'text-accent' : '' }}" href="{{ route('pendampingan') }}">Pendampingan</a>
+    </li>
+    <li class="flex items-center group">
+      <a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px] {{ Request::routeIs('konsultasi') ? 'text-accent' : '' }}" href="{{ route('konsultasi') }}">Konsultasi</a>
+    </li>
+    <li class="flex items-center group">
+      <a class="hover:text-green-900 text-base font-inter menu-link lg:text-heading-6 mr-[7px] {{ Request::routeIs('tutorial') ? 'text-accent' : '' }}" href="{{ route('tutorial') }}">Tutorial</a>
+    </li>
+  </ul>
+</nav>
 
-             
-            </ul>
-          </nav>
           <div class="hidden xl:block">
       <!--login register -->
       <div class="flex items-center gap-8">
