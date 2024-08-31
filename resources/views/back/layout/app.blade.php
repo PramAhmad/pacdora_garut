@@ -228,6 +228,24 @@
                     <span class="hide-menu">Sub Category</span>
                   </a>
                 </li>
+                <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('template.index')}}" >
+              <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Template</span>
+                  
+              </a>
+            </li> 
+                <li class="sidebar-item">
+                  <a href="{{route('bidangusaha.index')}}" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Bidang Usaha</span>
+                  </a>
+                </li>
+
 
 
 
@@ -236,7 +254,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                 <span class="d-flex">
-                  <i class="ti ti-file-text"></i>
+                  <i class="ti ti-building-store"></i>
                 </span>
                 <span class="hide-menu">UMKM</span>
               </a>
@@ -291,20 +309,22 @@
 
               </ul>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('template.index')}}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-template"></i>
-                </span>
-                <span class="hide-menu">Template Desain</span>
-              </a>
-            </li>
+            
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('history.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-history"></i>
                 </span>
                 <span class="hide-menu">History Design</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('pendampingan.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-checklist
+"></i>
+                </span>
+                <span class="hide-menu">Pendampingan</span>
               </a>
             </li>
             <li class="nav-small-cap">

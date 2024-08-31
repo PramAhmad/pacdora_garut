@@ -4,6 +4,7 @@ use App\Http\Controllers\AjaxCategoryController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\BestDesainController;
+use App\Http\Controllers\BidangUsahaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\ModelsController;
+use App\Http\Controllers\PendampinganController;
 use App\Http\Controllers\ProfileSettingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubCategoryController;
@@ -64,13 +66,16 @@ Route::post('/contact',[ContactController::class, 'store'])->name('contact.store
 
 // ajax controller
 Route::get("/wilayah/search",[AjaxController::class,'searchWilayah'])->name("ajax.wilayah.search");
+
+
 Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get("/detail/{modelId}",[HomeController::class, 'detail'])->name('detail');
     Route::get('/profile',[UmkmProfileController::class, 'index'])->name('profile');
     Route::get('/profile/edit',[UmkmProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update/{id}',[UmkmProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/history',[UmkmProfileController::class, 'history'])->name('profile.history');
-   
+    // pendampingan store
+    Route::post('/profile/pendampingan/store',[PendampinganController::class, 'store'])->name('pendampingan.store');
     Route::get('/profile/history/{id}',[UmkmProfileController::class, 'historyDetail'])->name('profile.history.detail');
     Route::get('/profile/history/{id}/edit',[UmkmProfileController::class, 'historyEdit'])->name('profile.history.edit');
     Route::put('/profile/history/{id}/update',[UmkmProfileController::class, 'historyUpdate'])->name('profile.history.update');
@@ -86,7 +91,6 @@ Route::get('/profile/design/{id}',[UmkmProfileController::class, 'design'])->nam
 // group route url to admin
 
 Route::group(['middleware' => ['auth','role:admin']], function () {
-    // prefix admin
     Route::group(['prefix' => 'admin'], function () {
         Route::get("/subcategory/search/{id}",[AjaxCategoryController::class,'getSubCategory'])->name("ajax.subcategory");
         Route::get('/dashboard',[DashboardControler::class, 'index'])->name('dashboard');
@@ -109,6 +113,13 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::delete('/subcategory/delete/{id}',[SubCategoryController::class,"destroy"]);
         Route::resource('/subcategory', SubCategoryController::class);
 
+
+        Route::get('/bidangusaha',[BidangUsahaController::class, 'index'])->name('bidangusaha.index');
+        Route::post('/bidangusaha/store',[BidangUsahaController::class, 'store'])->name('bidangusaha.store');
+        Route::get('/bidangusaha/{id}/edit',[BidangUsahaController::class, 'edit']);
+        Route::put('/bidangusaha/update/{id}',[BidangUsahaController::class, 'update']);
+        Route::delete('/bidangusaha/delete/{id}',[BidangUsahaController::class, 'destroy']);
+
         Route::resource('/model', ModelsController::class);
         Route::get('/model/edit/{id}',[ModelsController::class,'edit']);
         Route::delete('/model/delete/{id}',[ModelsController::class,'destroy']);
@@ -121,37 +132,25 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
         Route::get('/template/{id}/edit/',[TemplateUserController::class, 'edit'])->name('template.edit');
         Route::put('/template/update/{id}',[TemplateUserController::class, 'update'])->name('template.update');
         Route::delete('/template/delete/{id}',[TemplateUserController::class, 'destroy'])->name('template.destroy');
-
-
-        // contact
         Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
         Route::get('/contact/{id}',[ContactController::class, 'show'])->name('contact.show');
         Route::delete('/contact/delete',[ContactController::class, 'destroy'])->name('contact.destroy');
-
-        // customer
         Route::resource('/customer', CustomerController::class);
         Route::get('/customer/edit/{id}',[CustomerController::class, 'edit']);
         Route::delete('/customer/delete/{id}',[CustomerController::class, 'destroy']);
-
         Route::get('/export/umkm',[ExportUmkmController::class, 'umkm'])->name('umkm.export');
-
-        // profile account
         Route::get('/profile',[ProfileSettingController::class, 'index'])->name('account.index');
         Route::put('/profile/update',[ProfileSettingController::class, 'update'])->name('account.update');  
-
-        // mitra
         Route::get('/mitra',[MitraController::class, 'index'])->name('mitra.index');
-        
-        // best desain
         Route::get('/bestdesain',[BestDesainController::class, 'index'])->name('bestdesain.index');
         Route::post('/bestdesain/store',[BestDesainController::class, 'store'])->name('bestdesain.store');
         Route::put('/bestdesain/update/{id}',[BestDesainController::class, 'update'])->name('bestdesain.update');
-
+        Route::get('/pendampingan',[PendampinganController::class, 'index'])->name('pendampingan.index');
+        Route::get('/pendampingan/show/{id}',[PendampinganController::class, 'show'])->name('pendampingan.show');
+        Route::delete('/pendampingan',[PendampinganController::class, 'destroy'])->name('pendampingan.destroy');
         Route::post('/mitra',[MitraController::class, 'store'])->name('mitra.store');
         Route::get('/mitra/{id}/show',[MitraController::class, 'show'])->name('mitra.show');
         Route::delete('/mitra/{id}',[MitraController::class, 'destroy'])->name('mitra.destroy');
-           
-
         
     });
  

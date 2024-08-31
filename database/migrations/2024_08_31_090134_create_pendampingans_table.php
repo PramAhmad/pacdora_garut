@@ -14,7 +14,26 @@ return new class extends Migration
         Schema::create('pendampingans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            // nik nama lengkap telp alamat alamat usaha
+            $table->foreignId('umkm_id')->constrained('umkm');
+            $table->string('klasifikasi_usaha');
+            $table->string('npwp');
+            $table->foreignId('bidang_usaha_id')->constrained('bidang_usahas');
+            $table->string('nama_produk');
+            $table->text('deskripsi_usaha');
+            $table->string('web')->nullable();
+            $table->string('ig')->nullable();
+            $table->string('tiktok')->nullable();
+            $table->string('wa')->nullable();
+            $table->string('tahun_berdiri');
+            $table->string('jumlah_karyawan');
+            $table->string('modal_usaha');
+            $table->integer('jumlah_modal');
+            $table->string('nib')->nullable();
+            // Perizinan yang dimiliki
+            $table->string('perizinan')->nullable();
+            $table->string('pendampingan');
+
+            
         });
     }
 

@@ -6,7 +6,7 @@
 @section("content")
 <main class="">
   <!-- Contact -->
-  <section class="relative py-10 dark:bg-jacarta-800">
+  <section class="relative py-10 ">
     <picture class="pointer-events-none absolute inset-0 -z-10 ">
       <img src="template/dist/img/gradient_light.jpg" alt="gradient" class="h-full w-full" />
     </picture>
@@ -15,7 +15,7 @@
         <!-- Contact Form -->
         <div class="mb-12 lg:mb-0 lg:w-2/3 lg:pr-12">
           <h2 class="mb-4 font-display text-xl text-jacarta-700 ">Daftar</h2>
-          <p class="mb-16 text-lg leading-normal dark:text-jacarta-300">
+          <p class="mb-16 text-lg leading-normal ">
             Isi data dengan benar
           </p>
           <form id="register-form" method="POST" action="{{ route('register.store') }}" enctype="multipart/form-data">
@@ -73,11 +73,11 @@
                 <div class="flex items-center space-x-4">
                   <div class="flex items-center space-x-2 ">
                     <input type="radio" id="is_garut_yes" name="is_garut" value="1" class="h-4 w-4 text-accent border-accent focus:ring-accent/20" />
-                    <label for="is_garut_yes" class="text-sm dark:text-jacarta-200">Ya</label>
+                    <label for="is_garut_yes" class="text-sm">Ya</label>
                   </div>
                   <div class="flex items-center space-x-2 ">
                     <input type="radio" id="is_garut_no" name="is_garut" value="0" class="h-4 w-4 text-accent  border-accent focus:ring-accent/20" />
-                    <label for="is_garut_no" class="text-sm dark:text-jacarta-200" id="label_is_garut_no">Tidak</label>
+                    <label for="is_garut_no" class="text-sm" id="label_is_garut_no">Tidak</label>
                     <div id="domisili_input" style="display: none;">
 
                       <input type="text" id="domisili" name="domisili" placeholder="masukan domisili" class="contact-form-input w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent  " />
@@ -171,7 +171,7 @@
 
             <div class="mb-6 mt-5 flex items-center space-x-2">
               <input type="checkbox" id="agree_to_terms" name="agree_to_terms" class="h-5 w-5 self-start rounded border-jacarta-200 text-accent checked:bg-accent focus:ring-accent/20 focus:ring-offset-0" />
-              <label for="agree_to_terms" class="text-sm dark:text-jacarta-200">
+              <label for="agree_to_terms" class="text-sm">
                 I agree to the <a href="tos.html" class="text-accent">Terms of Service</a>
               </label>
               @error('agree_to_terms')
@@ -190,7 +190,7 @@
         <!-- Info -->
         <div class="lg:w-1/3 lg:pl-5">
           <h2 class="mb-4 font-display text-xl text-jacarta-700 ">Informasi</h2>
-          <p class="mb-6 text-lg leading-normal dark:text-jacarta-300">
+          <p class="mb-6 text-lg leading-normal ">
             Jika kamu memiliki pertanyaan bisa langsung contact di bawah ini
           </p>
 

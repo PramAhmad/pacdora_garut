@@ -71,22 +71,32 @@
       <ul class="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px  md:justify-center" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 " id="informasi-tab" data-bs-toggle="tab" data-bs-target="#informasi" type="button" role="tab" aria-controls="informasi" aria-selected="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5 size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
-</svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5 size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+            </svg>
 
             <span class="font-display text-base font-medium">Informasi</span>
           </button>
         </li>
 
-      
+
         <li class="nav-item" role="presentation">
           <button class="nav-link relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 " id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5  size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5  size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
 
             <span class="font-display text-base font-medium">History Design</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 " id="pendampingan-tab" data-bs-toggle="tab" data-bs-target="#pendampingan" type="button" role="tab" aria-controls="pendampingan" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5  size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+            </svg>
+
+
+            <span class="font-display text-base font-medium">Pendampingan</span>
           </button>
         </li>
       </ul>
@@ -221,13 +231,13 @@
                   <div class="flex gap-1">
                     <a href="{{route('profile.design', ['id' => $item['id']])}}" class="mb-1 font-display text-base font-semibold text-jacarta-700  judul">{{$item['name']}}</a>
                     <div class="   rounded-full p-1 -translate-y-6">
-                      <a  id="modal-title">
+                      <a id="modal-title">
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                         </svg>
                       </a>
-                      <!-- #region -->
+                     
                     </div>
                   </div>
 
@@ -239,8 +249,20 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24" stroke-width="1.5" stroke="currentColor" class="svg-doc">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" id="icon" />
                   </svg>
-           
 
+
+                </div>
+                <!-- delete button -->
+                <div class="absolute left-10 top-10 ">
+                
+                  <div class="text-jacarta-500">
+                    
+                    <button class="delete-design" onclick="deleteconfirm(`{{$item['id']}}`)">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
               @empty
@@ -261,11 +283,149 @@
                 </span>
               </form>
 
-           
+
             </aside>
           </div>
         </div>
         <!-- end activity tab -->
+        <!-- penampingan tab -->
+        <div class="tab-pane fade " id="pendampingan" role="tabpanel" aria-labelledby="pendampingan-tab">
+          <h3 class="py-6 text-jacarta-600 text-xl ">Isi Formulir Pendampingan</h3>
+          <form id="pendampingan-form" action="" method="POST">
+            @csrf
+
+            <!-- Klasifikasi Usaha -->
+            <div class="mb-6">
+              <label for="klasifikasi_usaha" class="mb-1 block font-display text-sm text-jacarta-700">Klasifikasi Usaha<span class="text-red">*</span></label>
+              <!-- select mikro kecil menengah -->
+              <select name="klasifikasi_usaha" id="klasifikasi_usaha" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" required>
+                <option value="">Pilih Klasifikasi Usaha</option>
+                <option value="0">Mikro</option>
+                <option value="1">Kecil</option>
+                <option value="2">Menengah</option>
+              </select>
+            </div>
+
+            <!-- NPWP -->
+            <div class="mb-6">
+              <label for="npwp" class="mb-1 block font-display text-sm text-jacarta-700">NPWP<span class="text-red">*</span></label>
+              <input type="text" id="npwp" name="npwp" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter NPWP" required />
+            </div>
+
+            <!-- Bidang Usaha -->
+            <div class="mb-6">
+              <label for="bidang_usaha_id" class="mb-1 block font-display text-sm text-jacarta-700">Bidang Usaha<span class="text-red">*</span></label>
+              <select name="bidang_usaha_id" id="bidang_usaha_id" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" required>
+                <!-- Assuming you have a list of bidang usahas -->
+                @foreach($bidangUsaha as $b)
+                <option value="{{ $b->id }}">{{ $b->nama }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <!-- Nama Produk -->
+            <div class="mb-6">
+              <label for="nama_produk" class="mb-1 block font-display text-sm text-jacarta-700">Nama Produk<span class="text-red">*</span></label>
+              <input type="text" id="nama_produk" name="nama_produk" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Nama Produk" required />
+            </div>
+
+            <!-- Deskripsi Usaha -->
+            <div class="mb-6">
+              <label for="deskripsi_usaha" class="mb-1 block font-display text-sm text-jacarta-700">Deskripsi Usaha<span class="text-red">*</span></label>
+              <textarea id="deskripsi_usaha" name="deskripsi_usaha" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Deskripsi Usaha" required></textarea>
+            </div>
+
+            <!-- Web -->
+            <div class="mb-6">
+              <label for="web" class="mb-1 block font-display text-sm text-jacarta-700">Website</label>
+              <input type="text" id="web" name="web" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Website" />
+            </div>
+
+            <!-- Instagram -->
+            <div class="mb-6">
+              <label for="ig" class="mb-1 block font-display text-sm text-jacarta-700">Instagram</label>
+              <input type="text" id="ig" name="ig" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Instagram Handle" />
+            </div>
+
+            <!-- TikTok -->
+            <div class="mb-6">
+              <label for="tiktok" class="mb-1 block font-display text-sm text-jacarta-700">TikTok</label>
+              <input type="text" id="tiktok" name="tiktok" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter TikTok Handle" />
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="mb-6">
+              <label for="wa" class="mb-1 block font-display text-sm text-jacarta-700">WhatsApp</label>
+              <input type="text" id="wa" name="wa" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter WhatsApp Number" />
+            </div>
+
+            <!-- Tahun Berdiri -->
+            <div class="mb-6">
+              <label for="tahun_berdiri" class="mb-1 block font-display text-sm text-jacarta-700">Tahun Berdiri<span class="text-red">*</span></label>
+              <input type="text" id="tahun_berdiri" name="tahun_berdiri" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Tahun Berdiri" required />
+            </div>
+
+            <!-- Jumlah Karyawan -->
+            <div class="mb-6">
+              <label for="jumlah_karyawan" class="mb-1 block font-display text-sm text-jacarta-700">Jumlah Karyawan<span class="text-red">*</span></label>
+              <input type="text" id="jumlah_karyawan" name="jumlah_karyawan" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Jumlah Karyawan" required />
+            </div>
+
+            <!-- Modal Usaha -->
+            <div class="mb-6">
+              <label for="modal_usaha" class="mb-1 block font-display text-sm text-jacarta-700">Modal Usaha<span class="text-red">*</span></label>
+
+              <select name="modal_usaha" id="modal_usaha" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" required>
+                <option value="">Pilih Modal Usaha</option>
+                <option value="0">Modal Sendiri</option>
+                <option value="1">Modal dari Pinjaman Pribadi</option>
+                <option value="2">Modal
+                  dari Pinjaman Bank</option>
+              </select>
+            </div>
+
+            <!-- Jumlah Modal -->
+            <div class="mb-6">
+              <label for="jumlah_modal" class="mb-1 block font-display text-sm text-jacarta-700">Jumlah Modal<span class="text-red">*</span></label>
+              <input type="number" id="jumlah_modal" name="jumlah_modal" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Jumlah Modal" required />
+            </div>
+
+            <!-- NIB -->
+            <div class="mb-6">
+              <label for="nib" class="mb-1 block font-display text-sm text-jacarta-700">NIB</label>
+              <input type="text" id="nib" name="nib" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter NIB" />
+            </div>
+
+            <!-- Perizinan -->
+            <div class="mb-6">
+              <label for="perizinan" class="mb-1 block font-display text-sm text-jacarta-700">Perizinan</label>
+              <input type="text" id="perizinan" name="perizinan" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" placeholder="Enter Perizinan" />
+            </div>
+
+            <!-- Pendampingan -->
+            <div class="mb-6">
+              <label for="pendampingan" class="mb-1 block font-display text-sm text-jacarta-700">Pendampingan<span class="text-red">*</span></label>
+
+              <select name="pendampingan" id="pendampingan" class="w-full rounded-lg border-jacarta-100 py-3 hover:ring-2 hover:ring-accent/10 focus:ring-accent" required>
+                <option value="">Pilih Pendampingan</option>
+                <option value="0">NIB (NOMOR INDUK BERUSAHA)</option>
+                <option value="1">HALAL</option>
+                <option value="2">SNI BINA UMK</option>
+                <option value="3">SPPIRT</option>
+                <option value="4">HAKI</option>
+                <option value="5">E-KATALOG</option>
+                <option value="6">BPOM MD</option>
+              </select>
+
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all">
+              Submit
+            </button>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
@@ -362,140 +522,173 @@
             timer: 1500
           });
         },
-        error: function(response,xhr) {
+        error: function(response, xhr) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: response.responseJSON.message ,
+            text: response.responseJSON.message,
           });
         }
       });
     });
   });
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- handle form pendampingan submit -->
 <script>
   $(document).ready(function() {
-  $('.svg-icon').click(function() {
-    let svgIcon = $(this);
-    let svgDoc = svgIcon.find('.svg-doc'); 
-    svgDoc.hide(); 
+    $('#pendampingan-form').on('submit', function(e) {
+      e.preventDefault();
+      var form = $(this);
+      $.ajax({
+        url: `{{route('pendampingan.store')}}`,
+        method: form.attr('method'),
+        data: form.serialize(),
+        success: function(response) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Pendampingan Berhasil di kirim',
+            text: 'Silahkan tunggu pesan dari pihak Dinas',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 3000);
+        },
+        error: function(response, xhr) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: response.responseJSON.message,
+          });
+        }
+      });
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('.svg-icon').click(function() {
+      let svgIcon = $(this);
+      let svgDoc = svgIcon.find('.svg-doc');
+      svgDoc.hide();
 
-    let loadingSvg = `
+      let loadingSvg = `
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transform rotating svg-load">
         <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
       </svg>
     `;
-    svgIcon.append(loadingSvg); 
+      svgIcon.append(loadingSvg);
 
-    const inputOptions = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          'pdf': "PDF",
-          'ai': "AI",
-          'dxf': "DXF",
-        });
-      }, 1000);
-    });
-
-    Swal.fire({
-      title: "Select format",
-      input: "radio",
-      inputOptions,
-      inputValidator: (value) => {
-        if (!value) {
-          return "You need to choose something!";
-        }
-      }
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire({ html: `You selected: ${result.value.toUpperCase()}` });
-        
-        let csrf = "{{csrf_token()}}";
-        var id = svgIcon.closest('.relative.flex.items-center').data('id');
-        
-        if(`{{Auth::user()->umkm->approved != 1}}`){
-          Swal.fire({
-            icon: 'error',
-            title: 'Tidak Terverifikasi',
-            text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+      const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            'pdf': "PDF",
+            'ai': "AI",
+            'dxf': "DXF",
           });
-          svgIcon.find('.svg-load').remove();
-          svgDoc.show();
-          return;
-        } else {
-          let exportUrl = '';
+        }, 1000);
+      });
 
-          if(result.value === 'pdf') {
-            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/pdf';
-          } else if(result.value === 'ai') {
-            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/ai';
-          } else if(result.value === 'dxf') {
-            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/dxf';
+      Swal.fire({
+        title: "Select format",
+        input: "radio",
+        inputOptions,
+        inputValidator: (value) => {
+          if (!value) {
+            return "You need to choose something!";
           }
-
-          $.ajax({
-            url: exportUrl,
-            type: 'POST',
-            contentType: 'application/json',
-            headers: {
-              'appId': '71ee73045e3480fe',
-              'appKey': 'a3e831ccfa3ffd84',
-              'X-CSRF-TOKEN': csrf
-            },
-            data: JSON.stringify({
-              projectIds: [id]
-            }),
-            success: function(data) {
-              console.log(data.data[0].taskId);
-              let taskId = data.data[0].taskId;
-
-              let intervalId = setInterval(function() {
-                $.ajax({
-                  url: exportUrl,
-                  type: 'GET',
-                  headers: {
-                    'appId': '71ee73045e3480fe',
-                    'appKey': 'a3e831ccfa3ffd84',
-                    'X-CSRF-TOKEN': csrf
-                  },
-                  data: {
-                    taskId: taskId
-                  },
-                  success: function(response) {
-                    console.log(response.data);
-                    if (response.data.filePath) {
-                      clearInterval(intervalId);
-                      window.location.href = response.data.filePath;
-                      svgIcon.find('.svg-load').remove();
-                      svgDoc.show();
-                    } else {
-                      console.log('Processing...');
-                    }
-                  },
-                  error: function(error) {
-                    console.log('Error:', error);
-                  }
-                });
-              }, 5000);
-            },
-            error: function(error) {
-              console.log('Error:', error);
-            }
-          });
         }
-      }
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            html: `You selected: ${result.value.toUpperCase()}`
+          });
+
+          let csrf = "{{csrf_token()}}";
+          var id = svgIcon.closest('.relative.flex.items-center').data('id');
+
+          if (`{{Auth::user()->umkm->approved != 1}}`) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Tidak Terverifikasi',
+              text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+            });
+            svgIcon.find('.svg-load').remove();
+            svgDoc.show();
+            return;
+          } else {
+            let exportUrl = '';
+
+            if (result.value === 'pdf') {
+              exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/pdf';
+            } else if (result.value === 'ai') {
+              exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/ai';
+            } else if (result.value === 'dxf') {
+              exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/dxf';
+            }
+
+            $.ajax({
+              url: exportUrl,
+              type: 'POST',
+              contentType: 'application/json',
+              headers: {
+                'appId': '71ee73045e3480fe',
+                'appKey': 'a3e831ccfa3ffd84',
+                'X-CSRF-TOKEN': csrf
+              },
+              data: JSON.stringify({
+                projectIds: [id]
+              }),
+              success: function(data) {
+                console.log(data.data[0].taskId);
+                let taskId = data.data[0].taskId;
+
+                let intervalId = setInterval(function() {
+                  $.ajax({
+                    url: exportUrl,
+                    type: 'GET',
+                    headers: {
+                      'appId': '71ee73045e3480fe',
+                      'appKey': 'a3e831ccfa3ffd84',
+                      'X-CSRF-TOKEN': csrf
+                    },
+                    data: {
+                      taskId: taskId
+                    },
+                    success: function(response) {
+                      console.log(response.data);
+                      if (response.data.filePath) {
+                        clearInterval(intervalId);
+                        window.location.href = response.data.filePath;
+                        svgIcon.find('.svg-load').remove();
+                        svgDoc.show();
+                      } else {
+                        console.log('Processing...');
+                      }
+                    },
+                    error: function(error) {
+                      console.log('Error:', error);
+                    }
+                  });
+                }, 5000);
+              },
+              error: function(error) {
+                console.log('Error:', error);
+              }
+            });
+          }
+        }
+      });
     });
   });
-});
-
 </script>
 <script>
   $(document).ready(function() {
     $('#modal-title').click(function(e) {
       var id = $(this).closest('.relative.flex.items-center').data('id');
       var nama_project = $(this).closest('.relative.flex.items-center').find('.judul').text();
-      
+
       Swal.fire({
         title: "Masukan Nama Project",
         input: "text",
@@ -509,22 +702,22 @@
         }
       }).then((result) => {
         if (result.isConfirmed) {
-           Pacdora.init({
-          userId: "{{hashId(Auth::user()->id)}}",
-          appId: "71ee73045e3480fe",
-          isDelay: true,
-          theme: "#dc2626",
-          doneBtn: "Save",
-          localeResource: {
-            "Upload & Design": "Online design",
-          },
-        });
+          Pacdora.init({
+            userId: "{{hashId(Auth::user()->id)}}",
+            appId: "71ee73045e3480fe",
+            isDelay: true,
+            theme: "#dc2626",
+            doneBtn: "Save",
+            localeResource: {
+              "Upload & Design": "Online design",
+            },
+          });
           var newProjectName = result.value;
           Pacdora.rename(newProjectName, id);
-        // wait 2 detik
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+          // wait 2 detik
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         }
       });
 
@@ -532,22 +725,73 @@
   });
 </script>
 
+<script>
+  // kirim ajax saat delete button
+  function deleteconfirm(id) {
+    console.log(id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+        type: 'DELETE',
+        url: "https://api.pacdora.com/open/v1/user/projects",
+        contentType: 'application/json',
+        headers: {
+          'appId': '71ee73045e3480fe',
+          'appKey': 'a3e831ccfa3ffd84',
+        },
+        data: JSON.stringify({
+          projectIds: [id] 
+        }),
+        success: function(response) {
+          console.log(response);
+          Swal.fire(
+            'Deleted!',
+            'Behasil Menghapus Project.',
+            'success'
+          );
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        error: function(response) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error deleting template! ' + response.responseText,
+          });
+        }
+      });
+      }
+  
 
+    })  
+  }
+
+</script>
 @push('css')
-  <style>
-    @-webkit-keyframes rotating {
-    from{
-        -webkit-transform: rotate(0deg);
+<style>
+  @-webkit-keyframes rotating {
+    from {
+      -webkit-transform: rotate(0deg);
     }
-    to{
-        -webkit-transform: rotate(360deg);
-    }
-}
 
-.rotating {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  .rotating {
     -webkit-animation: rotating 2s linear infinite;
-}
-  </style>
+  }
+</style>
 @endpush
 @endsection
 

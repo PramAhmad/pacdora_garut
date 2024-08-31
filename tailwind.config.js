@@ -7,7 +7,7 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
-  darkMode: "class",
+
   theme: {
     screens: {
       sm: "575px",

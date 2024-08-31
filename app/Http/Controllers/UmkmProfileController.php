@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BidangUsaha;
 use App\Models\Umkm;
 use App\Traits\HttpTrait;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class UmkmProfileController extends Controller
        if($data == null){
            $data = [];
        }
-        return view('front.profile.index',compact('umkm','data'));
+       $bidangUsaha = BidangUsaha::all();
+        return view('front.profile.index',compact('umkm','data','bidangUsaha'));
     }
 
     public function update(Request $request, $id)
