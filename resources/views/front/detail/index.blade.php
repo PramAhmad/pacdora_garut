@@ -470,7 +470,7 @@
     </h2>
     <p class="pb-5">Silahkan Klik tombol Design Kemasan, lalu upload dan sesuaikan dengan design product anda setelah itu save dan anda bisa melakukan download hasil design kemasan MYOPIA  </p>
     <h2>Deskripsi products</h2>
-    <div class="description-info mt30" data-pacdora-ui="info-description"></div>
+    <!-- <div class="description-info mt30" data-pacdora-ui="info-description"></div> -->
 
   </div>
 </div>
@@ -493,6 +493,7 @@
 </script>
 @endpush
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
   (async () => {
   
@@ -713,6 +714,16 @@
       }
     });
   });
+</script>
+<script>
+  
+      $(document).ready(function(){
+        $(".description-info").text(function () {
+          return $(this).text().replace("Pacdora", "MYOPIA");
+        });
+      }); 
+   
+
 </script>
 
 @endsection

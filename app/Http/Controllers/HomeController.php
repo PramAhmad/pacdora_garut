@@ -32,12 +32,7 @@ class HomeController extends Controller
         $items = Models::where('category_id', $category->id)->paginate(9);
       
     
-        if (request()->ajax()) {
-            return response()->json([
-                'html' => view('front.category.items_with_pagination', compact('items'))->render(),
-            ]);
-        }
-    
+ 
         return view('front.category.index', compact('category', 'items'));
     }
     
@@ -46,13 +41,7 @@ class HomeController extends Controller
         $subcategory = SubCategoryModel::where("key", $subcategoryKey)->first();
         $category = $subcategory->categoryname;
         $items = Models::where('sub_category', $subcategory->id)->paginate(9);
-    
-        if (request()->ajax()) {
-            return response()->json([
-                'html' => view('front.category.items_with_pagination', compact('items'))->render(),
-            ]);
-        }
-      
+   
     
         return view('front.subcategory.index', compact('category', 'subcategory', 'items'));
     }

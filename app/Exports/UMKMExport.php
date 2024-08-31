@@ -82,7 +82,7 @@ class UMKMExport implements FromCollection, WithHeadings, WithMapping, WithStyle
             $umkm->user->email,
             $umkm->is_garut,
             $umkm->domisili,
-            $referensi[$umkm->referensi],
+            $referensi[$umkm->referensi] ?? 'Lainnya',
             $umkm->provinsi->nama_provinsi,
             $umkm->kota->nama_kota,
             $umkm->kecamatan->nama_kecamatan,

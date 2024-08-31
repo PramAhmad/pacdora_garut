@@ -463,7 +463,7 @@
           </div>
         @else
           
-        <div class="download-text" data-pacdora-ui="download" data-app-key="a3e831ccfa3ffd84" data-pacdora-id="download">
+        <div class="download-text" >
           Download Kemasan
         </div>
         @endif
@@ -476,7 +476,7 @@
     </h2>
     <p class="pb-5">Silahkan Klik tombol Design Kemasan, lalu upload dan sesuaikan dengan design product anda setelah itu save dan anda bisa melakukan download hasil design kemasan MYOPIA  </p>
     <h2>Deskripsi products</h2>
-    <div class="description-info mt30" data-pacdora-ui="info-description"></div>
+    <!-- <div class="description-info mt30" data-pacdora-ui="info-description"></div> -->
 
   </div>
 </div>
@@ -719,6 +719,117 @@
       }
     });
   });
+</script>
+<!-- swal -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+  $(document).ready(function() {
+  $('.download-text').click(function() {
+    let text = $(this);
+
+    text.text('Downloading...');
+   
+
+    const inputOptions = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          'pdf': "PDF",
+          'ai': "AI",
+          'dxf': "DXF",
+        });
+      }, 1000);
+    });
+
+    Swal.fire({
+      title: "Select format",
+      input: "radio",
+      inputOptions,
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to choose something!";
+        }
+      }
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({ html: `You selected: ${result.value.toUpperCase()}` });
+        
+        let csrf = "{{csrf_token()}}";
+        let id = "{{$id}}";
+        
+        if(`{{Auth::user()->umkm->approved != 1}}`){
+          Swal.fire({
+            icon: 'error',
+            title: 'Tidak Terverifikasi',
+            text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+          });
+          // balikin text ke download
+          text.text('Download Kemasan');
+          return;
+        } else {
+          let exportUrl = '';
+
+          if(result.value === 'pdf') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/pdf';
+          } else if(result.value === 'ai') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/ai';
+          } else if(result.value === 'dxf') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/dxf';
+          }
+
+          $.ajax({
+            url: exportUrl,
+            type: 'POST',
+            contentType: 'application/json',
+            headers: {
+              'appId': '71ee73045e3480fe',
+              'appKey': 'a3e831ccfa3ffd84',
+              'X-CSRF-TOKEN': csrf
+            },
+            data: JSON.stringify({
+              projectIds: [id]
+            }),
+            success: function(data) {
+              console.log(data.data[0].taskId);
+              let taskId = data.data[0].taskId;
+
+              let intervalId = setInterval(function() {
+                $.ajax({
+                  url: exportUrl,
+                  type: 'GET',
+                  headers: {
+                    'appId': '71ee73045e3480fe',
+                    'appKey': 'a3e831ccfa3ffd84',
+                    'X-CSRF-TOKEN': csrf
+                  },
+                  data: {
+                    taskId: taskId
+                  },
+                  success: function(response) {
+                    console.log(response.data);
+                    if (response.data.filePath) {
+                      clearInterval(intervalId);
+                      window.location.href = response.data.filePath;
+                      text.text('Download Kemasan');
+                    } else {
+                      console.log('Processing...');
+                    }
+                  },
+                  error: function(error) {
+                    console.log('Error:', error);
+                  }
+                });
+              }, 5000);
+            },
+            error: function(error) {
+              console.log('Error:', error);
+            }
+          });
+        }
+      }
+    });
+  });
+});
+
 </script>
 
 @endsection
