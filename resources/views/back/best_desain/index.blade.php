@@ -25,7 +25,7 @@
                 <option value="">Pilih desain</option>
                 @foreach ($category as $c)
                 <optgroup label="{{ $c->name }}">
-                    @foreach ($c->modelsLimit as $sub)
+                    @foreach ($c->models as $sub)
                     <option value="{{ $sub->id }}" data-image="{{$sub->image }}">{{ $sub->title }}</option>
                     @endforeach
                 </optgroup>
