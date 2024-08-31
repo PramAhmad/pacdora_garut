@@ -164,25 +164,87 @@ function onChangeFinishing(e) {
   makeQuotation();
 }
 
-function onChangeNumber(e) {
-  const value = e.value;
-  if (value === "customize") {
-    const number = prompt("Please input your number");
-    if (!isNumber(number) || !number) {
-      e.selectedIndex = 0;
-      return;
-    }
-
-    const newOption = document.createElement("option");
-    newOption.value = number;
-    newOption.text = number;
-
-    e.add(newOption, e.options[1]);
-    e.selectedIndex = 1;
+function onChangeDimension(e) {
+  let value = e.value;
+  if (value === "") {
+    return;
   }
 
-  makeQuotation();
+  if (value === "customize") {
+    // Use SweetAlert2 to prompt for custom dimensions
+    Swal.fire({
+      title: 'Please input your dimension',
+      text: 'Format: 315*202*62',
+      input: 'text',
+      inputPlaceholder: '315*202*62',
+      inputValue: '315*202*62',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      cancelButtonText: 'Cancel',
+      inputValidator: (input) => {
+        if (!input) {
+          return 'You need to write something!';
+        }
+        const sizes = input.split("*");
+        if (sizes.length !== 3) {
+          return 'Please use the correct format: 315*202*62';
+        }
+        const [length, width, height] = sizes.map(Number);
+        if (isNaN(length) || isNaN(width) || isNaN(height)) {
+          return 'All dimensions must be numbers!';
+        }
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const number = result.value;
+        const sizes = number.split("*");
+
+        const length = Number(sizes[0]);
+        const width = Number(sizes[1]);
+        const height = Number(sizes[2]);
+
+        if (!isNumber(length) || !isNumber(width) || !isNumber(height)) {
+          e.selectedIndex = 0;
+          return;
+        }
+
+        const newOption = document.createElement("option");
+        newOption.value = number;
+        newOption.text = number + "mm";
+
+        e.add(newOption, e.options[1]);
+        e.selectedIndex = 1;
+        value = number;
+
+        // Proceed to set size and make quotation
+        Pacdora.setSize({
+          length: Number(sizes[0]),
+          width: Number(sizes[1]),
+          height: Number(sizes[2]),
+          async: true,
+        });
+        makeQuotation();
+      } else {
+        e.selectedIndex = 0; // Reset to default if cancelled
+      }
+    });
+  } else {
+    const size = value.split("*");
+    Pacdora.setSize({
+      length: Number(size[0]),
+      width: Number(size[1]),
+      height: Number(size[2]),
+      async: true,
+    });
+    makeQuotation();
+  }
 }
+
+// Helper function to check if a value is a valid number
+function isNumber(value) {
+  return typeof value === 'number' && !isNaN(value);
+}
+
 
 function onBuyClick() {
   makeQuotation();
