@@ -71,10 +71,10 @@
       <ul class="nav nav-tabs scrollbar-custom mb-12 flex items-center justify-start overflow-x-auto overflow-y-hidden border-b border-jacarta-100 pb-px  md:justify-center" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 " id="informasi-tab" data-bs-toggle="tab" data-bs-target="#informasi" type="button" role="tab" aria-controls="informasi" aria-selected="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-1 h-5 w-5 fill-current">
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm4.5 9H14a.5.5 0 1 0 0-1h-4a2.5 2.5 0 1 1 0-5h1V6h2v2h2.5v2H10a.5.5 0 1 0 0 1h4a2.5 2.5 0 1 1 0 5h-1v2h-2v-2H8.5v-2z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5 size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+</svg>
+
             <span class="font-display text-base font-medium">Informasi</span>
           </button>
         </li>
@@ -82,10 +82,10 @@
       
         <li class="nav-item" role="presentation">
           <button class="nav-link relative flex items-center whitespace-nowrap py-3 px-6 text-jacarta-400 hover:text-jacarta-700 " id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="mr-1 h-5 w-5 fill-current">
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M11.95 7.95l-1.414 1.414L8 6.828 8 20H6V6.828L3.465 9.364 2.05 7.95 7 3l4.95 4.95zm10 8.1L17 21l-4.95-4.95 1.414-1.414 2.537 2.536L16 4h2v13.172l2.536-2.536 1.414 1.414z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5  size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
             <span class="font-display text-base font-medium">History Design</span>
           </button>
         </li>
@@ -376,84 +376,119 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('.svg-icon').click(function() {
-      let svgIcon = $(this);
-      let svgDoc = svgIcon.find('.svg-doc'); 
-      svgDoc.hide(); 
+  $('.svg-icon').click(function() {
+    let svgIcon = $(this);
+    let svgDoc = svgIcon.find('.svg-doc'); 
+    svgDoc.hide(); 
 
-      let loadingSvg = `
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transform rotating svg-load">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-        </svg>
-      `;
-      svgIcon.append(loadingSvg); 
+    let loadingSvg = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 transform rotating svg-load">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+      </svg>
+    `;
+    svgIcon.append(loadingSvg); 
 
-      let csrf = "{{csrf_token()}}";
-      var id = svgIcon.closest('.relative.flex.items-center').data('id');
-      if(`{{Auth::user()->umkm->approved != 1}}`){
-        Swal.fire({
-          icon: 'error',
-          title: 'Tidak Terverifikasi',
-          text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+    const inputOptions = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          'pdf': "PDF",
+          'ai': "AI",
+          'dxf': "DXF",
         });
-        svgIcon.find('.svg-load').remove();
-        svgDoc.show();
-        return;
-      }else{
+      }, 1000);
+    });
 
-        $.ajax({
-          url: 'https://api.pacdora.com/open/v1/user/projects/export/pdf',
-          type: 'POST',
-          contentType: 'application/json',
-          headers: {
-            'appId': '71ee73045e3480fe',
-            'appKey': 'a3e831ccfa3ffd84',
-            'X-CSRF-TOKEN': csrf
-          },
-          data: JSON.stringify({
-            projectIds: [id]
-          }),
-          success: function(data) {
-            console.log(data.data[0].taskId);
-            let taskId = data.data[0].taskId;
-  
-            let intervalId = setInterval(function() {
-              $.ajax({
-                url: "https://api.pacdora.com/open/v1/user/projects/export/pdf",
-                type: 'GET',
-                headers: {
-                  'appId': '71ee73045e3480fe',
-                  'appKey': 'a3e831ccfa3ffd84',
-                  'X-CSRF-TOKEN': csrf
-                },
-                data: {
-                  taskId: taskId
-                },
-                success: function(response) {
-                  console.log(response.data);
-                  console.log(response.data.filePath);
-                  if (response.data.filePath) {
-                    clearInterval(intervalId);
-                    window.location.href = response.data.filePath;
-                    svgIcon.find('.svg-load').remove();
-                    svgDoc.show();
-                  } else {
-                    console.log('Processing...');
-                  }
-                },
-                error: function(error) {
-                  console.log('Error:', error);
-                }
-              });
-            }, 5000);
-          },
-          error: function(error) {
-            console.log('Error:', error);
+    Swal.fire({
+      title: "Select format",
+      input: "radio",
+      inputOptions,
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to choose something!";
+        }
+      }
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({ html: `You selected: ${result.value.toUpperCase()}` });
+        
+        let csrf = "{{csrf_token()}}";
+        var id = svgIcon.closest('.relative.flex.items-center').data('id');
+        
+        if(`{{Auth::user()->umkm->approved != 1}}`){
+          Swal.fire({
+            icon: 'error',
+            title: 'Tidak Terverifikasi',
+            text: 'Akun Anda Belum Di Verifikasi Silahkan Hubungi Pihak DINAS',
+          });
+          svgIcon.find('.svg-load').remove();
+          svgDoc.show();
+          return;
+        } else {
+          let exportUrl = '';
+
+          if(result.value === 'pdf') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/pdf';
+          } else if(result.value === 'ai') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/ai';
+          } else if(result.value === 'dxf') {
+            exportUrl = 'https://api.pacdora.com/open/v1/user/projects/export/dxf';
           }
-        });
+
+          $.ajax({
+            url: exportUrl,
+            type: 'POST',
+            contentType: 'application/json',
+            headers: {
+              'appId': '71ee73045e3480fe',
+              'appKey': 'a3e831ccfa3ffd84',
+              'X-CSRF-TOKEN': csrf
+            },
+            data: JSON.stringify({
+              projectIds: [id]
+            }),
+            success: function(data) {
+              console.log(data.data[0].taskId);
+              let taskId = data.data[0].taskId;
+
+              let intervalId = setInterval(function() {
+                $.ajax({
+                  url: exportUrl,
+                  type: 'GET',
+                  headers: {
+                    'appId': '71ee73045e3480fe',
+                    'appKey': 'a3e831ccfa3ffd84',
+                    'X-CSRF-TOKEN': csrf
+                  },
+                  data: {
+                    taskId: taskId
+                  },
+                  success: function(response) {
+                    console.log(response.data);
+                    if (response.data.filePath) {
+                      clearInterval(intervalId);
+                      window.location.href = response.data.filePath;
+                      svgIcon.find('.svg-load').remove();
+                      svgDoc.show();
+                    } else {
+                      console.log('Processing...');
+                    }
+                  },
+                  error: function(error) {
+                    console.log('Error:', error);
+                  }
+                });
+              }, 5000);
+            },
+            error: function(error) {
+              console.log('Error:', error);
+            }
+          });
+        }
       }
     });
   });
+});
+
 </script>
 <script>
   $(document).ready(function() {

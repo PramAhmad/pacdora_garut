@@ -450,9 +450,9 @@ $(function () {
     },
     series: [
       {
-        name: "Weekly Stats",
+        name: "Pengguanan",
         color: "var(--bs-primary)",
-        data: [5, 15, 10, 20],
+        data: [5, 15, 10, 20,10,50,20],
       },
     ],
     stroke: {

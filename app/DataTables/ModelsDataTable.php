@@ -110,7 +110,7 @@ class ModelsDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('image'),
-            Column::make('subimage'),
+            Column::make('subimage')->computed('subimage'),
             Column::make('title'),
             Column::make('materialone'),
             Column::make('materialtwo'),

@@ -55,8 +55,8 @@ class RegisterController extends Controller
         'wilayah.required' => 'Wilayah harus diisi',
         'nama.required' => 'Nama Pemilik harus diisi',
         'nama_usaha.required' => 'Nama Usaha harus diisi',
-        'is_garut.required' => 'Kewarganegaraan harus diisi',
-        'is_garut.in' => 'Kewarganegaraan harus ya atau tidak',
+        'is_garut.required' => 'Domisili harus diisi',
+        'is_garut.in' => 'Domisili harus ya atau tidak',
         'alamat_usaha.required' => 'Alamat Usaha harus diisi',
         'nohp.required' => 'No HP harus diisi',
 

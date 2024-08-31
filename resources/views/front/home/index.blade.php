@@ -3,7 +3,8 @@
 @section('content')
 @push('css')
 <link rel="stylesheet" href="{{asset('agency/tailwind.min.css')}}">
-
+<link rel="stylesheet" href="{{asset("css/index.css")}}" />
+<link rel="stylesheet" href="{{asset('css/base.css')}}">
 @endpush
 <div class="container">
 
@@ -19,7 +20,7 @@
       <button type="button"> <a class="flex items-center inline-block z-10 relative border border-jacarta-900 transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] bg-white text-gray-900 hover:bg-gray-900 hover:text-white hover:-translate-y-[2px] text-gray-900 bg-gray-100 text-heading-6 tracking-wide" href="#"><span class="block text-inherit w-full h-full rounded-[50px] text-lg font-chivo font-semibold">Tentang Kami</span><i> <img class="ml-[7px] w-[12px] filter-black group-hover:filter-white" src="/agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i></a></button>
     </div>
     <div class="relative mx-auto max-w-[1190px] h-full">
-      <iframe class="w-full md:h-[650px] h-[190px] rounded-3xl" src="https://www.youtube.com/embed/yzsalAKMYCI?si=hQzetCIXqwTVx5F4"
+      <iframe class="w-full md:h-[650px] h-[190px] rounded-3xl" src="https://www.youtube.com/embed/44oyTohfw5k?si=UQloPDY1dQYXj3rg"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -88,6 +89,34 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 lg:mt-[111px]">
+  <div class="text-center mb-[88px]">
+      <h2 class="font-bold font-chivo mx-auto text-[35px] leading-[44px] md:text-[46px] md:leading-[52px] lg:text-heading-1 text-gray-900 mb-5 md:mb-[30px] max-w-[725px]">Desain Kemasan Terbaik </h2>
+      <p class="text-quote md:text-lead-lg text-gray-600 mx-auto max-w-[976px]">
+        Gunakan Desain Terbaik untuk meningkatkan penjualan produk anda
+      </p>
+    </div>
+    <div class="list">
+      @foreach ($bestdesain as  $b)
+        
+      <a class="list-item" href="{{route('detail',['modelId'=>$b->model_id])}}">
+        <img
+          src="{{$b->model->image}}" />
+        <p>
+          {{$b->model->title}}
+        </p>
+      </a>
+      @endforeach
+
+      
+      
+    </div>
+    <!-- lihat semua button -->
+    <div class="text-center mt-[50px]">
+      <a class=" items-center inline-block z-10 relative border border-jacarta-700 transition-all duration-200 group px-[22px] py-[15px] lg:px-[32px] lg:py-[18px] rounded-full bg-white text-gray-700 hover:bg-gray-700 hover:text-jacarta-800 hover:-translate-y-[2px] text-gray-700 bg-gray-100 text-heading-6 tracking-wide" href="{{route('bestdesain')}}"><span class="block text-inherit w-full h-full rounded-full text-lg font-chivo font-semibold">Lihat Semua</span><i> </a>
+    </div>
+     
   </div>
   <div class="px-[12px] md:px-[36px] mt-[70px] xl:px-0 lg:mt-[111px]">
     <div class="flex items-center justify-between md:mb-[82px] mb-[40px]">
@@ -249,28 +278,28 @@
     </div>
     <div class="feedback-list ml-[-15px]">
       @php
-        $borderbg = [
-          'border-bg-4',
-          'border-bg-6',
-          'border-bg-9',
-          'border-bg-10',
-        ]
+      $borderbg = [
+      'border-bg-4',
+      'border-bg-6',
+      'border-bg-9',
+      'border-bg-10',
+      ]
 
 
       @endphp
-    @forelse ($customer as $c )
-        @php
-        $random = array_rand($borderbg);
-        @endphp
-        <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] {{$random}}"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px] rounded-full" src="{{asset('upload/customer/'.$c->foto)}}" alt="customer">
-          <p class="text-sm font-bold mb-5 text-gray-700">{{$c->nama_usaha}}</p>
-          <p class="text-text text-gray-500">{{$c->isi}}
-          </p>
-        </div>
-        @empty
-          <h4>Belum ada data Customer</h4>
-        @endforelse
-  
+      @forelse ($customer as $c )
+      @php
+      $random = array_rand($borderbg);
+      @endphp
+      <div class="border p-10 transition-all duration-300 border-[10px] mx-[15px] hover:translate-y-[-2px] mt-[2px] {{$random}}"><img class="h-full w-full object-cover w-[55px] h-[55px] mb-[22px] rounded-full" src="{{asset('upload/customer/'.$c->foto)}}" alt="customer">
+        <p class="text-sm font-bold mb-5 text-gray-700">{{$c->nama_usaha}}</p>
+        <p class="text-text text-gray-500">{{$c->isi}}
+        </p>
+      </div>
+      @empty
+      <h4>Belum ada data Customer</h4>
+      @endforelse
+
     </div>
   </div>
 
@@ -279,10 +308,10 @@
     </h2>
     <div class="flex flex-wrap items-center justify-around mb-[30px] md:mb-[60px] lg:mb-[80px]">
       @php
-        $mitra = \App\Models\Mitra::all();
+      $mitra = \App\Models\Mitra::all();
       @endphp
       @foreach ($mitra as $m )
-      
+
       <a class="transition-all duration-300 partner-item p-[15px] md:pr-[15px] xl:w-auto lg:w-[184px] hover:translate-y-[-3px]" href="/"><img src="/upload/mitra/{{$m->foto}}" alt="partner logo" class="w-32"></a>
       @endforeach
     </div>
@@ -300,13 +329,14 @@
             <div class="flex gap-[13px] mb-[15px] md:mb-[25px]"> <i> <img src="agency/assets/images/icons/icon-home-fill.svg" alt="home icon"></i>
               <p class="text-heading-6 font-bold font-chivo">Myopia</p>
             </div>
-            <p class="text-text text-gray-600">4517 Washington Ave.
+            <p class="text-text text-gray-600">
+              Jl. Pahlawan No 49 Tarogong Kidul,
             </p>
-            <p class="text-text text-gray-600 mb-[10px] md:mb-[16px]">Garut, Kentucky 39495
+            <p class="text-text text-gray-600 mb-[10px] md:mb-[16px]">Kabupaten Garut
             </p>
             <p class="text-text text-gray-600 underline">(239) 555-0108
             </p>
-            <p class="text-text text-gray-600 underline">contact@myopia.com
+            <p class="text-text text-gray-600 underline">diskopukm.garut@gmail.com
             </p>
           </div>
           <form class="flex-1 contact-form" action="{{route('contact.store')}}">
@@ -319,7 +349,7 @@
               <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="email" placeholder="Email kamu">
               <input class="outline-none flex-1 placeholder:text-gray-400 placeholder:text-md placeholder:font-chivo py-5 px-[30px]" type="text" name="phone" placeholder="Nomor Telepon">
             </div>
-            <textarea class="w-full py-5 resize-none outline-0 px-[30px] max-h-[150px] mb-[35px] md:mb-[56px]" name="message" cols="100" rows="10" placeholder="Pertanyaan kamu" ></textarea>
+            <textarea class="w-full py-5 resize-none outline-0 px-[30px] max-h-[150px] mb-[35px] md:mb-[56px]" name="message" cols="100" rows="10" placeholder="Pertanyaan kamu"></textarea>
             <div class="flex flex-col gap-5">
               <button class="flex items-center transition-colors duration-200 px-[22px] py-[15px] lg:px-[32px] lg:py-[22px] rounded-[50px] font-chivo font-semibold text-md md:text-lg text-white bg-gray-900 w-fit" type="submit">Kirim Pesan<i> <img class="ml-[7px] w-[12px] filter-white" src="agency/assets/images/icons/icon-right.svg" alt="arrow right icon"></i>
               </button>
@@ -352,37 +382,37 @@
 <!-- swal cdn -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  $(document).ready(function(){
-    $('.contact-form').submit(function(e){
-      e.preventDefault(); 
+  $(document).ready(function() {
+    $('.contact-form').submit(function(e) {
+      e.preventDefault();
 
-      let csrfToken = "{{ csrf_token() }}"; 
-      let form = $(this); 
+      let csrfToken = "{{ csrf_token() }}";
+      let form = $(this);
       let formData = form.serialize();
 
       // AJAX setup
       $.ajax({
         type: 'POST',
-        url:  `{{route('contact.store')}}`,
+        url: `{{route('contact.store')}}`,
         data: formData + '&_token=' + csrfToken,
-        success: function(response){
+        success: function(response) {
           Swal.fire({
             icon: 'success',
             title: 'Success',
             text: response.message,
           });
         },
-        error: function(response){
+        error: function(response) {
           Swal.fire({
             icon: 'error',
             title: 'Error',
             text: response.responseJSON.message,
           });
         }
-      }); 
+      });
     });
   });
 </script>
 
- 
+
 @endsection

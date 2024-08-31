@@ -39,6 +39,23 @@ class DashboardControler extends Controller
             'endTime' => $data['end']
         ]);
         
+        
+
+        // stat     harian 7 hari terakhir
+        // $data['statistic'] = [];
+        // for ($i = 0; $i < 7; $i++) {
+  
+        //     $data['statistic'][$i] = Http::withHeaders([
+        //         'appId' => "71ee73045e3480fe",
+        //         'appKey' => "a3e831ccfa3ffd84"
+        //     ])->get('https://api.pacdora.com/open/v1/behavior/statistic', [
+        //         'startTime' => Carbon::now()->subDays($i)->timestamp * 1000,
+        //         'endTime' =>  Carbon::now()->timestamp * 1000
+        //     ]);
+        //     $data['statistic'][] = $data['statistic'][$i]->json();
+        // }
+        // return $data['statistic'][5];
+     
         // Render the dashboard view with the data
         return view('back.dashboard', $data);
     }

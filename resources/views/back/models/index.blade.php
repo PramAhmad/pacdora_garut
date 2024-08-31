@@ -63,11 +63,11 @@
                         <div class="col-md-6">
                             <div class="mb-1">
                                 <label for="subimageone" class="form-label">Sub Image URL</label>
-                                <input type="text" class="form-control" id="subimageone" name="subimageone" required>
+                                <input type="text" class="form-control" id="subimageone" name="subimageone" \>
                             </div>
                             <div class="mb-2">
                                 <label for="subimagetwo" class="form-label"></label>
-                                <input type="text" class="form-control" id="subimagetwo" name="subimagetwo" required>
+                                <input type="text" class="form-control" id="subimagetwo" name="subimagetwo" \>
                             </div>
                             <div class="d-flex" style="gap:10px">
                                 <img src="" id="sub1-img-preview" class="img-thumbnail" style="max-width: 33%;" alt="Image Preview">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            
+
                             <div class="mb-3">
                                 <label for="model" class="form-label">Model Id</label>
                                 <input type="text" class="form-control" id="model" name="model" required>
@@ -101,19 +101,19 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                        <div class="mb-3">
-                        <label for="subcategory" class="form-label">Subcategory</label>
-                        <select class="form-select" id="subcategory" name="sub_category" required>
-                            <option value="">Select Subcategory</option>
-                        </select>
-                    </div>
+                            <div class="mb-3">
+                                <label for="subcategory" class="form-label">Subcategory</label>
+                                <select class="form-select" id="subcategory" name="sub_category" required>
+                                    <option value="">Select Subcategory</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-6">
 
                             <div class="mb-3">
                                 <label for="materialone" class="form-label">Material One</label>
-                                <input type="text" class="form-control" id="materialone" name="materialone" required>
-                               
+                                <input type="text" class="form-control" id="materialone" name="materialone" >
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -121,15 +121,15 @@
                             <div class="mb-3">
                                 <label for="materialtwo" class="form-label">Material Two</label>
                                 <!-- input text -->
-                                 <input type="text" class="form-control" id="materialtwo" name="materialtwo" required>
+                                <input type="text" class="form-control" id="materialtwo" name="materialtwo" >
                             </div>
                         </div>
                     </div>
                     <input type="hidden" id="edit-id" name="id">
 
-                   
 
-                   
+
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
@@ -145,17 +145,16 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 <script>
-
     $(document).ready(function() {
         $('#category').on('change', function() {
             var id = $(this).val();
-            
+
             $.ajax({
-            url: '/admin/subcategory/search/' + id,
+                url: '/admin/subcategory/search/' + id,
                 type: 'GET',
                 success: function(response) {
                     var data = response.data;
-                    var html = '';
+                    var html = '<option value="">Select Subcategory</option>'; // Include a default option
                     for (var i = 0; i < data.length; i++) {
                         html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
                     }
@@ -164,7 +163,6 @@
             });
         });
     });
-
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -200,26 +198,41 @@
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
             $.get('/admin/model/' + id + '/edit', function(data) {
-                console.log(data)
+                console.log(data);
                 $('#edit-id').val(data.id);
                 $('#image').val(data.image);
                 $('#model').val(data.model);
-                $('#subimageone').val(data.subimagetwo);
+                $('#subimageone').val(data.subimageone);
                 $("#sub1-img-preview").attr('src', data.subimageone);
                 $('#subimagetwo').val(data.subimagetwo);
                 $("#sub2-img-preview").attr('src', data.subimagetwo);
 
                 $('#title').val(data.title);
-                $('#subcategory').val(data.sub_category);
+                $('#materialone').val(data.materialone);
+                $('#materialtwo').val(data.materialtwo);
                 $('#category').val(data.category_id);
                 $("#img-preview").attr('src', data.image);
+
+                $.ajax({
+                    url: '/admin/subcategory/search/' + data.category_id,
+                    type: 'GET',
+                    success: function(response) {
+                        var subcategories = response.data;
+                        var subcategoryOptions = '<option value="">Select Subcategory</option>';
+                        for (var i = 0; i < subcategories.length; i++) {
+                            if (subcategories[i].id == data.sub_category) {
+                                subcategoryOptions += '<option value="' + subcategories[i].id + '" selected>' + subcategories[i].name + '</option>';
+                            } else {
+                                subcategoryOptions += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
+                            }
+                        }
+                        $('#subcategory').html(subcategoryOptions);
+                    }
+                });
+
                 $('#edit-modal').modal('show');
-               $('#materialone').val(data.materialone);
-                $('#materialtwo').val(data.materialtwo);
-
-
             });
-        })
+        });
 
 
         // Update model AJAX
@@ -244,49 +257,49 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: response.responseJSON.message ,
+                        text: response.responseJSON.message,
                     });
                 }
             });
         });
     });
-    function confirmDelete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                type: 'DELETE',
-                url: `/admin/model/delete/${id}`,
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                },
-                success: function(response) {
-                    $('#model-table').DataTable().ajax.reload();
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                },
-              
-                error: function(response) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error deleting model! ' + response.responseText,
-                    });
-                }
-            });
-        }
-    })
-}
 
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `/admin/model/delete/${id}`,
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                    },
+                    success: function(response) {
+                        $('#model-table').DataTable().ajax.reload();
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    },
+
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error deleting model! ' + response.responseText,
+                        });
+                    }
+                });
+            }
+        })
+    }
 </script>
 @endpush

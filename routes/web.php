@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjaxCategoryController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\BestDesainController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
@@ -47,6 +48,7 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/pendampingan',[HomeController::class, 'pendampingan'])->name('pendampingan');
 Route::get('/konsultasi',[HomeController::class, 'konsultasi'])->name('konsultasi');
 Route::get('/tutorial',[HomeController::class, 'tutorial'])->name('tutorial');
+Route::get('/bestdesain',[HomeController::class, 'bestdesain'])->name('bestdesain');
 
 
 
@@ -139,6 +141,11 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
 
         // mitra
         Route::get('/mitra',[MitraController::class, 'index'])->name('mitra.index');
+        
+        // best desain
+        Route::get('/bestdesain',[BestDesainController::class, 'index'])->name('bestdesain.index');
+        Route::post('/bestdesain/store',[BestDesainController::class, 'store'])->name('bestdesain.store');
+        Route::put('/bestdesain/update/{id}',[BestDesainController::class, 'update'])->name('bestdesain.update');
 
         Route::post('/mitra',[MitraController::class, 'store'])->name('mitra.store');
         Route::get('/mitra/{id}/show',[MitraController::class, 'show'])->name('mitra.show');

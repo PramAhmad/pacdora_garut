@@ -337,6 +337,12 @@
               </li>
               <li class="group menu-mobile-item py-[13px]">
                 <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
+                  <a href="{{route('bestdesain')}}">Desain Terbaik</a>
+                </div>
+               
+              </li>
+              <li class="group menu-mobile-item py-[13px]">
+                <div class="flex items-center justify-between transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]">
                   <p>Kategori Desain</p><img class="w-[18px] h-[18px]" src="agency/assets/images/icons/icon-angle-down-fill.svg" alt="angle icon">
                 </div>
                 <ul class="pl-5 menu-child hidden pt-[10px]">
@@ -373,8 +379,17 @@
             <div class="mt-5 border-t border-b border-gray-100 pb-5 mb-[25px] pt-[30px]">
               <p class="font-bold text-heading-6 mb-[10px]">Your Account</p>
               <ul class="text-[15px]"> 
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Profile</a></li>
-                <li class="py-[13px]"><a class="transition-all duration-200 hover:text-green-900 hover:translate-x-[2px]" href="/">Sign Out</a></li>
+                @if (Auth::check())
+                <li class="py-[10px]"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="{{route('profile')}}">Dashboard</a></li>
+              <!-- handle logout -->
+              <form action="{{route('logout')}}" method="post">
+                @csrf
+                @method('POST')
+                <button class="py-[10px]"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="{{route('logout')}}">Logout</a></button>
+              </form> 
+                @else
+                <li class="py-[10px]"><a class="block transition-all duration-200 hover:text-green-900 hover:translate-x-1" href="{{route('login')}}">Login</a></li>
+                @endif
               </ul>
             </div>
             <div class="text-gray-400 font-chivo text-[13px]">Copyright 2024 © Myopia - agency garut.<br><span>Designed by</span><a class="text-green-900" href="http://alithemes.com">&nbsp;Astacode</a></div>

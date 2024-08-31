@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BestDesain;
 use App\Models\CategoryModel;
 use App\Models\Customer;
 use App\Models\Models;
@@ -18,6 +19,8 @@ class HomeController extends Controller
     {
         $data["category"] = CategoryModel::all();
         $data['customer'] = Customer::all();
+        $data['bestdesain'] = BestDesain::limit(8)->get();
+        
      
         return view('front.home.index',$data);
     }
@@ -72,5 +75,9 @@ class HomeController extends Controller
 
     public function tutorial(){
         return view('front.tutorial.index');
+    }
+    public function bestdesain(){
+        $bestdesain = BestDesain::all();
+        return view('front.bestdesain.index', compact('bestdesain'));
     }
 }

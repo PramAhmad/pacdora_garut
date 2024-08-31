@@ -160,6 +160,7 @@
       border-color: #5d87ff
     }
   </style>
+  @stack('css')
 
   <!-- Core Css -->
   <link id="themeColors" rel="stylesheet" href="{{asset('admin/package/dist/css/style.min.css')}}" />
@@ -262,12 +263,33 @@
               </ul>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('model.index')}}" aria-expanded="false">
+              <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                 <span>
                   <i class="ti ti-paper-bag"></i>
                 </span>
                 <span class="hide-menu">Models</span>
               </a>
+              <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                  <a href="{{route('model.index')}}" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Data Models Desain</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="{{route('bestdesain.index')}}" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Data Best Desain</span>
+                  </a>
+                </li>
+
+
+
+              </ul>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('template.index')}}" aria-expanded="false">

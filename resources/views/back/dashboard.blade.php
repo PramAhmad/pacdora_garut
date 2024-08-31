@@ -72,55 +72,53 @@
           </div>
           <!--  Row 1 -->
           <div class="row">
-            <div class="col-lg-8 d-flex align-items-strech">
+          <div class="col-lg-8 d-flex align-items-strech">
               <div class="card w-100">
                 <div class="card-body">
-                  <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
-                    <div class="mb-3 mb-sm-0">
-                      <h5 class="card-title fw-semibold">Revenue Updates</h5>
-                      <p class="card-subtitle mb-0">Overview of Profit</p>
-                    </div>
-                    <div>
-                      <select class="form-select">
-                        <option value="1">March 2023</option>
-                        <option value="2">April 2023</option>
-                        <option value="3">May 2023</option>
-                        <option value="4">June 2023</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-8">
-                      <div id="chart"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                      <div class="d-flex align-items-center mb-4 pb-1">
-                        <div class="p-8 bg-light-primary rounded-1 me-3 d-flex align-items-center justify-content-center">
+                  <h5 class="card-title fw-semibold">Penggunaan Mingguan</h5>
+                  <p class="card-subtitle mb-0">Rata-rata pemakaian desain</p>
+                  <div id="stats" class="my-4"></div>
+                  <div class="position-relative">
+                    <div class="d-flex align-items-center justify-content-between mb-7">
+                      <div class="d-flex">
+                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
-                          <h4 class="mb-0 fs-7 fw-semibold">$63,489.50</h4>
-                          <p class="fs-3 mb-0">Total Earnings</p>
+                          <h6 class="mb-1 fs-4 fw-semibold">Top Sales</h6>
+                          <p class="fs-3 mb-0">Johnathan Doe</p>
                         </div>
                       </div>
-                      <div>
-                        <div class="d-flex align-items-baseline mb-4">
-                          <span class="round-8 bg-primary rounded-circle me-6"></span>
-                          <div>
-                            <p class="fs-3 mb-1">Earnings this month</p>
-                            <h6 class="fs-5 fw-semibold mb-0">$48,820</h6>
-                          </div>
-                        </div>
-                        <div class="d-flex align-items-baseline mb-4 pb-1">
-                          <span class="round-8 bg-secondary rounded-circle me-6"></span>
-                          <div>
-                            <p class="fs-3 mb-1">Expense this month</p>
-                            <h6 class="fs-5 fw-semibold mb-0">$26,498</h6>
-                          </div>
+                      <div class="bg-light-primary badge">
+                        <p class="fs-3 text-primary fw-semibold mb-0">+68</p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-7">
+                      <div class="d-flex">
+                        <div class="p-6 bg-light-success rounded me-6 d-flex align-items-center justify-content-center">
+                          <i class="ti ti-grid-dots text-success fs-6"></i>
                         </div>
                         <div>
-                          <button class="btn btn-primary w-100">View Full Report</button>
+                          <h6 class="mb-1 fs-4 fw-semibold">Best Seller</h6>
+                          <p class="fs-3 mb-0">MaterialPro Admin</p>
                         </div>
+                      </div>
+                      <div class="bg-light-success badge">
+                        <p class="fs-3 text-success fw-semibold mb-0">+68</p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex">
+                        <div class="p-6 bg-light-danger rounded me-6 d-flex align-items-center justify-content-center">
+                          <i class="ti ti-grid-dots text-danger fs-6"></i>
+                        </div>
+                        <div>
+                          <h6 class="mb-1 fs-4 fw-semibold">Most Commented</h6>
+                          <p class="fs-3 mb-0">Ample Admin</p>
+                        </div>
+                      </div>
+                      <div class="bg-light-danger badge">
+                        <p class="fs-3 text-danger fw-semibold mb-0">+68</p>
                       </div>
                     </div>
                   </div>
@@ -355,59 +353,7 @@
           <!--  Row 3 -->
           <div class="row">
             <!-- Weekly Stats -->
-            <div class="col-lg-4 d-flex align-items-strech">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h5 class="card-title fw-semibold">Weekly Stats</h5>
-                  <p class="card-subtitle mb-0">Average sales</p>
-                  <div id="stats" class="my-4"></div>
-                  <div class="position-relative">
-                    <div class="d-flex align-items-center justify-content-between mb-7">
-                      <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
-                          <i class="ti ti-grid-dots text-primary fs-6"></i>
-                        </div>
-                        <div>
-                          <h6 class="mb-1 fs-4 fw-semibold">Top Sales</h6>
-                          <p class="fs-3 mb-0">Johnathan Doe</p>
-                        </div>
-                      </div>
-                      <div class="bg-light-primary badge">
-                        <p class="fs-3 text-primary fw-semibold mb-0">+68</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-7">
-                      <div class="d-flex">
-                        <div class="p-6 bg-light-success rounded me-6 d-flex align-items-center justify-content-center">
-                          <i class="ti ti-grid-dots text-success fs-6"></i>
-                        </div>
-                        <div>
-                          <h6 class="mb-1 fs-4 fw-semibold">Best Seller</h6>
-                          <p class="fs-3 mb-0">MaterialPro Admin</p>
-                        </div>
-                      </div>
-                      <div class="bg-light-success badge">
-                        <p class="fs-3 text-success fw-semibold mb-0">+68</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex">
-                        <div class="p-6 bg-light-danger rounded me-6 d-flex align-items-center justify-content-center">
-                          <i class="ti ti-grid-dots text-danger fs-6"></i>
-                        </div>
-                        <div>
-                          <h6 class="mb-1 fs-4 fw-semibold">Most Commented</h6>
-                          <p class="fs-3 mb-0">Ample Admin</p>
-                        </div>
-                      </div>
-                      <div class="bg-light-danger badge">
-                        <p class="fs-3 text-danger fw-semibold mb-0">+68</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      
             <!-- Top Performers -->
             <div class="col-lg-8 d-flex align-items-strech">
               <div class="card w-100">
@@ -556,3 +502,5 @@
           </div>
       
 @endsection
+@push('js')
+@endpush

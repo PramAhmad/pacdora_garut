@@ -23,5 +23,10 @@ class CategoryModel extends Model
     public function models(){
         return $this->hasMany(Models::class,"category_id","id");
     }
+
+   
+    public function modelsLimit(){
+        return $this->hasMany(Models::class,"category_id","id")->limit(10);
+    }
  
 }
